@@ -21,11 +21,11 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className='min-h-screen'>
       {/* Hero Section */}
-      <div className="relative min-h-screen w-full overflow-hidden bg-white dark:bg-neutral-950">
+      <div className='relative min-h-screen w-full overflow-hidden bg-white dark:bg-neutral-950'>
         <BackgroundPaths
-          title="AdmissionsAid"
+          title='AdmissionsAid'
           onFileUpload={handleFileUpload}
         />
       </div>
