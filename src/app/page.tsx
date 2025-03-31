@@ -7,7 +7,8 @@ import {
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
-import { AuroraBackground } from "@/components/ui/aurora-background";
+import { BackgroundPaths } from "@/components/ui/background-paths";
+import { Button } from "@/components/ui/button";
 
 export default function DashboardPage() {
   const scrollToContent = () => {
@@ -18,32 +19,9 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <AuroraBackground>
-        <motion.div
-          initial={{ opacity: 0.0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.3,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          className="relative flex flex-col gap-4 items-center justify-center px-4"
-        >
-          <h1 className="text-6xl font-bold text-gray-900 dark:text-white mb-6">
-            AdmissionsAid
-          </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-200 max-w-2xl text-center">
-            Streamline your transcript evaluation process with automated GPA
-            normalization
-          </p>
-          <button
-            onClick={scrollToContent}
-            className="mt-8 bg-black dark:bg-white rounded-full text-white dark:text-black px-6 py-3 font-medium hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
-          >
-            Get Started
-          </button>
-        </motion.div>
-      </AuroraBackground>
+      <div className="relative min-h-screen w-full overflow-hidden bg-white dark:bg-neutral-950">
+        <BackgroundPaths title="AdmissionsAid" />
+      </div>
 
       {/* Dashboard Content */}
       <main
