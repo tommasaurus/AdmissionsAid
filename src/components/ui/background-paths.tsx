@@ -103,21 +103,29 @@ export function BackgroundPaths({
             transition={{ delay: 0.5, duration: 0.8 }}
             className="text-3xl font-light text-neutral-600 dark:text-neutral-400 mb-16 max-w-2xl mx-auto"
           >
-            Transform transcript evaluation from hours to seconds
+            Transcript evaluation from hours to seconds
           </motion.p>
 
           <div className="w-[600px] mx-auto">
             <div className="relative isolate">
               <GlowEffect
-                colors={["#FF5733", "#33FF57", "#3357FF", "#F1C40F"]}
+                colors={[
+                  "#FF2D55",
+                  "#FF9500",
+                  "#FFCC00",
+                  "#34C759",
+                  "#5856D6",
+                  "#AF52DE",
+                ]}
                 mode="colorShift"
-                blur="soft"
+                blur="softest"
                 duration={10}
-                scale={0.98}
+                scale={0.99}
+                className="!scale-x-100 rounded-3xl"
               />
               <div
-                className="relative z-10 h-[220px] border-2 border-dashed border-gray-300/30 rounded-xl 
-                bg-white dark:bg-black backdrop-blur-sm
+                className="relative z-10 h-[220px] border-3 border-dashed border-gray-300/30 rounded-3xl 
+                bg-white dark:bg-black 
                 flex flex-col items-center justify-center gap-4 
                 transition-colors hover:border-gray-400/50
                 shadow-lg hover:shadow-xl
