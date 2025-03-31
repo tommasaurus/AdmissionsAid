@@ -11,6 +11,20 @@ import { GlowEffect } from "@/components/ui/glow-effect";
 import { useState, useRef, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
+// Add scrollbar-hide styles
+const scrollbarHideStyles = `
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+`;
+
 function FloatingPaths({ position }: { position: number }) {
   const paths = Array.from({ length: 36 }, (_, i) => ({
     id: i,
@@ -173,6 +187,7 @@ export function BackgroundPaths({
       date_of_birth: "2003-01-07",
       enrollment_date: "2017-04-10",
       graduation_date: "2021-06-11",
+      student_id: null,
     },
     school_info: {
       school_name: "Flint Hill School",
@@ -182,18 +197,225 @@ export function BackgroundPaths({
       phone: "703-584-2300",
       school_type: "In-State (U.S.)",
     },
-    gpas: {
-      "9th_grade_weighted": 4.08,
-      "10th_grade_weighted": 4.19,
-      "11th_grade_weighted": 4.59,
-      "12th_grade_weighted": 4.86,
-      cumulative_weighted_gpa: 4.43,
-      approx_cumulative_unweighted_gpa: 4.01,
+    transcript_summary: {
+      grading_scale: {
+        base_scale: "4.0 = A (90-100), 3.0 = B (80-89), etc.",
+        honors_weight: "+0.33",
+        ap_weight: "+0.67",
+        note_plus_minus:
+          "A+ treated as 4.3 unweighted; other plus/minus values likewise adjusted.",
+      },
+      gpas: {
+        "9th_grade_weighted": 4.08,
+        "10th_grade_weighted": 4.19,
+        "11th_grade_weighted": 4.59,
+        "12th_grade_weighted": 4.86,
+        cumulative_weighted_gpa: 4.43,
+        approx_cumulative_unweighted_gpa: 4.01,
+      },
+      course_counts: {
+        total_ap_courses: 10,
+        total_honors_courses: 6,
+        post_ap_or_advanced_courses: 2,
+        notable_pass_fail: [
+          "Human Development (Pass)",
+          "Senior Project (Pass)",
+        ],
+      },
+      academic_years: [
+        {
+          year_label: "2017-2018 (9th Grade)",
+          weighted_gpa: 4.08,
+          courses: [
+            {
+              course_name: "English I Honors",
+              term_grades: { Sem1: "A-", Sem2: "A-" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Orchestra",
+              term_grades: { Sem1: "A", Sem2: "A+" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Modern European History",
+              term_grades: { Sem1: "A-", Sem2: "A-" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Spanish III",
+              term_grades: { Sem1: "A", Sem2: "A" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Precalculus Honors",
+              term_grades: { Sem1: "A+", Sem2: "A+" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Physics",
+              term_grades: { Sem1: "A", Sem2: "A" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Human Development",
+              term_grades: { Final: "Pass" },
+              rigor: "Pass/Fail",
+              credits_earned: 0.25,
+            },
+          ],
+        },
+        {
+          year_label: "2018-2019 (10th Grade)",
+          weighted_gpa: 4.19,
+          courses: [
+            {
+              course_name: "English II Honors",
+              term_grades: { Sem1: "A-", Sem2: "A-" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Contemporary World History II Honors",
+              term_grades: { Sem1: "A-", Sem2: "A" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Spanish IV Honors",
+              term_grades: { Sem1: "B+", Sem2: "A" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Calculus BC",
+              term_grades: { Sem1: "A", Sem2: "A" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Computer Science I",
+              term_grades: { Sem1: "A", Sem2: "A+" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Chemistry Honors",
+              term_grades: { Sem1: "A-", Sem2: "A" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+          ],
+        },
+        {
+          year_label: "2019-2020 (11th Grade)",
+          weighted_gpa: 4.59,
+          courses: [
+            {
+              course_name: "AP Computer Science A",
+              term_grades: { Sem1: "A-", Sem2: "A+" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP English Language and Composition",
+              term_grades: { Sem1: "B+", Sem2: "A-" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP U.S. History",
+              term_grades: { Sem1: "A", Sem2: "A" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Spanish Language & Culture",
+              term_grades: { Sem1: "A", Sem2: "A+" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Multivariable Calculus: Post-AP",
+              term_grades: { Sem1: "A+", Sem2: "A+" },
+              rigor: "Post-AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Adv Biol - Anatomy & Physiology of Animals",
+              term_grades: { Final: "A" },
+              rigor: "Advanced / Elective",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Adv Biol - Life's Origins and Transitions",
+              term_grades: { Final: "A+" },
+              rigor: "Advanced / Elective",
+              credits_earned: 0.5,
+            },
+          ],
+        },
+        {
+          year_label: "2020-2021 (12th Grade)",
+          weighted_gpa: 4.86,
+          courses: [
+            {
+              course_name: "AP English Literature and Composition",
+              term_grades: { Sem1: "A", Sem2: "A+" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Macroeconomics",
+              term_grades: { Sem1: "A+", Sem2: "A" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Psychology",
+              term_grades: { Sem1: "A+", Sem2: "A" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Statistics",
+              term_grades: { Sem1: "A+", Sem2: "A+" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Linear Algebra: Post-AP",
+              term_grades: { Sem1: "A+", Sem2: "A+" },
+              rigor: "Post-AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Biology",
+              term_grades: { Sem1: "A", Sem2: "A" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Senior Project",
+              term_grades: { Final: "Pass" },
+              rigor: "Pass/Fail",
+              credits_earned: null,
+            },
+          ],
+        },
+      ],
     },
   };
 
   return (
     <div className="relative min-h-[400vh] w-full bg-white dark:bg-neutral-950">
+      <style>{scrollbarHideStyles}</style>
       <div className="absolute inset-0">
         <FloatingPaths position={1} />
         <FloatingPaths position={-1} />
@@ -324,7 +546,7 @@ export function BackgroundPaths({
                   >
                     {isAnalyzing ? (
                       <div className="flex items-center gap-3">
-                        <div className="animate-spin" />
+                        <div className="color animate-spin" />
                         Analyzing Transcript...
                       </div>
                     ) : (
@@ -337,133 +559,6 @@ export function BackgroundPaths({
           </div>
         </motion.div>
       </div>
-
-      {showAnalysis && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[90%] max-w-5xl bg-white rounded-2xl shadow-2xl p-8"
-        >
-          <Tabs defaultValue="overview" className="w-full">
-            <TabsList className="grid w-full grid-cols-4 mb-8">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="student">Student Info</TabsTrigger>
-              <TabsTrigger value="school">School Info</TabsTrigger>
-              <TabsTrigger value="academic">Academic Progress</TabsTrigger>
-            </TabsList>
-
-            <TabsContent value="overview" className="mt-0">
-              <div className="prose dark:prose-invert max-w-none">
-                <h2 className="text-2xl font-bold mb-4">Admissions Summary</h2>
-                <h3 className="text-xl font-semibold mb-3">
-                  Academic Overview
-                </h3>
-                <p className="text-gray-700 mb-4">
-                  Thomas Qu has maintained consistently strong academic
-                  performance at Flint Hill School (VA), with a clear upward GPA
-                  trend each year (weighted GPAs of 4.08, 4.19, 4.59, and 4.86
-                  in grades 9–12, culminating in a 4.43 cumulative average). He
-                  has taken a rigorous course load, including 10 total AP
-                  courses and additional honors/post-AP coursework in
-                  mathematics and other disciplines.
-                </p>
-                <h3 className="text-xl font-semibold mb-3">Strengths</h3>
-                <ul className="list-disc pl-6 mb-4 text-gray-700">
-                  <li>
-                    Demonstrated excellence in STEM courses, evidenced by strong
-                    performance in Precalculus Honors, AP Calculus BC,
-                    Multivariable Calculus (Post-AP), and Linear Algebra
-                    (Post-AP).
-                  </li>
-                  <li>
-                    Consistent success across English, history, and
-                    Spanish—highlighting balanced academic strengths.
-                  </li>
-                  <li>
-                    Upward trend from early high school years through senior
-                    year, indicating sustained growth.
-                  </li>
-                </ul>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="student">
-              <div className="grid grid-cols-2 gap-6">
-                {Object.entries(hardcodedData.student_info).map(
-                  ([key, value]) => (
-                    <div key={key} className="bg-gray-50 p-4 rounded-lg">
-                      <div className="text-sm text-gray-500 mb-1">
-                        {key
-                          .split("_")
-                          .map(
-                            (word) =>
-                              word.charAt(0).toUpperCase() + word.slice(1)
-                          )
-                          .join(" ")}
-                      </div>
-                      <div className="text-lg font-medium">
-                        {value || "N/A"}
-                      </div>
-                    </div>
-                  )
-                )}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="school">
-              <div className="grid grid-cols-2 gap-6">
-                {Object.entries(hardcodedData.school_info).map(
-                  ([key, value]) => (
-                    <div key={key} className="bg-gray-50 p-4 rounded-lg">
-                      <div className="text-sm text-gray-500 mb-1">
-                        {key
-                          .split("_")
-                          .map(
-                            (word) =>
-                              word.charAt(0).toUpperCase() + word.slice(1)
-                          )
-                          .join(" ")}
-                      </div>
-                      <div className="text-lg font-medium">{value}</div>
-                    </div>
-                  )
-                )}
-              </div>
-            </TabsContent>
-
-            <TabsContent value="academic">
-              <div className="space-y-6">
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl">
-                  <h3 className="text-xl font-semibold mb-4">
-                    GPA Progression
-                  </h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    {Object.entries(hardcodedData.gpas).map(([key, value]) => (
-                      <div
-                        key={key}
-                        className="bg-white p-4 rounded-lg shadow-sm"
-                      >
-                        <div className="text-sm text-gray-500 mb-1">
-                          {key
-                            .split("_")
-                            .map(
-                              (word) =>
-                                word.charAt(0).toUpperCase() + word.slice(1)
-                            )
-                            .join(" ")}
-                        </div>
-                        <div className="text-2xl font-semibold text-indigo-600">
-                          {value}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </motion.div>
-      )}
 
       {showDocumentSection && (
         <div
@@ -560,38 +655,305 @@ export function BackgroundPaths({
                     </h2>
                   </div>
                   <div className="p-5 h-[700px] bg-white/90 dark:bg-neutral-900/90">
-                    <div className="animate-pulse space-y-5 h-full">
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-4/5"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-4/5"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-4/5"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-4/5"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
-                      <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
-                    </div>
+                    {isAnalyzing ? (
+                      <div className="animate-pulse space-y-5 h-full">
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-4/5"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-4/5"></div>
+                      </div>
+                    ) : (
+                      showAnalysis && (
+                        <Tabs defaultValue="overview" className="w-full">
+                          <TabsList className="grid w-full grid-cols-5 mb-8">
+                            <TabsTrigger value="overview">Overview</TabsTrigger>
+                            <TabsTrigger value="courses">Courses</TabsTrigger>
+                            <TabsTrigger value="student">
+                              Student Info
+                            </TabsTrigger>
+                            <TabsTrigger value="school">
+                              School Info
+                            </TabsTrigger>
+                            <TabsTrigger value="academic">
+                              Academic Progress
+                            </TabsTrigger>
+                          </TabsList>
+
+                          <TabsContent value="overview" className="mt-0">
+                            <div className="space-y-6">
+                              <div className="grid grid-cols-3 gap-4">
+                                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl">
+                                  <h3 className="text-lg font-semibold mb-2 text-indigo-900">
+                                    AP Courses
+                                  </h3>
+                                  <div className="text-4xl font-bold text-indigo-600">
+                                    {
+                                      hardcodedData.transcript_summary
+                                        .course_counts.total_ap_courses
+                                    }
+                                  </div>
+                                </div>
+                                <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-xl">
+                                  <h3 className="text-lg font-semibold mb-2 text-teal-900">
+                                    Honors Courses
+                                  </h3>
+                                  <div className="text-4xl font-bold text-teal-600">
+                                    {
+                                      hardcodedData.transcript_summary
+                                        .course_counts.total_honors_courses
+                                    }
+                                  </div>
+                                </div>
+                                <div className="bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded-xl">
+                                  <h3 className="text-lg font-semibold mb-2 text-purple-900">
+                                    Post-AP Courses
+                                  </h3>
+                                  <div className="text-4xl font-bold text-purple-600">
+                                    {
+                                      hardcodedData.transcript_summary
+                                        .course_counts
+                                        .post_ap_or_advanced_courses
+                                    }
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="prose dark:prose-invert max-w-none">
+                                <h2 className="text-2xl font-bold mb-4">
+                                  Academic Summary
+                                </h2>
+                                <div className="bg-gray-50 p-6 rounded-xl">
+                                  <h3 className="text-xl font-semibold mb-3">
+                                    Grading Scale
+                                  </h3>
+                                  <div className="space-y-2 text-gray-700">
+                                    <p>
+                                      <span className="font-medium">
+                                        Base Scale:
+                                      </span>{" "}
+                                      {
+                                        hardcodedData.transcript_summary
+                                          .grading_scale.base_scale
+                                      }
+                                    </p>
+                                    <p>
+                                      <span className="font-medium">
+                                        Honors Weight:
+                                      </span>{" "}
+                                      {
+                                        hardcodedData.transcript_summary
+                                          .grading_scale.honors_weight
+                                      }
+                                    </p>
+                                    <p>
+                                      <span className="font-medium">
+                                        AP Weight:
+                                      </span>{" "}
+                                      {
+                                        hardcodedData.transcript_summary
+                                          .grading_scale.ap_weight
+                                      }
+                                    </p>
+                                    <p>
+                                      <span className="font-medium">Note:</span>{" "}
+                                      {
+                                        hardcodedData.transcript_summary
+                                          .grading_scale.note_plus_minus
+                                      }
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </TabsContent>
+
+                          <TabsContent value="courses" className="mt-0">
+                            <div className="space-y-6 h-[600px] overflow-y-auto pr-2 scrollbar-hide">
+                              {hardcodedData.transcript_summary.academic_years.map(
+                                (year, index) => (
+                                  <div
+                                    key={index}
+                                    className="bg-white shadow-sm rounded-xl border border-gray-200"
+                                  >
+                                    <div className="p-4 border-b border-gray-200 bg-gray-50 rounded-t-xl">
+                                      <div className="flex justify-between items-center">
+                                        <h3 className="text-lg font-semibold">
+                                          {year.year_label}
+                                        </h3>
+                                        <span className="text-indigo-600 font-semibold">
+                                          GPA: {year.weighted_gpa}
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div className="p-4">
+                                      <table className="min-w-full divide-y divide-gray-200">
+                                        <thead>
+                                          <tr>
+                                            <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">
+                                              Course
+                                            </th>
+                                            <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">
+                                              Rigor
+                                            </th>
+                                            <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">
+                                              Grades
+                                            </th>
+                                            <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">
+                                              Credits
+                                            </th>
+                                          </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-gray-200">
+                                          {year.courses.map(
+                                            (course, courseIndex) => (
+                                              <tr
+                                                key={courseIndex}
+                                                className="hover:bg-gray-50"
+                                              >
+                                                <td className="px-4 py-2 text-sm">
+                                                  {course.course_name}
+                                                </td>
+                                                <td className="px-4 py-2 text-sm">
+                                                  <span
+                                                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
+                                              ${
+                                                course.rigor === "AP"
+                                                  ? "bg-indigo-100 text-indigo-800"
+                                                  : course.rigor === "Honors"
+                                                  ? "bg-teal-100 text-teal-800"
+                                                  : course.rigor === "Post-AP"
+                                                  ? "bg-purple-100 text-purple-800"
+                                                  : "bg-gray-100 text-gray-800"
+                                              }`}
+                                                  >
+                                                    {course.rigor}
+                                                  </span>
+                                                </td>
+                                                <td className="px-4 py-2 text-sm">
+                                                  {Object.entries(
+                                                    course.term_grades
+                                                  ).map(([term, grade], i) => (
+                                                    <span
+                                                      key={i}
+                                                      className="mr-2"
+                                                    >
+                                                      {term}: {grade}
+                                                    </span>
+                                                  ))}
+                                                </td>
+                                                <td className="px-4 py-2 text-sm">
+                                                  {course.credits_earned || "-"}
+                                                </td>
+                                              </tr>
+                                            )
+                                          )}
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                )
+                              )}
+                            </div>
+                          </TabsContent>
+
+                          <TabsContent value="student">
+                            <div className="grid grid-cols-2 gap-6">
+                              {Object.entries(hardcodedData.student_info).map(
+                                ([key, value]) => (
+                                  <div
+                                    key={key}
+                                    className="bg-gray-50 p-4 rounded-lg"
+                                  >
+                                    <div className="text-sm text-gray-500 mb-1">
+                                      {key
+                                        .split("_")
+                                        .map(
+                                          (word) =>
+                                            word.charAt(0).toUpperCase() +
+                                            word.slice(1)
+                                        )
+                                        .join(" ")}
+                                    </div>
+                                    <div className="text-lg font-medium">
+                                      {value || "N/A"}
+                                    </div>
+                                  </div>
+                                )
+                              )}
+                            </div>
+                          </TabsContent>
+
+                          <TabsContent value="school">
+                            <div className="grid grid-cols-2 gap-6">
+                              {Object.entries(hardcodedData.school_info).map(
+                                ([key, value]) => (
+                                  <div
+                                    key={key}
+                                    className="bg-gray-50 p-4 rounded-lg"
+                                  >
+                                    <div className="text-sm text-gray-500 mb-1">
+                                      {key
+                                        .split("_")
+                                        .map(
+                                          (word) =>
+                                            word.charAt(0).toUpperCase() +
+                                            word.slice(1)
+                                        )
+                                        .join(" ")}
+                                    </div>
+                                    <div className="text-lg font-medium">
+                                      {value}
+                                    </div>
+                                  </div>
+                                )
+                              )}
+                            </div>
+                          </TabsContent>
+
+                          <TabsContent value="academic">
+                            <div className="space-y-6">
+                              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl">
+                                <h3 className="text-xl font-semibold mb-4">
+                                  GPA Progression
+                                </h3>
+                                <div className="grid grid-cols-2 gap-4">
+                                  {Object.entries(
+                                    hardcodedData.transcript_summary.gpas
+                                  ).map(([key, value]) => (
+                                    <div
+                                      key={key}
+                                      className="bg-white p-4 rounded-lg shadow-sm"
+                                    >
+                                      <div className="text-sm text-gray-500 mb-1">
+                                        {key
+                                          .split("_")
+                                          .map(
+                                            (word) =>
+                                              word.charAt(0).toUpperCase() +
+                                              word.slice(1)
+                                          )
+                                          .join(" ")}
+                                      </div>
+                                      <div className="text-2xl font-semibold text-indigo-600">
+                                        {value}
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </TabsContent>
+                        </Tabs>
+                      )
+                    )}
                   </div>
                 </div>
               </motion.div>
