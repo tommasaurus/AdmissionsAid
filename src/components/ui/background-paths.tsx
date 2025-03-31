@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowUpTrayIcon } from "@heroicons/react/24/outline";
+import { ArrowUpTrayIcon, DocumentIcon } from "@heroicons/react/24/outline";
 import { GlowEffect } from "@/components/ui/glow-effect";
+import { useState, useRef } from "react";
 
 function FloatingPaths({ position }: { position: number }) {
   const paths = Array.from({ length: 36 }, (_, i) => ({
@@ -54,10 +55,45 @@ function FloatingPaths({ position }: { position: number }) {
 
 export function BackgroundPaths({
   title = "Background Paths",
+  onFileUpload,
 }: {
   title?: string;
+  onFileUpload?: (files: FileList) => void;
 }) {
   const words = title.split(" ");
+  const [isDragging, setIsDragging] = useState(false);
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    if (e.dataTransfer.files?.length > 0) {
+      setUploadedFile(e.dataTransfer.files[0]);
+      onFileUpload?.(e.dataTransfer.files);
+    }
+  };
+
+  const handleClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files?.[0]) {
+      setUploadedFile(e.target.files[0]);
+      onFileUpload?.(e.target.files);
+    }
+  };
 
   return (
     <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white dark:bg-neutral-950">
@@ -124,27 +160,52 @@ export function BackgroundPaths({
                 className="!scale-x-100 rounded-3xl"
               />
               <div
-                className="relative z-10 h-[220px] border-3 border-dashed border-gray-300/30 rounded-3xl 
+                className={`relative z-10 h-[220px] border-2 border-dashed ${
+                  isDragging ? "border-gray-400/70" : "border-gray-300/30"
+                } rounded-3xl 
                 bg-white dark:bg-black 
                 flex flex-col items-center justify-center gap-4 
-                transition-colors hover:border-gray-400/50
-                shadow-lg hover:shadow-xl
-                [mask-image:linear-gradient(white,white)]"
+                shadow-lg hover:shadow-xl cursor-pointer
+                [mask-image:linear-gradient(white,white)]`}
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+                onClick={handleClick}
               >
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  className="hidden"
+                  onChange={handleFileInput}
+                  accept=".pdf,.doc,.docx,.txt"
+                  multiple={false}
+                />
                 <motion.div
                   initial={{ scale: 0.9, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.5, duration: 0.5 }}
+                  className="flex items-center gap-1"
                 >
-                  <ArrowUpTrayIcon className="w-10 h-10 text-gray-400" />
-                  <div className="text-center mt-4">
-                    <p className="text-base font-medium text-gray-700 dark:text-gray-300">
-                      Drag and drop transcripts here
-                    </p>
-                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                      or click to select files
-                    </p>
-                  </div>
+                  {uploadedFile ? (
+                    <>
+                      <DocumentIcon className="w-8 h-8 text-gray-900 dark:text-white stroke-2" />
+                      <div className="flex flex-col justify-center mt-7">
+                        <p className="text-2xl font-medium text-gray-900 dark:text-white">
+                          {uploadedFile.name}
+                        </p>
+                        <p className="text-base text-gray-500 dark:text-gray-400">
+                          Click to replace
+                        </p>
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <ArrowUpTrayIcon className="w-8 h-8 text-gray-900 dark:text-white stroke-2" />
+                      <p className="text-xl font-medium text-gray-900 dark:text-white">
+                        Upload transcript
+                      </p>
+                    </>
+                  )}
                 </motion.div>
               </div>
             </div>

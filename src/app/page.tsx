@@ -16,11 +16,23 @@ export default function DashboardPage() {
     contentSection?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleFileUpload = (files: FileList) => {
+    // Here you can handle the uploaded files
+    console.log("Files uploaded:", files);
+    // Add your file processing logic here
+    Array.from(files).forEach((file) => {
+      console.log("File:", file.name, file.type, file.size);
+    });
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <div className="relative min-h-screen w-full overflow-hidden bg-white dark:bg-neutral-950">
-        <BackgroundPaths title="AdmissionsAid" />
+        <BackgroundPaths
+          title="AdmissionsAid"
+          onFileUpload={handleFileUpload}
+        />
       </div>
 
       {/* Dashboard Content */}
