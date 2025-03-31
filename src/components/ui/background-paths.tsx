@@ -10,6 +10,7 @@ import {
 import { GlowEffect } from "@/components/ui/glow-effect";
 import { useState, useRef, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AutoComplete, type Option } from "@/components/ui/autocomplete";
 
 // Add scrollbar-hide styles
 const scrollbarHideStyles = `
@@ -86,8 +87,48 @@ export function BackgroundPaths({
   const [fileUrl, setFileUrl] = useState<string | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
+  const [selectedSchool, setSelectedSchool] = useState<Option>();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const documentSectionRef = useRef<HTMLDivElement>(null);
+
+  const VIRGINIA_SCHOOLS = [
+    {
+      value: "flint-hill",
+      label: "Flint Hill School",
+    },
+    {
+      value: "tjhsst",
+      label: "Thomas Jefferson High School for Science and Technology",
+    },
+    {
+      value: "potomac",
+      label: "Potomac School",
+    },
+    {
+      value: "langley",
+      label: "Langley High School",
+    },
+    {
+      value: "sidwell",
+      label: "Sidwell Friends School",
+    },
+    {
+      value: "oakton",
+      label: "Oakton High School",
+    },
+    {
+      value: "south-lakes",
+      label: "South Lakes High School",
+    },
+    {
+      value: "westfield",
+      label: "Westfield High School",
+    },
+    {
+      value: "madison",
+      label: "Madison High School",
+    },
+  ];
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault();
@@ -458,10 +499,25 @@ export function BackgroundPaths({
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-3xl font-light text-neutral-600 dark:text-neutral-400 mb-16 max-w-2xl mx-auto"
+            className="text-3xl font-light text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl mx-auto"
           >
             Transcript evaluation from hours to seconds
           </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.7, duration: 0.8 }}
+            className="max-w-xl mx-auto mb-12"
+          >
+            <AutoComplete
+              options={VIRGINIA_SCHOOLS}
+              emptyMessage="No schools found."
+              placeholder="Search for your school..."
+              value={selectedSchool}
+              onValueChange={setSelectedSchool}
+            />
+          </motion.div>
 
           <div className="w-[600px] mx-auto">
             <div className="relative isolate">
