@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowUpTrayIcon } from "@heroicons/react/24/outline";
+import { GlowEffect } from "@/components/ui/glow-effect";
 
 function FloatingPaths({ position }: { position: number }) {
   const paths = Array.from({ length: 36 }, (_, i) => ({
@@ -72,7 +73,7 @@ export function BackgroundPaths({
           transition={{ duration: 2 }}
           className="max-w-4xl mx-auto -mt-16"
         >
-          <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold mb-16 tracking-tighter">
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold mb-8 tracking-tighter">
             {words.map((word, wordIndex) => (
               <span key={wordIndex} className="inline-block mr-4 last:mr-0">
                 {word.split("").map((letter, letterIndex) => (
@@ -87,8 +88,8 @@ export function BackgroundPaths({
                       damping: 25,
                     }}
                     className="inline-block text-transparent bg-clip-text 
-                                        bg-gradient-to-r from-neutral-900 to-neutral-700/80 
-                                        dark:from-white dark:to-white/80"
+                    bg-gradient-to-r from-neutral-900 to-neutral-700/80 
+                    dark:from-white dark:to-white/80"
                   >
                     {letter}
                   </motion.span>
@@ -96,30 +97,48 @@ export function BackgroundPaths({
               </span>
             ))}
           </h1>
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+            className="text-3xl font-light text-neutral-600 dark:text-neutral-400 mb-16 max-w-2xl mx-auto"
+          >
+            Transform transcript evaluation from hours to seconds
+          </motion.p>
 
           <div className="w-[600px] mx-auto">
-            <div
-              className="h-[180px] border-2 border-dashed border-gray-300 rounded-xl 
-                            bg-white/80 dark:bg-black/80 backdrop-blur-sm
-                            flex flex-col items-center justify-center gap-4 
-                            transition-colors hover:border-gray-400
-                            shadow-lg hover:shadow-xl"
-            >
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
+            <div className="relative isolate">
+              <GlowEffect
+                colors={["#FF5733", "#33FF57", "#3357FF", "#F1C40F"]}
+                mode="colorShift"
+                blur="soft"
+                duration={10}
+                scale={0.98}
+              />
+              <div
+                className="relative z-10 h-[220px] border-2 border-dashed border-gray-300/30 rounded-xl 
+                bg-white dark:bg-black backdrop-blur-sm
+                flex flex-col items-center justify-center gap-4 
+                transition-colors hover:border-gray-400/50
+                shadow-lg hover:shadow-xl
+                [mask-image:linear-gradient(white,white)]"
               >
-                <ArrowUpTrayIcon className="w-10 h-10 text-gray-400" />
-                <div className="text-center mt-4">
-                  <p className="text-base font-medium text-gray-700 dark:text-gray-300">
-                    Drag and drop transcripts here
-                  </p>
-                  <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-                    or click to select files
-                  </p>
-                </div>
-              </motion.div>
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                >
+                  <ArrowUpTrayIcon className="w-10 h-10 text-gray-400" />
+                  <div className="text-center mt-4">
+                    <p className="text-base font-medium text-gray-700 dark:text-gray-300">
+                      Drag and drop transcripts here
+                    </p>
+                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                      or click to select files
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
             </div>
           </div>
         </motion.div>
