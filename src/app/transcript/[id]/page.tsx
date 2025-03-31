@@ -3,10 +3,6 @@
 import { Suspense } from "react";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import StudentHeader from "@/components/transcript/StudentHeader";
-import TranscriptViewer from "@/components/transcript/TranscriptViewer";
-import CourseTable from "@/components/transcript/CourseTable";
-import NormalizationPanel from "@/components/transcript/NormalizationPanel";
 
 // Mock data - will be replaced with actual data fetching
 const mockTranscript = {

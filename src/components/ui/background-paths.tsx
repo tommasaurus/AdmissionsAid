@@ -24,7 +24,7 @@ function FloatingPaths({ position }: { position: number }) {
     <div className="absolute inset-0 pointer-events-none">
       <svg
         className="w-full h-full text-slate-950 dark:text-white"
-        viewBox="0 0 696 316"
+        viewBox="0 0 696 1400"
         fill="none"
       >
         <title>Background Paths</title>
@@ -96,18 +96,18 @@ export function BackgroundPaths({
   };
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-white dark:bg-neutral-950">
+    <div className="relative min-h-[400vh] w-full flex items-start justify-center overflow-hidden bg-white dark:bg-neutral-950">
       <div className="absolute inset-0">
         <FloatingPaths position={1} />
         <FloatingPaths position={-1} />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center flex flex-col items-center">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center flex flex-col items-center pt-40">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
-          className="max-w-4xl mx-auto -mt-16"
+          className="max-w-4xl mx-auto"
         >
           <h1 className="text-5xl sm:text-7xl md:text-8xl font-bold mb-8 tracking-tighter">
             {words.map((word, wordIndex) => (
