@@ -43,7 +43,7 @@ function FloatingPaths({ position }: { position: number }) {
     <div className="absolute inset-0 pointer-events-none">
       <svg
         className="w-full h-full text-slate-950 dark:text-white"
-        viewBox="0 0 696 1400"
+        viewBox="0 0 800 750"
         fill="none"
       >
         <title>Background Paths</title>
@@ -195,7 +195,7 @@ export function BackgroundPaths({
         "3320 Jermantown Road, Oakton, VA 22124-1755, United States",
       ceeb_code: "471648",
       phone: "703-584-2300",
-      school_type: "In-State (U.S.)",
+      school_type: "Private, In-State (U.S.)",
     },
     transcript_summary: {
       grading_scale: {
@@ -205,13 +205,14 @@ export function BackgroundPaths({
         note_plus_minus:
           "A+ treated as 4.3 unweighted; other plus/minus values likewise adjusted.",
       },
+      normalized_gpa: 3.94,
       gpas: {
         "9th_grade_weighted": 4.08,
         "10th_grade_weighted": 4.19,
         "11th_grade_weighted": 4.59,
         "12th_grade_weighted": 4.86,
         cumulative_weighted_gpa: 4.43,
-        approx_cumulative_unweighted_gpa: 4.01,
+        cumulative_unweighted_gpa: 4.01,
       },
       course_counts: {
         total_ap_courses: 10,
@@ -414,7 +415,7 @@ export function BackgroundPaths({
   };
 
   return (
-    <div className="relative min-h-[400vh] w-full bg-white dark:bg-neutral-950">
+    <div className="relative min-h-[200vh] w-full bg-white dark:bg-neutral-950">
       <style>{scrollbarHideStyles}</style>
       <div className="absolute inset-0">
         <FloatingPaths position={1} />
@@ -651,7 +652,8 @@ export function BackgroundPaths({
                 <div className="rounded-xl shadow-xl overflow-hidden border border-gray-300/70 dark:border-gray-700/70 backdrop-blur-md h-full ring-1 ring-black/5 dark:ring-white/10">
                   <div className="p-5 border-b border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-neutral-900/95">
                     <h2 className="text-xl font-medium text-gray-900 dark:text-white">
-                      Transcript Analysis
+                      Transcript Analysis –{" "}
+                      {hardcodedData.student_info.full_name}
                     </h2>
                   </div>
                   <div className="p-5 h-[700px] bg-white/90 dark:bg-neutral-900/90">
@@ -673,7 +675,7 @@ export function BackgroundPaths({
                     ) : (
                       showAnalysis && (
                         <Tabs defaultValue="overview" className="w-full">
-                          <TabsList className="grid w-full grid-cols-5 mb-8">
+                          <TabsList className="grid w-full grid-cols-4 mb-8">
                             <TabsTrigger value="overview">Overview</TabsTrigger>
                             <TabsTrigger value="courses">Courses</TabsTrigger>
                             <TabsTrigger value="student">
@@ -682,41 +684,57 @@ export function BackgroundPaths({
                             <TabsTrigger value="school">
                               School Info
                             </TabsTrigger>
-                            <TabsTrigger value="academic">
-                              Academic Progress
-                            </TabsTrigger>
                           </TabsList>
 
                           <TabsContent value="overview" className="mt-0">
-                            <div className="space-y-6">
-                              <div className="grid grid-cols-3 gap-4">
-                                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl">
-                                  <h3 className="text-lg font-semibold mb-2 text-indigo-900">
-                                    AP Courses
+                            <div className="space-y-6 h-[600px] overflow-y-auto pr-2 scrollbar-hide">
+                              <div className="grid grid-cols-4 gap-4">
+                                <div className="bg-gradient-to-br from-gray-50 to-slate-50 p-6 rounded-xl">
+                                  <h3 className="text-lg font-semibold mb-2 text-slate-900 text-center">
+                                    Regular
                                   </h3>
-                                  <div className="text-4xl font-bold text-indigo-600">
-                                    {
-                                      hardcodedData.transcript_summary
-                                        .course_counts.total_ap_courses
-                                    }
+                                  <div className="text-4xl font-bold text-slate-600 text-center">
+                                    {hardcodedData.transcript_summary.academic_years.reduce(
+                                      (count, year) => {
+                                        return (
+                                          count +
+                                          year.courses.filter(
+                                            (course) =>
+                                              course.rigor === "Standard"
+                                          ).length
+                                        );
+                                      },
+                                      0
+                                    )}
                                   </div>
                                 </div>
                                 <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-xl">
-                                  <h3 className="text-lg font-semibold mb-2 text-teal-900">
-                                    Honors Courses
+                                  <h3 className="text-lg font-semibold mb-2 text-teal-900 text-center">
+                                    Honors
                                   </h3>
-                                  <div className="text-4xl font-bold text-teal-600">
+                                  <div className="text-4xl font-bold text-teal-600 text-center">
                                     {
                                       hardcodedData.transcript_summary
                                         .course_counts.total_honors_courses
                                     }
                                   </div>
                                 </div>
-                                <div className="bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded-xl">
-                                  <h3 className="text-lg font-semibold mb-2 text-purple-900">
-                                    Post-AP Courses
+                                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl">
+                                  <h3 className="text-lg font-semibold mb-2 text-indigo-900 text-center">
+                                    AP
                                   </h3>
-                                  <div className="text-4xl font-bold text-purple-600">
+                                  <div className="text-4xl font-bold text-indigo-600 text-center">
+                                    {
+                                      hardcodedData.transcript_summary
+                                        .course_counts.total_ap_courses
+                                    }
+                                  </div>
+                                </div>
+                                <div className="bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded-xl">
+                                  <h3 className="text-lg font-semibold mb-2 text-purple-900 text-center">
+                                    Post-AP
+                                  </h3>
+                                  <div className="text-4xl font-bold text-purple-600 text-center">
                                     {
                                       hardcodedData.transcript_summary
                                         .course_counts
@@ -726,10 +744,139 @@ export function BackgroundPaths({
                                 </div>
                               </div>
 
+                              <div className="relative overflow-hidden bg-gradient-to-br from-blue-500/5 via-indigo-500/5 to-violet-500/5 rounded-2xl p-6 backdrop-blur-sm border border-indigo-100/20">
+                                <div className="flex items-center justify-between">
+                                  <div className="space-y-1">
+                                    <h3 className="text-lg font-medium text-gray-800">
+                                      Normalized GPA
+                                    </h3>
+                                    <p className="text-sm text-gray-500">
+                                      Standardized across grading scales
+                                    </p>
+                                  </div>
+                                  <div className="flex flex-col items-end">
+                                    <div className="text-5xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+                                      {hardcodedData.transcript_summary.normalized_gpa.toFixed(
+                                        2
+                                      )}
+                                    </div>
+                                    <div className="text-xs text-gray-400 mt-1">
+                                      out of 4.00
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-100/20 via-indigo-200/20 to-violet-100/20 opacity-50 pointer-events-none"></div>
+                              </div>
+
+                              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl">
+                                <h3 className="text-xl font-semibold mb-4">
+                                  GPA Progression
+                                </h3>
+                                <div className="grid grid-cols-2 gap-4">
+                                  {Object.entries(
+                                    hardcodedData.transcript_summary.gpas
+                                  ).map(([key, value]) => (
+                                    <div
+                                      key={key}
+                                      className="bg-white p-4 rounded-lg shadow-sm"
+                                    >
+                                      <div className="text-sm text-gray-500 mb-1">
+                                        {key
+                                          .split("_")
+                                          .map(
+                                            (word) =>
+                                              word.charAt(0).toUpperCase() +
+                                              word.slice(1)
+                                          )
+                                          .join(" ")}
+                                      </div>
+                                      <div className="text-2xl font-semibold text-indigo-600">
+                                        {value}
+                                      </div>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+
+                              <div className="space-y-6">
+                                <div className="bg-white p-6 rounded-xl border border-gray-200">
+                                  <h2 className="text-2xl font-bold mb-6">
+                                    Academic Overview
+                                  </h2>
+                                  <div className="prose dark:prose-invert max-w-none">
+                                    <p className="text-gray-700 mb-6 leading-relaxed">
+                                      Thomas Qu has maintained consistently
+                                      strong academic performance at Flint Hill
+                                      School (VA), with a clear upward GPA trend
+                                      each year (weighted GPAs of 4.08, 4.19,
+                                      4.59, and 4.86 in grades 9–12, culminating
+                                      in a 4.43 cumulative average). He has
+                                      taken a rigorous course load, including 10
+                                      total AP courses and additional
+                                      honors/post-AP coursework in mathematics
+                                      and other disciplines.
+                                    </p>
+
+                                    <div className="mb-6">
+                                      <h3 className="text-xl font-semibold mb-3 text-indigo-900">
+                                        Strengths
+                                      </h3>
+                                      <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                                        <li className="leading-relaxed">
+                                          Demonstrated excellence in STEM
+                                          courses, evidenced by strong
+                                          performance in Precalculus Honors, AP
+                                          Calculus BC, Multivariable Calculus
+                                          (Post-AP), and Linear Algebra
+                                          (Post-AP).
+                                        </li>
+                                        <li className="leading-relaxed">
+                                          Consistent success across English,
+                                          history, and Spanish—highlighting
+                                          balanced academic strengths.
+                                        </li>
+                                        <li className="leading-relaxed">
+                                          Upward trend from early high school
+                                          years through senior year, indicating
+                                          sustained growth.
+                                        </li>
+                                      </ul>
+                                    </div>
+
+                                    <div className="mb-6">
+                                      <h3 className="text-xl font-semibold mb-3 text-indigo-900">
+                                        Potential Concerns
+                                      </h3>
+                                      <p className="text-gray-700 leading-relaxed">
+                                        No specific concerns: no failing,
+                                        withdrawn, or repeated courses. Two
+                                        pass/fail courses (Human Development,
+                                        Senior Project) do not impact GPA but
+                                        are completed with a Pass.
+                                      </p>
+                                    </div>
+
+                                    <div>
+                                      <h3 className="text-xl font-semibold mb-3 text-indigo-900">
+                                        Overall Impression
+                                      </h3>
+                                      <p className="text-gray-700 leading-relaxed">
+                                        This transcript shows a student with
+                                        clear intellectual curiosity (especially
+                                        in advanced mathematics and sciences),
+                                        strong work ethic, and balanced
+                                        achievement across multiple subject
+                                        areas. The continuously rising GPA and
+                                        successful completion of numerous
+                                        AP/post-AP classes suggest excellent
+                                        college preparedness.
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
                               <div className="prose dark:prose-invert max-w-none">
-                                <h2 className="text-2xl font-bold mb-4">
-                                  Academic Summary
-                                </h2>
                                 <div className="bg-gray-50 p-6 rounded-xl">
                                   <h3 className="text-xl font-semibold mb-3">
                                     Grading Scale
@@ -865,72 +1012,13 @@ export function BackgroundPaths({
                           </TabsContent>
 
                           <TabsContent value="student">
-                            <div className="grid grid-cols-2 gap-6">
-                              {Object.entries(hardcodedData.student_info).map(
-                                ([key, value]) => (
-                                  <div
-                                    key={key}
-                                    className="bg-gray-50 p-4 rounded-lg"
-                                  >
-                                    <div className="text-sm text-gray-500 mb-1">
-                                      {key
-                                        .split("_")
-                                        .map(
-                                          (word) =>
-                                            word.charAt(0).toUpperCase() +
-                                            word.slice(1)
-                                        )
-                                        .join(" ")}
-                                    </div>
-                                    <div className="text-lg font-medium">
-                                      {value || "N/A"}
-                                    </div>
-                                  </div>
-                                )
-                              )}
-                            </div>
-                          </TabsContent>
-
-                          <TabsContent value="school">
-                            <div className="grid grid-cols-2 gap-6">
-                              {Object.entries(hardcodedData.school_info).map(
-                                ([key, value]) => (
-                                  <div
-                                    key={key}
-                                    className="bg-gray-50 p-4 rounded-lg"
-                                  >
-                                    <div className="text-sm text-gray-500 mb-1">
-                                      {key
-                                        .split("_")
-                                        .map(
-                                          (word) =>
-                                            word.charAt(0).toUpperCase() +
-                                            word.slice(1)
-                                        )
-                                        .join(" ")}
-                                    </div>
-                                    <div className="text-lg font-medium">
-                                      {value}
-                                    </div>
-                                  </div>
-                                )
-                              )}
-                            </div>
-                          </TabsContent>
-
-                          <TabsContent value="academic">
-                            <div className="space-y-6">
-                              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl">
-                                <h3 className="text-xl font-semibold mb-4">
-                                  GPA Progression
-                                </h3>
-                                <div className="grid grid-cols-2 gap-4">
-                                  {Object.entries(
-                                    hardcodedData.transcript_summary.gpas
-                                  ).map(([key, value]) => (
+                            <div className="h-[600px] overflow-y-auto pr-2 scrollbar-hide">
+                              <div className="grid grid-cols-2 gap-6">
+                                {Object.entries(hardcodedData.student_info).map(
+                                  ([key, value]) => (
                                     <div
                                       key={key}
-                                      className="bg-white p-4 rounded-lg shadow-sm"
+                                      className="bg-gray-50 p-4 rounded-lg"
                                     >
                                       <div className="text-sm text-gray-500 mb-1">
                                         {key
@@ -942,12 +1030,41 @@ export function BackgroundPaths({
                                           )
                                           .join(" ")}
                                       </div>
-                                      <div className="text-2xl font-semibold text-indigo-600">
+                                      <div className="text-lg font-medium">
+                                        {value || "N/A"}
+                                      </div>
+                                    </div>
+                                  )
+                                )}
+                              </div>
+                            </div>
+                          </TabsContent>
+
+                          <TabsContent value="school">
+                            <div className="h-[600px] overflow-y-auto pr-2 scrollbar-hide">
+                              <div className="grid grid-cols-2 gap-6">
+                                {Object.entries(hardcodedData.school_info).map(
+                                  ([key, value]) => (
+                                    <div
+                                      key={key}
+                                      className="bg-gray-50 p-4 rounded-lg"
+                                    >
+                                      <div className="text-sm text-gray-500 mb-1">
+                                        {key
+                                          .split("_")
+                                          .map(
+                                            (word) =>
+                                              word.charAt(0).toUpperCase() +
+                                              word.slice(1)
+                                          )
+                                          .join(" ")}
+                                      </div>
+                                      <div className="text-lg font-medium">
                                         {value}
                                       </div>
                                     </div>
-                                  ))}
-                                </div>
+                                  )
+                                )}
                               </div>
                             </div>
                           </TabsContent>
