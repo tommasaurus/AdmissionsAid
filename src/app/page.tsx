@@ -19,7 +19,7 @@ export default function DashboardPage() {
     <div className="min-h-screen">
       <div className="relative min-h-screen w-full overflow-hidden bg-white dark:bg-neutral-950">
         <BackgroundPaths
-          title="AdmissionsAid"
+          title="AdmissionsAId"
           onFileUpload={handleFileUpload}
         />
       </div>
