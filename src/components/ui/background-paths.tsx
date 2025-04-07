@@ -565,25 +565,15 @@ export function BackgroundPaths({
                   <div className="flex justify-between w-full items-center gap-4">
                     <div className="flex items-center gap-3 flex-1 min-w-0">
                       <DocumentIcon className="w-8 h-8 text-gray-400 flex-shrink-0" />
-                      <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        layout
-                        className="text-base text-gray-900 dark:text-gray-300 truncate"
-                      >
+                      <p className="text-base text-gray-900 dark:text-gray-300 truncate">
                         {uploadedFile.name}
-                      </motion.p>
+                      </p>
                     </div>
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      layout
-                      className="flex items-center gap-2"
-                    >
+                    <div className="flex items-center gap-2">
                       <span className="rounded-lg px-2 py-1 w-fit flex-shrink-0 text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-neutral-800">
                         {(uploadedFile.size / (1024 * 1024)).toFixed(2)} MB
                       </span>
-                    </motion.div>
+                    </div>
                   </div>
 
                   <div className="flex text-sm items-center w-full mt-2 justify-between text-gray-600 dark:text-gray-400">
@@ -599,18 +589,14 @@ export function BackgroundPaths({
                       Remove
                     </Button>
 
-                    <motion.p
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      layout
-                    >
+                    <p>
                       modified{" "}
                       {new Date(uploadedFile.lastModified).toLocaleDateString()}
-                    </motion.p>
+                    </p>
                   </div>
                 </motion.div>
               ) : (
-                <motion.div
+                <div
                   className="relative z-10 h-[220px] p-[1px] overflow-hidden rounded-3xl bg-transparent"
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
@@ -619,11 +605,11 @@ export function BackgroundPaths({
                 >
                   <div className="absolute inset-0">
                     <MovingBorder duration={4000} rx="24px" ry="24px">
-                      <div className="h-32 w-32 opacity-[0.7] bg-[radial-gradient(var(--orange-500)_40%,transparent_60%)]" />
+                      <div className="h-40 w-40 opacity-[0.8] blur-[60px] bg-[radial-gradient(circle_at_center,var(--orange-500)_30%,var(--amber-500)_50%,transparent_70%)]" />
                     </MovingBorder>
                   </div>
 
-                  <div className="relative bg-white/[0.3] dark:bg-black/[0.5] border-1 border-gray-400/30 dark:border-gray-600/30 backdrop-blur-2xl flex flex-col items-center justify-center w-full h-full rounded-[1.4rem] cursor-pointer">
+                  <div className="relative bg-white/[0.3] dark:bg-black/[0.5] border-1 border-gray-400/30 dark:border-gray-600/30 flex flex-col items-center justify-center w-full h-full rounded-[1.4rem] cursor-pointer">
                     <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]">
                       <GridPattern />
                     </div>
@@ -637,11 +623,7 @@ export function BackgroundPaths({
                       multiple={false}
                     />
 
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      className="relative z-20 flex flex-col items-center gap-2"
-                    >
+                    <div className="relative z-20 flex flex-col items-center gap-2">
                       <ArrowUpTrayIcon className="w-10 h-10 text-gray-600 dark:text-gray-400 group-hover/upload:text-gray-800 dark:group-hover/upload:text-gray-200 transition-colors" />
                       <p className="text-xl font-medium text-gray-700 dark:text-gray-300">
                         {isDragging
@@ -651,9 +633,9 @@ export function BackgroundPaths({
                       <p className="text-sm text-gray-600 dark:text-gray-400">
                         Drag and drop or click to upload
                       </p>
-                    </motion.div>
+                    </div>
                   </div>
-                </motion.div>
+                </div>
               )}
             </div>
 
@@ -701,9 +683,9 @@ export function BackgroundPaths({
               >
                 {/* Enhanced background effect */}
                 <div className="absolute inset-0 -z-10 rounded-xl overflow-hidden">
-                  <div className="absolute inset-0 backdrop-blur-xl bg-white/40 dark:bg-black/40"></div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-100/90 to-white/70 dark:from-gray-800/90 dark:to-neutral-900/70 mix-blend-multiply"></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/20 dark:to-gray-800/20 mix-blend-overlay"></div>
+                  <div className="absolute inset-0 bg-white/40 dark:bg-black/40"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-100/90 to-white/70 dark:from-gray-800/90 dark:to-neutral-900/70"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/20 dark:to-gray-800/20"></div>
                 </div>
 
                 <div className="rounded-xl shadow-xl overflow-hidden border border-gray-300/70 dark:border-gray-700/70 backdrop-blur-md h-full ring-1 ring-black/5 dark:ring-white/10">
@@ -768,9 +750,9 @@ export function BackgroundPaths({
               >
                 {/* Enhanced background effect */}
                 <div className="absolute inset-0 -z-10 rounded-xl overflow-hidden">
-                  <div className="absolute inset-0 backdrop-blur-xl bg-white/40 dark:bg-black/40"></div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-100/90 to-white/70 dark:from-gray-800/90 dark:to-neutral-900/70 mix-blend-multiply"></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/20 dark:to-gray-800/20 mix-blend-overlay"></div>
+                  <div className="absolute inset-0 bg-white/40 dark:bg-black/40"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-100/90 to-white/70 dark:from-gray-800/90 dark:to-neutral-900/70"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/20 dark:to-gray-800/20"></div>
                 </div>
 
                 <div className="rounded-xl shadow-xl overflow-hidden border border-gray-300/70 dark:border-gray-700/70 backdrop-blur-md h-full ring-1 ring-black/5 dark:ring-white/10">
