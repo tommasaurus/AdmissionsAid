@@ -717,8 +717,8 @@ export function BackgroundPaths({
                     {fileUrl ? (
                       fileType === "pdf" ? (
                         <iframe
-                          src={`${fileUrl}#toolbar=0&navpanes=0`}
-                          className="w-full h-full rounded border border-gray-200 shadow-inner"
+                          src={`${fileUrl}#zoom=page-fit&toolbar=1&navpanes=0&scrollbar=1&page=1&view=FitH`}
+                          className="w-full h-full rounded border border-gray-200 shadow-inner bg-[#525659]"
                           title="PDF Preview"
                         />
                       ) : fileType === "image" ? (
@@ -839,14 +839,14 @@ export function BackgroundPaths({
                                     </thead>
                                     <tbody className="divide-y divide-gray-200">
                                       <tr>
-                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                                        <td className="px-4 py-3 text-sm font-bold text-gray-900">
                                           English
                                         </td>
                                         <td className="px-4 py-3">
                                           <div className="text-sm text-gray-900">
                                             English I Honors
                                           </div>
-                                          <div className="text-xs text-teal-600">
+                                          <div className="text-xs text-emerald-600">
                                             Honors
                                           </div>
                                         </td>
@@ -854,7 +854,7 @@ export function BackgroundPaths({
                                           <div className="text-sm text-gray-900">
                                             English II Honors
                                           </div>
-                                          <div className="text-xs text-teal-600">
+                                          <div className="text-xs text-emerald-600">
                                             Honors
                                           </div>
                                         </td>
@@ -862,7 +862,7 @@ export function BackgroundPaths({
                                           <div className="text-sm text-gray-900">
                                             AP English Language
                                           </div>
-                                          <div className="text-xs text-indigo-600">
+                                          <div className="text-xs text-blue-600">
                                             AP
                                           </div>
                                         </td>
@@ -870,20 +870,20 @@ export function BackgroundPaths({
                                           <div className="text-sm text-gray-900">
                                             AP English Literature
                                           </div>
-                                          <div className="text-xs text-indigo-600">
+                                          <div className="text-xs text-blue-600">
                                             AP
                                           </div>
                                         </td>
                                       </tr>
                                       <tr>
-                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                                        <td className="px-4 py-3 text-sm font-bold text-gray-900">
                                           Mathematics
                                         </td>
                                         <td className="px-4 py-3">
                                           <div className="text-sm text-gray-900">
                                             Precalculus Honors
                                           </div>
-                                          <div className="text-xs text-teal-600">
+                                          <div className="text-xs text-emerald-600">
                                             Honors
                                           </div>
                                         </td>
@@ -891,7 +891,7 @@ export function BackgroundPaths({
                                           <div className="text-sm text-gray-900">
                                             AP Calculus BC
                                           </div>
-                                          <div className="text-xs text-indigo-600">
+                                          <div className="text-xs text-blue-600">
                                             AP
                                           </div>
                                         </td>
@@ -899,7 +899,7 @@ export function BackgroundPaths({
                                           <div className="text-sm text-gray-900">
                                             Multivariable Calculus
                                           </div>
-                                          <div className="text-xs text-purple-600">
+                                          <div className="text-xs text-violet-600">
                                             Post-AP
                                           </div>
                                         </td>
@@ -909,7 +909,7 @@ export function BackgroundPaths({
                                               <div className="text-sm text-gray-900">
                                                 Linear Algebra
                                               </div>
-                                              <div className="text-xs text-purple-600">
+                                              <div className="text-xs text-violet-600">
                                                 Post-AP
                                               </div>
                                             </div>
@@ -917,7 +917,7 @@ export function BackgroundPaths({
                                               <div className="text-sm text-gray-900">
                                                 AP Statistics
                                               </div>
-                                              <div className="text-xs text-indigo-600">
+                                              <div className="text-xs text-blue-600">
                                                 AP
                                               </div>
                                             </div>
@@ -925,14 +925,14 @@ export function BackgroundPaths({
                                         </td>
                                       </tr>
                                       <tr>
-                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                                        <td className="px-4 py-3 text-sm font-bold text-gray-900">
                                           Science
                                         </td>
                                         <td className="px-4 py-3">
                                           <div className="text-sm text-gray-900">
                                             Physics
                                           </div>
-                                          <div className="text-xs text-gray-600">
+                                          <div className="text-xs text-gray-500">
                                             Standard
                                           </div>
                                         </td>
@@ -940,7 +940,7 @@ export function BackgroundPaths({
                                           <div className="text-sm text-gray-900">
                                             Chemistry Honors
                                           </div>
-                                          <div className="text-xs text-teal-600">
+                                          <div className="text-xs text-emerald-600">
                                             Honors
                                           </div>
                                         </td>
@@ -950,7 +950,7 @@ export function BackgroundPaths({
                                               <div className="text-sm text-gray-900">
                                                 Adv Biol - Anatomy & Physiology
                                               </div>
-                                              <div className="text-xs text-purple-600">
+                                              <div className="text-xs text-amber-600">
                                                 Advanced
                                               </div>
                                             </div>
@@ -958,7 +958,7 @@ export function BackgroundPaths({
                                               <div className="text-sm text-gray-900">
                                                 Adv Biol - Life's Origins
                                               </div>
-                                              <div className="text-xs text-purple-600">
+                                              <div className="text-xs text-amber-600">
                                                 Advanced
                                               </div>
                                             </div>
@@ -968,20 +968,20 @@ export function BackgroundPaths({
                                           <div className="text-sm text-gray-900">
                                             AP Biology
                                           </div>
-                                          <div className="text-xs text-indigo-600">
+                                          <div className="text-xs text-blue-600">
                                             AP
                                           </div>
                                         </td>
                                       </tr>
                                       <tr>
-                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                                        <td className="px-4 py-3 text-sm font-bold text-gray-900">
                                           Language
                                         </td>
                                         <td className="px-4 py-3">
                                           <div className="text-sm text-gray-900">
                                             Spanish III
                                           </div>
-                                          <div className="text-xs text-gray-600">
+                                          <div className="text-xs text-gray-500">
                                             Standard
                                           </div>
                                         </td>
@@ -989,7 +989,7 @@ export function BackgroundPaths({
                                           <div className="text-sm text-gray-900">
                                             Spanish IV Honors
                                           </div>
-                                          <div className="text-xs text-teal-600">
+                                          <div className="text-xs text-emerald-600">
                                             Honors
                                           </div>
                                         </td>
@@ -997,7 +997,7 @@ export function BackgroundPaths({
                                           <div className="text-sm text-gray-900">
                                             AP Spanish Language
                                           </div>
-                                          <div className="text-xs text-indigo-600">
+                                          <div className="text-xs text-blue-600">
                                             AP
                                           </div>
                                         </td>
@@ -1008,22 +1008,22 @@ export function BackgroundPaths({
                                         </td>
                                       </tr>
                                       <tr>
-                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                                        <td className="px-4 py-3 text-sm font-bold text-gray-900">
                                           Social Studies
                                         </td>
                                         <td className="px-4 py-3">
                                           <div className="text-sm text-gray-900">
                                             Modern European History
                                           </div>
-                                          <div className="text-xs text-gray-600">
+                                          <div className="text-xs text-gray-500">
                                             Standard
                                           </div>
                                         </td>
                                         <td className="px-4 py-3">
                                           <div className="text-sm text-gray-900">
-                                            Contemporary World History II H
+                                            Contemporary World History II Honors
                                           </div>
-                                          <div className="text-xs text-teal-600">
+                                          <div className="text-xs text-emerald-600">
                                             Honors
                                           </div>
                                         </td>
@@ -1031,7 +1031,7 @@ export function BackgroundPaths({
                                           <div className="text-sm text-gray-900">
                                             AP U.S. History
                                           </div>
-                                          <div className="text-xs text-indigo-600">
+                                          <div className="text-xs text-blue-600">
                                             AP
                                           </div>
                                         </td>
@@ -1039,13 +1039,13 @@ export function BackgroundPaths({
                                           <div className="text-sm text-gray-900">
                                             AP Macroeconomics
                                           </div>
-                                          <div className="text-xs text-indigo-600">
+                                          <div className="text-xs text-blue-600">
                                             AP
                                           </div>
                                         </td>
                                       </tr>
                                       <tr>
-                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">
+                                        <td className="px-4 py-3 text-sm font-bold text-gray-900">
                                           Other
                                         </td>
                                         <td className="px-4 py-3">
@@ -1054,7 +1054,7 @@ export function BackgroundPaths({
                                               <div className="text-sm text-gray-900">
                                                 Orchestra
                                               </div>
-                                              <div className="text-xs text-gray-600">
+                                              <div className="text-xs text-gray-500">
                                                 Standard
                                               </div>
                                             </div>
@@ -1062,7 +1062,7 @@ export function BackgroundPaths({
                                               <div className="text-sm text-gray-900">
                                                 Human Development
                                               </div>
-                                              <div className="text-xs text-gray-600">
+                                              <div className="text-xs text-gray-500">
                                                 Pass/Fail
                                               </div>
                                             </div>
@@ -1072,7 +1072,7 @@ export function BackgroundPaths({
                                           <div className="text-sm text-gray-900">
                                             Computer Science I
                                           </div>
-                                          <div className="text-xs text-gray-600">
+                                          <div className="text-xs text-gray-500">
                                             Standard
                                           </div>
                                         </td>
@@ -1082,7 +1082,7 @@ export function BackgroundPaths({
                                               <div className="text-sm text-gray-900">
                                                 AP Computer Science A
                                               </div>
-                                              <div className="text-xs text-indigo-600">
+                                              <div className="text-xs text-blue-600">
                                                 AP
                                               </div>
                                             </div>
@@ -1094,7 +1094,7 @@ export function BackgroundPaths({
                                               <div className="text-sm text-gray-900">
                                                 AP Psychology
                                               </div>
-                                              <div className="text-xs text-indigo-600">
+                                              <div className="text-xs text-blue-600">
                                                 AP
                                               </div>
                                             </div>
@@ -1102,7 +1102,7 @@ export function BackgroundPaths({
                                               <div className="text-sm text-gray-900">
                                                 Senior Project
                                               </div>
-                                              <div className="text-xs text-gray-600">
+                                              <div className="text-xs text-gray-500">
                                                 Pass/Fail
                                               </div>
                                             </div>
@@ -1167,10 +1167,14 @@ export function BackgroundPaths({
                                             2 Honors, 4 Standard
                                           </span>
                                         </div>
-                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
+                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden flex">
                                           <div
-                                            className="h-full bg-teal-500"
+                                            className="h-full bg-emerald-400"
                                             style={{ width: "33%" }}
+                                          ></div>
+                                          <div
+                                            className="h-full bg-gray-300"
+                                            style={{ width: "67%" }}
                                           ></div>
                                         </div>
                                       </div>
@@ -1183,10 +1187,18 @@ export function BackgroundPaths({
                                             3 Honors, 1 AP, 2 Standard
                                           </span>
                                         </div>
-                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
+                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden flex">
                                           <div
-                                            className="h-full bg-indigo-500"
+                                            className="h-full bg-emerald-400"
                                             style={{ width: "50%" }}
+                                          ></div>
+                                          <div
+                                            className="h-full bg-blue-400"
+                                            style={{ width: "17%" }}
+                                          ></div>
+                                          <div
+                                            className="h-full bg-gray-300"
+                                            style={{ width: "33%" }}
                                           ></div>
                                         </div>
                                       </div>
@@ -1199,10 +1211,14 @@ export function BackgroundPaths({
                                             4 AP, 1 Post-AP
                                           </span>
                                         </div>
-                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
+                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden flex">
                                           <div
-                                            className="h-full bg-purple-500"
-                                            style={{ width: "83%" }}
+                                            className="h-full bg-blue-400"
+                                            style={{ width: "80%" }}
+                                          ></div>
+                                          <div
+                                            className="h-full bg-violet-400"
+                                            style={{ width: "20%" }}
                                           ></div>
                                         </div>
                                       </div>
@@ -1215,10 +1231,14 @@ export function BackgroundPaths({
                                             6 AP, 1 Post-AP
                                           </span>
                                         </div>
-                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
+                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden flex">
                                           <div
-                                            className="h-full bg-purple-500"
-                                            style={{ width: "100%" }}
+                                            className="h-full bg-blue-400"
+                                            style={{ width: "86%" }}
+                                          ></div>
+                                          <div
+                                            className="h-full bg-violet-400"
+                                            style={{ width: "14%" }}
                                           ></div>
                                         </div>
                                       </div>
@@ -1304,116 +1324,6 @@ export function BackgroundPaths({
 
                           <TabsContent value="overview" className="mt-0">
                             <div className="space-y-6 h-[650px] overflow-y-auto pr-2 scrollbar-hide">
-                              <div className="grid grid-cols-4 gap-4">
-                                <div className="bg-gradient-to-br from-gray-50 to-slate-50 p-6 rounded-xl">
-                                  <h3 className="text-lg font-semibold mb-2 text-slate-900 text-center">
-                                    Regular
-                                  </h3>
-                                  <div className="text-4xl font-bold text-slate-600 text-center">
-                                    {hardcodedData.transcript_summary.academic_years.reduce(
-                                      (count, year) => {
-                                        return (
-                                          count +
-                                          year.courses.filter(
-                                            (course) =>
-                                              course.rigor === "Standard"
-                                          ).length
-                                        );
-                                      },
-                                      0
-                                    )}
-                                  </div>
-                                </div>
-                                <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-xl">
-                                  <h3 className="text-lg font-semibold mb-2 text-teal-900 text-center">
-                                    Honors
-                                  </h3>
-                                  <div className="text-4xl font-bold text-teal-600 text-center">
-                                    {
-                                      hardcodedData.transcript_summary
-                                        .course_counts.total_honors_courses
-                                    }
-                                  </div>
-                                </div>
-                                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl">
-                                  <h3 className="text-lg font-semibold mb-2 text-indigo-900 text-center">
-                                    AP
-                                  </h3>
-                                  <div className="text-4xl font-bold text-indigo-600 text-center">
-                                    {
-                                      hardcodedData.transcript_summary
-                                        .course_counts.total_ap_courses
-                                    }
-                                  </div>
-                                </div>
-                                <div className="bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded-xl">
-                                  <h3 className="text-lg font-semibold mb-2 text-purple-900 text-center">
-                                    Post-AP
-                                  </h3>
-                                  <div className="text-4xl font-bold text-purple-600 text-center">
-                                    {
-                                      hardcodedData.transcript_summary
-                                        .course_counts
-                                        .post_ap_or_advanced_courses
-                                    }
-                                  </div>
-                                </div>
-                              </div>
-
-                              <div className="relative overflow-hidden bg-gradient-to-br from-blue-500/5 via-indigo-500/5 to-violet-500/5 rounded-2xl p-6 backdrop-blur-sm border border-indigo-100/20">
-                                <div className="flex items-center justify-between">
-                                  <div className="space-y-1">
-                                    <h3 className="text-lg font-medium text-gray-800">
-                                      Normalized GPA
-                                    </h3>
-                                    <p className="text-sm text-gray-500">
-                                      Standardized across grading scales
-                                    </p>
-                                  </div>
-                                  <div className="flex flex-col items-end">
-                                    <div className="text-5xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-                                      {hardcodedData.transcript_summary.normalized_gpa.toFixed(
-                                        2
-                                      )}
-                                    </div>
-                                    <div className="text-xs text-gray-400 mt-1">
-                                      out of 4.00
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="absolute inset-0 bg-gradient-to-r from-blue-100/20 via-indigo-200/20 to-violet-100/20 opacity-50 pointer-events-none"></div>
-                              </div>
-
-                              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl">
-                                <h3 className="text-xl font-semibold mb-4">
-                                  GPA Progression
-                                </h3>
-                                <div className="grid grid-cols-2 gap-4">
-                                  {Object.entries(
-                                    hardcodedData.transcript_summary.gpas
-                                  ).map(([key, value]) => (
-                                    <div
-                                      key={key}
-                                      className="bg-white p-4 rounded-lg shadow-sm"
-                                    >
-                                      <div className="text-sm text-gray-500 mb-1">
-                                        {key
-                                          .split("_")
-                                          .map(
-                                            (word) =>
-                                              word.charAt(0).toUpperCase() +
-                                              word.slice(1)
-                                          )
-                                          .join(" ")}
-                                      </div>
-                                      <div className="text-2xl font-semibold text-indigo-600">
-                                        {value}
-                                      </div>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
-
                               <div className="space-y-6">
                                 <div className="bg-white p-6 rounded-xl border border-gray-200">
                                   <h2 className="text-2xl font-bold mb-6">
@@ -1589,12 +1499,14 @@ export function BackgroundPaths({
                                                     className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
                                               ${
                                                 course.rigor === "AP"
-                                                  ? "bg-indigo-100 text-indigo-800"
+                                                  ? "bg-blue-50 text-blue-700"
                                                   : course.rigor === "Honors"
-                                                  ? "bg-teal-100 text-teal-800"
+                                                  ? "bg-emerald-50 text-emerald-700"
                                                   : course.rigor === "Post-AP"
-                                                  ? "bg-purple-100 text-purple-800"
-                                                  : "bg-gray-100 text-gray-800"
+                                                  ? "bg-violet-50 text-violet-700"
+                                                  : course.rigor === "Advanced"
+                                                  ? "bg-amber-50 text-amber-700"
+                                                  : "bg-gray-50 text-gray-700"
                                               }`}
                                                   >
                                                     {course.rigor}
