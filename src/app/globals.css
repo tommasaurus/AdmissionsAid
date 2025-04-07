@@ -8,7 +8,30 @@
 }
 
 body {
-  background: rgb(var(--background-rgb));
+  background-image: url("/background.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: transparent !important;
+}
+
+#background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  background-color: transparent !important;
 }
 
 @layer base {
@@ -65,13 +88,15 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
+    background-color: transparent !important;
   }
+}
+
+html {
+  background-color: transparent !important;
 }
