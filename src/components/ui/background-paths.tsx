@@ -36,7 +36,7 @@ function GridPattern() {
   const columns = 41;
   const rows = 11;
   return (
-    <div className='flex bg-gray-100 dark:bg-neutral-900 flex-shrink-0 flex-wrap justify-center items-center gap-x-px gap-y-px scale-105'>
+    <div className="flex bg-gray-100 dark:bg-neutral-900 flex-shrink-0 flex-wrap justify-center items-center gap-x-px gap-y-px scale-105">
       {Array.from({ length: rows }).map((_, row) =>
         Array.from({ length: columns }).map((_, col) => {
           const index = row * columns + col;
@@ -94,17 +94,17 @@ const MovingBorder = ({
   return (
     <>
       <svg
-        xmlns='http://www.w3.org/2000/svg'
-        preserveAspectRatio='none'
-        className='absolute h-full w-full'
-        width='100%'
-        height='100%'
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+        className="absolute h-full w-full"
+        width="100%"
+        height="100%"
         {...otherProps}
       >
         <rect
-          fill='none'
-          width='100%'
-          height='100%'
+          fill="none"
+          width="100%"
+          height="100%"
           rx={rx}
           ry={ry}
           ref={pathRef}
@@ -522,25 +522,25 @@ export function BackgroundPaths({
   };
 
   return (
-    <div className='relative w-full bg-transparent'>
+    <div className="relative w-full bg-transparent">
       <style>{scrollbarHideStyles}</style>
-      <div className='absolute inset-0 bg-transparent'></div>
+      <div className="absolute inset-0 bg-transparent"></div>
 
-      <div className='relative z-10 container mx-auto px-4 md:px-6 text-center pt-32'>
+      <div className="relative z-10 container mx-auto px-4 md:px-6 text-center pt-32">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2 }}
-          className='max-w-4xl mx-auto'
+          className="max-w-4xl mx-auto"
         >
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className='text-7xl font-bold text-center mb-4'
+            className="text-7xl font-bold text-center mb-4"
           >
             <span>Admissions</span>
-            <span className='bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent'>
+            <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent">
               Ai
             </span>
             <span>d</span>
@@ -550,26 +550,26 @@ export function BackgroundPaths({
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className='text-3xl font-light text-neutral-600 dark:text-neutral-400 mb-12 max-w-2xl mx-auto'
+            className="text-3xl font-light text-neutral-600 dark:text-neutral-400 mb-12 max-w-2xl mx-auto"
           >
             Transcript evaluation from hours to seconds
           </motion.p>
 
-          <div className='w-[600px] mx-auto'>
-            <div className='relative isolate'>
+          <div className="w-[600px] mx-auto">
+            <div className="relative isolate">
               {uploadedFile ? (
                 <motion.div
-                  layoutId='file-upload'
-                  className='relative z-10 flex flex-col items-start justify-start p-4 mt-4 w-full bg-white dark:bg-neutral-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800'
+                  layoutId="file-upload"
+                  className="relative z-10 flex flex-col items-start justify-start p-4 mt-4 w-full bg-white dark:bg-neutral-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800"
                 >
-                  <div className='flex justify-between w-full items-center gap-4'>
-                    <div className='flex items-center gap-3 flex-1 min-w-0'>
-                      <DocumentIcon className='w-8 h-8 text-gray-400 flex-shrink-0' />
+                  <div className="flex justify-between w-full items-center gap-4">
+                    <div className="flex items-center gap-3 flex-1 min-w-0">
+                      <DocumentIcon className="w-8 h-8 text-gray-400 flex-shrink-0" />
                       <motion.p
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         layout
-                        className='text-base text-gray-900 dark:text-gray-300 truncate'
+                        className="text-base text-gray-900 dark:text-gray-300 truncate"
                       >
                         {uploadedFile.name}
                       </motion.p>
@@ -578,19 +578,19 @@ export function BackgroundPaths({
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       layout
-                      className='flex items-center gap-2'
+                      className="flex items-center gap-2"
                     >
-                      <span className='rounded-lg px-2 py-1 w-fit flex-shrink-0 text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-neutral-800'>
+                      <span className="rounded-lg px-2 py-1 w-fit flex-shrink-0 text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-neutral-800">
                         {(uploadedFile.size / (1024 * 1024)).toFixed(2)} MB
                       </span>
                     </motion.div>
                   </div>
 
-                  <div className='flex text-sm items-center w-full mt-2 justify-between text-gray-600 dark:text-gray-400'>
+                  <div className="flex text-sm items-center w-full mt-2 justify-between text-gray-600 dark:text-gray-400">
                     <Button
-                      variant='ghost'
-                      size='sm'
-                      className='flex-shrink-0 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-200 px-2 py-1'
+                      variant="ghost"
+                      size="sm"
+                      className="flex-shrink-0 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-200 px-2 py-1"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleRemoveFile();
@@ -611,44 +611,44 @@ export function BackgroundPaths({
                 </motion.div>
               ) : (
                 <motion.div
-                  className='relative z-10 h-[220px] p-[1px] overflow-hidden rounded-3xl bg-transparent'
+                  className="relative z-10 h-[220px] p-[1px] overflow-hidden rounded-3xl bg-transparent"
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
                   onDrop={handleDrop}
                   onClick={handleClick}
                 >
-                  <div className='absolute inset-0'>
-                    <MovingBorder duration={4000} rx='24px' ry='24px'>
-                      <div className='h-32 w-32 opacity-[0.7] bg-[radial-gradient(var(--orange-500)_40%,transparent_60%)]' />
+                  <div className="absolute inset-0">
+                    <MovingBorder duration={4000} rx="24px" ry="24px">
+                      <div className="h-32 w-32 opacity-[0.7] bg-[radial-gradient(var(--orange-500)_40%,transparent_60%)]" />
                     </MovingBorder>
                   </div>
 
-                  <div className='relative bg-white/[0.3] dark:bg-black/[0.5] border-1 border-gray-400/30 dark:border-gray-600/30 backdrop-blur-2xl flex flex-col items-center justify-center w-full h-full rounded-[1.4rem] cursor-pointer'>
-                    <div className='absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]'>
+                  <div className="relative bg-white/[0.3] dark:bg-black/[0.5] border-1 border-gray-400/30 dark:border-gray-600/30 backdrop-blur-2xl flex flex-col items-center justify-center w-full h-full rounded-[1.4rem] cursor-pointer">
+                    <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]">
                       <GridPattern />
                     </div>
 
                     <input
                       ref={fileInputRef}
-                      type='file'
-                      className='hidden'
+                      type="file"
+                      className="hidden"
                       onChange={handleFileInput}
-                      accept='.pdf,.doc,.docx,.txt'
+                      accept=".pdf,.doc,.docx,.txt"
                       multiple={false}
                     />
 
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      className='relative z-20 flex flex-col items-center gap-2'
+                      className="relative z-20 flex flex-col items-center gap-2"
                     >
-                      <ArrowUpTrayIcon className='w-10 h-10 text-gray-600 dark:text-gray-400 group-hover/upload:text-gray-800 dark:group-hover/upload:text-gray-200 transition-colors' />
-                      <p className='text-xl font-medium text-gray-700 dark:text-gray-300'>
+                      <ArrowUpTrayIcon className="w-10 h-10 text-gray-600 dark:text-gray-400 group-hover/upload:text-gray-800 dark:group-hover/upload:text-gray-200 transition-colors" />
+                      <p className="text-xl font-medium text-gray-700 dark:text-gray-300">
                         {isDragging
                           ? "Drop your file here"
                           : "Upload your transcript"}
                       </p>
-                      <p className='text-sm text-gray-600 dark:text-gray-400'>
+                      <p className="text-sm text-gray-600 dark:text-gray-400">
                         Drag and drop or click to upload
                       </p>
                     </motion.div>
@@ -663,16 +663,16 @@ export function BackgroundPaths({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className='mt-6 relative flex justify-center'
+                className="mt-6 relative flex justify-center"
               >
                 <Button
                   onClick={scrollDown}
-                  className='relative py-2.5 px-8 text-base font-medium bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-900 dark:text-gray-300 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200'
+                  className="relative py-2.5 px-8 text-base font-medium bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-900 dark:text-gray-300 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200"
                   disabled={isAnalyzing}
                 >
                   {isAnalyzing ? (
-                    <div className='flex items-center gap-3'>
-                      <div className='animate-spin w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full' />
+                    <div className="flex items-center gap-3">
+                      <div className="animate-spin w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full" />
                       <span>Analyzing Transcript...</span>
                     </div>
                   ) : (
@@ -688,54 +688,54 @@ export function BackgroundPaths({
       {showDocumentSection && (
         <div
           ref={documentSectionRef}
-          className='w-full mt-4 pt-4 pb-4 transition-all duration-500 bg-transparent'
+          className="w-full mt-4 pt-4 pb-4 transition-all duration-500 bg-transparent"
         >
-          <div className='container mx-auto px-4 max-w-[1600px]'>
-            <div className='flex flex-col md:flex-row gap-0'>
+          <div className="container mx-auto px-4 max-w-[1600px]">
+            <div className="flex flex-col md:flex-row gap-0">
               {/* Document viewer on the left */}
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4 }}
-                className='w-full md:w-2/5 relative'
+                className="w-full md:w-2/5 relative"
               >
                 {/* Enhanced background effect */}
-                <div className='absolute inset-0 -z-10 rounded-xl overflow-hidden'>
-                  <div className='absolute inset-0 backdrop-blur-xl bg-white/40 dark:bg-black/40'></div>
-                  <div className='absolute inset-0 bg-gradient-to-br from-gray-100/90 to-white/70 dark:from-gray-800/90 dark:to-neutral-900/70 mix-blend-multiply'></div>
-                  <div className='absolute inset-0 bg-gradient-to-t from-transparent to-white/20 dark:to-gray-800/20 mix-blend-overlay'></div>
+                <div className="absolute inset-0 -z-10 rounded-xl overflow-hidden">
+                  <div className="absolute inset-0 backdrop-blur-xl bg-white/40 dark:bg-black/40"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-100/90 to-white/70 dark:from-gray-800/90 dark:to-neutral-900/70 mix-blend-multiply"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/20 dark:to-gray-800/20 mix-blend-overlay"></div>
                 </div>
 
-                <div className='rounded-xl shadow-xl overflow-hidden border border-gray-300/70 dark:border-gray-700/70 backdrop-blur-md h-full ring-1 ring-black/5 dark:ring-white/10'>
-                  <div className='p-5 border-b border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-neutral-900/95'>
-                    <h2 className='text-xl font-medium text-gray-900 dark:text-white flex items-center gap-2'>
-                      <DocumentIcon className='w-5 h-5' />
+                <div className="rounded-xl shadow-xl overflow-hidden border border-gray-300/70 dark:border-gray-700/70 backdrop-blur-md h-full ring-1 ring-black/5 dark:ring-white/10">
+                  <div className="p-5 border-b border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-neutral-900/95">
+                    <h2 className="text-xl font-medium text-gray-900 dark:text-white flex items-center gap-2">
+                      <DocumentIcon className="w-5 h-5" />
                       {"Uploaded Transcript"}
                     </h2>
                   </div>
-                  <div className='p-5 h-[750px] bg-white/90 dark:bg-neutral-900/90 overflow-hidden'>
+                  <div className="p-5 h-[750px] bg-white/90 dark:bg-neutral-900/90 overflow-hidden">
                     {fileUrl ? (
                       fileType === "pdf" ? (
                         <iframe
                           src={`${fileUrl}#toolbar=0&navpanes=0`}
-                          className='w-full h-full rounded border border-gray-200 shadow-inner'
-                          title='PDF Preview'
+                          className="w-full h-full rounded border border-gray-200 shadow-inner"
+                          title="PDF Preview"
                         />
                       ) : fileType === "image" ? (
-                        <div className='w-full h-full flex items-center justify-center'>
+                        <div className="w-full h-full flex items-center justify-center">
                           <img
                             src={fileUrl}
                             alt={"Uploaded Transcript"}
-                            className='max-w-full max-h-full object-contain drop-shadow-md'
+                            className="max-w-full max-h-full object-contain drop-shadow-md"
                           />
                         </div>
                       ) : (
-                        <div className='flex items-center justify-center h-full'>
-                          <div className='text-center'>
-                            <div className='w-36 h-48 mx-auto rounded bg-gray-100 dark:bg-gray-800 mb-4 flex items-center justify-center shadow-inner'>
-                              <DocumentIcon className='w-18 h-18 text-gray-400' />
+                        <div className="flex items-center justify-center h-full">
+                          <div className="text-center">
+                            <div className="w-36 h-48 mx-auto rounded bg-gray-100 dark:bg-gray-800 mb-4 flex items-center justify-center shadow-inner">
+                              <DocumentIcon className="w-18 h-18 text-gray-400" />
                             </div>
-                            <p className='text-gray-500 dark:text-gray-400 text-lg'>
+                            <p className="text-gray-500 dark:text-gray-400 text-lg">
                               {fileType === "doc"
                                 ? "Word documents cannot be previewed directly"
                                 : "This file type cannot be previewed"}
@@ -744,12 +744,12 @@ export function BackgroundPaths({
                         </div>
                       )
                     ) : (
-                      <div className='flex items-center justify-center h-full'>
-                        <div className='text-center'>
-                          <div className='w-36 h-48 mx-auto rounded bg-gray-100 dark:bg-gray-800 mb-4 flex items-center justify-center shadow-inner'>
-                            <DocumentIcon className='w-18 h-18 text-gray-400' />
+                      <div className="flex items-center justify-center h-full">
+                        <div className="text-center">
+                          <div className="w-36 h-48 mx-auto rounded bg-gray-100 dark:bg-gray-800 mb-4 flex items-center justify-center shadow-inner">
+                            <DocumentIcon className="w-18 h-18 text-gray-400" />
                           </div>
-                          <p className='text-gray-500 dark:text-gray-400 text-lg'>
+                          <p className="text-gray-500 dark:text-gray-400 text-lg">
                             Loading document preview...
                           </p>
                         </div>
@@ -764,160 +764,160 @@ export function BackgroundPaths({
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4 }}
-                className='w-full md:w-3/5 relative'
+                className="w-full md:w-3/5 relative"
               >
                 {/* Enhanced background effect */}
-                <div className='absolute inset-0 -z-10 rounded-xl overflow-hidden'>
-                  <div className='absolute inset-0 backdrop-blur-xl bg-white/40 dark:bg-black/40'></div>
-                  <div className='absolute inset-0 bg-gradient-to-br from-gray-100/90 to-white/70 dark:from-gray-800/90 dark:to-neutral-900/70 mix-blend-multiply'></div>
-                  <div className='absolute inset-0 bg-gradient-to-t from-transparent to-white/20 dark:to-gray-800/20 mix-blend-overlay'></div>
+                <div className="absolute inset-0 -z-10 rounded-xl overflow-hidden">
+                  <div className="absolute inset-0 backdrop-blur-xl bg-white/40 dark:bg-black/40"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-100/90 to-white/70 dark:from-gray-800/90 dark:to-neutral-900/70 mix-blend-multiply"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-transparent to-white/20 dark:to-gray-800/20 mix-blend-overlay"></div>
                 </div>
 
-                <div className='rounded-xl shadow-xl overflow-hidden border border-gray-300/70 dark:border-gray-700/70 backdrop-blur-md h-full ring-1 ring-black/5 dark:ring-white/10'>
-                  <div className='p-5 border-b border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-neutral-900/95'>
-                    <h2 className='text-xl font-medium text-gray-900 dark:text-white'>
+                <div className="rounded-xl shadow-xl overflow-hidden border border-gray-300/70 dark:border-gray-700/70 backdrop-blur-md h-full ring-1 ring-black/5 dark:ring-white/10">
+                  <div className="p-5 border-b border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-neutral-900/95">
+                    <h2 className="text-xl font-medium text-gray-900 dark:text-white">
                       Transcript Analysis - {""}{" "}
                       {hardcodedData.student_info.full_name}
                     </h2>
                   </div>
-                  <div className='p-5 h-[750px] bg-white/90 dark:bg-neutral-900/90'>
+                  <div className="p-5 h-[750px] bg-white/90 dark:bg-neutral-900/90">
                     {isAnalyzing ? (
-                      <div className='animate-pulse space-y-5 h-full'>
-                        <div className='h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4'></div>
-                        <div className='h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2'></div>
-                        <div className='h-5 bg-gray-200 dark:bg-gray-700 rounded w-5/6'></div>
-                        <div className='h-5 bg-gray-200 dark:bg-gray-700 rounded w-2/3'></div>
-                        <div className='h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4'></div>
-                        <div className='h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2'></div>
-                        <div className='h-5 bg-gray-200 dark:bg-gray-700 rounded w-4/5'></div>
-                        <div className='h-5 bg-gray-200 dark:bg-gray-700 rounded w-2/3'></div>
-                        <div className='h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4'></div>
-                        <div className='h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2'></div>
-                        <div className='h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4'></div>
-                        <div className='h-5 bg-gray-200 dark:bg-gray-700 rounded w-4/5'></div>
+                      <div className="animate-pulse space-y-5 h-full">
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-5/6"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-4/5"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-2/3"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+                        <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-4/5"></div>
                       </div>
                     ) : (
                       showAnalysis && (
-                        <Tabs defaultValue='curriculum' className='w-full'>
-                          <TabsList className='grid w-full grid-cols-5 mb-4'>
-                            <TabsTrigger value='curriculum'>
+                        <Tabs defaultValue="curriculum" className="w-full">
+                          <TabsList className="grid w-full grid-cols-5 mb-4">
+                            <TabsTrigger value="curriculum">
                               Curriculum
                             </TabsTrigger>
-                            <TabsTrigger value='patterns'>Patterns</TabsTrigger>
-                            <TabsTrigger value='overview'>Overview</TabsTrigger>
-                            <TabsTrigger value='courses'>Details</TabsTrigger>
-                            <TabsTrigger value='info'>Info</TabsTrigger>
+                            <TabsTrigger value="courses">Details</TabsTrigger>
+                            <TabsTrigger value="patterns">Patterns</TabsTrigger>
+                            <TabsTrigger value="overview">Overview</TabsTrigger>
+                            <TabsTrigger value="info">Info</TabsTrigger>
                           </TabsList>
 
-                          <TabsContent value='curriculum' className='mt-0'>
-                            <div className='space-y-6 h-[650px] overflow-y-auto pr-2 scrollbar-hide'>
-                              <div className='bg-white/50 dark:bg-neutral-800/50 p-6 rounded-xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm'>
-                                <h2 className='text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100'>
+                          <TabsContent value="curriculum" className="mt-0">
+                            <div className="space-y-6 h-[650px] overflow-y-auto pr-2 scrollbar-hide">
+                              <div className="bg-white/50 dark:bg-neutral-800/50 p-6 rounded-xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
+                                <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
                                   Curriculum Overview
                                 </h2>
 
-                                <div className='overflow-x-auto'>
-                                  <table className='min-w-full divide-y divide-gray-200 dark:divide-gray-700'>
+                                <div className="overflow-x-auto">
+                                  <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                                     <thead>
                                       <tr>
-                                        <th className='px-4 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50/50 dark:bg-neutral-900/50'>
+                                        <th className="px-4 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50/50 dark:bg-neutral-900/50">
                                           Subject
                                         </th>
-                                        <th className='px-4 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50/50 dark:bg-neutral-900/50'>
+                                        <th className="px-4 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50/50 dark:bg-neutral-900/50">
                                           9th Grade
                                         </th>
-                                        <th className='px-4 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50/50 dark:bg-neutral-900/50'>
+                                        <th className="px-4 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50/50 dark:bg-neutral-900/50">
                                           10th Grade
                                         </th>
-                                        <th className='px-4 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50/50 dark:bg-neutral-900/50'>
+                                        <th className="px-4 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50/50 dark:bg-neutral-900/50">
                                           11th Grade
                                         </th>
-                                        <th className='px-4 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50/50 dark:bg-neutral-900/50'>
+                                        <th className="px-4 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-50/50 dark:bg-neutral-900/50">
                                           12th Grade
                                         </th>
                                       </tr>
                                     </thead>
-                                    <tbody className='divide-y divide-gray-200'>
+                                    <tbody className="divide-y divide-gray-200">
                                       <tr>
-                                        <td className='px-4 py-3 text-sm font-medium text-gray-900'>
+                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">
                                           English
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             English I Honors
                                           </div>
-                                          <div className='text-xs text-teal-600'>
+                                          <div className="text-xs text-teal-600">
                                             Honors
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             English II Honors
                                           </div>
-                                          <div className='text-xs text-teal-600'>
+                                          <div className="text-xs text-teal-600">
                                             Honors
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             AP English Language
                                           </div>
-                                          <div className='text-xs text-indigo-600'>
+                                          <div className="text-xs text-indigo-600">
                                             AP
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             AP English Literature
                                           </div>
-                                          <div className='text-xs text-indigo-600'>
+                                          <div className="text-xs text-indigo-600">
                                             AP
                                           </div>
                                         </td>
                                       </tr>
                                       <tr>
-                                        <td className='px-4 py-3 text-sm font-medium text-gray-900'>
+                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">
                                           Mathematics
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             Precalculus Honors
                                           </div>
-                                          <div className='text-xs text-teal-600'>
+                                          <div className="text-xs text-teal-600">
                                             Honors
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             AP Calculus BC
                                           </div>
-                                          <div className='text-xs text-indigo-600'>
+                                          <div className="text-xs text-indigo-600">
                                             AP
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             Multivariable Calculus
                                           </div>
-                                          <div className='text-xs text-purple-600'>
+                                          <div className="text-xs text-purple-600">
                                             Post-AP
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='space-y-3'>
+                                        <td className="px-4 py-3">
+                                          <div className="space-y-3">
                                             <div>
-                                              <div className='text-sm text-gray-900'>
+                                              <div className="text-sm text-gray-900">
                                                 Linear Algebra
                                               </div>
-                                              <div className='text-xs text-purple-600'>
+                                              <div className="text-xs text-purple-600">
                                                 Post-AP
                                               </div>
                                             </div>
                                             <div>
-                                              <div className='text-sm text-gray-900'>
+                                              <div className="text-sm text-gray-900">
                                                 AP Statistics
                                               </div>
-                                              <div className='text-xs text-indigo-600'>
+                                              <div className="text-xs text-indigo-600">
                                                 AP
                                               </div>
                                             </div>
@@ -925,147 +925,187 @@ export function BackgroundPaths({
                                         </td>
                                       </tr>
                                       <tr>
-                                        <td className='px-4 py-3 text-sm font-medium text-gray-900'>
+                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">
                                           Science
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             Physics
                                           </div>
-                                          <div className='text-xs text-gray-600'>
+                                          <div className="text-xs text-gray-600">
                                             Standard
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             Chemistry Honors
                                           </div>
-                                          <div className='text-xs text-teal-600'>
+                                          <div className="text-xs text-teal-600">
                                             Honors
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
-                                            Advanced Biology
-                                          </div>
-                                          <div className='text-xs text-purple-600'>
-                                            Advanced
+                                        <td className="px-4 py-3">
+                                          <div className="space-y-3">
+                                            <div>
+                                              <div className="text-sm text-gray-900">
+                                                Adv Biol - Anatomy & Physiology
+                                              </div>
+                                              <div className="text-xs text-purple-600">
+                                                Advanced
+                                              </div>
+                                            </div>
+                                            <div>
+                                              <div className="text-sm text-gray-900">
+                                                Adv Biol - Life's Origins
+                                              </div>
+                                              <div className="text-xs text-purple-600">
+                                                Advanced
+                                              </div>
+                                            </div>
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             AP Biology
                                           </div>
-                                          <div className='text-xs text-indigo-600'>
+                                          <div className="text-xs text-indigo-600">
                                             AP
                                           </div>
                                         </td>
                                       </tr>
                                       <tr>
-                                        <td className='px-4 py-3 text-sm font-medium text-gray-900'>
+                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">
                                           Language
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             Spanish III
                                           </div>
-                                          <div className='text-xs text-gray-600'>
+                                          <div className="text-xs text-gray-600">
                                             Standard
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             Spanish IV Honors
                                           </div>
-                                          <div className='text-xs text-teal-600'>
+                                          <div className="text-xs text-teal-600">
                                             Honors
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             AP Spanish Language
                                           </div>
-                                          <div className='text-xs text-indigo-600'>
+                                          <div className="text-xs text-indigo-600">
                                             AP
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             —
                                           </div>
                                         </td>
                                       </tr>
                                       <tr>
-                                        <td className='px-4 py-3 text-sm font-medium text-gray-900'>
+                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">
                                           Social Studies
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             Modern European History
                                           </div>
-                                          <div className='text-xs text-gray-600'>
+                                          <div className="text-xs text-gray-600">
                                             Standard
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             Contemporary World History II H
                                           </div>
-                                          <div className='text-xs text-teal-600'>
+                                          <div className="text-xs text-teal-600">
                                             Honors
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             AP U.S. History
                                           </div>
-                                          <div className='text-xs text-indigo-600'>
+                                          <div className="text-xs text-indigo-600">
                                             AP
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             AP Macroeconomics
                                           </div>
-                                          <div className='text-xs text-indigo-600'>
+                                          <div className="text-xs text-indigo-600">
                                             AP
                                           </div>
                                         </td>
                                       </tr>
                                       <tr>
-                                        <td className='px-4 py-3 text-sm font-medium text-gray-900'>
+                                        <td className="px-4 py-3 text-sm font-medium text-gray-900">
                                           Other
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
-                                            Orchestra
-                                          </div>
-                                          <div className='text-xs text-gray-600'>
-                                            Standard
+                                        <td className="px-4 py-3">
+                                          <div className="space-y-3">
+                                            <div>
+                                              <div className="text-sm text-gray-900">
+                                                Orchestra
+                                              </div>
+                                              <div className="text-xs text-gray-600">
+                                                Standard
+                                              </div>
+                                            </div>
+                                            <div>
+                                              <div className="text-sm text-gray-900">
+                                                Human Development
+                                              </div>
+                                              <div className="text-xs text-gray-600">
+                                                Pass/Fail
+                                              </div>
+                                            </div>
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
+                                        <td className="px-4 py-3">
+                                          <div className="text-sm text-gray-900">
                                             Computer Science I
                                           </div>
-                                          <div className='text-xs text-gray-600'>
+                                          <div className="text-xs text-gray-600">
                                             Standard
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
-                                            AP Computer Science A
-                                          </div>
-                                          <div className='text-xs text-indigo-600'>
-                                            AP
+                                        <td className="px-4 py-3">
+                                          <div className="space-y-3">
+                                            <div>
+                                              <div className="text-sm text-gray-900">
+                                                AP Computer Science A
+                                              </div>
+                                              <div className="text-xs text-indigo-600">
+                                                AP
+                                              </div>
+                                            </div>
                                           </div>
                                         </td>
-                                        <td className='px-4 py-3'>
-                                          <div className='text-sm text-gray-900'>
-                                            AP Psychology
-                                          </div>
-                                          <div className='text-xs text-indigo-600'>
-                                            AP
+                                        <td className="px-4 py-3">
+                                          <div className="space-y-3">
+                                            <div>
+                                              <div className="text-sm text-gray-900">
+                                                AP Psychology
+                                              </div>
+                                              <div className="text-xs text-indigo-600">
+                                                AP
+                                              </div>
+                                            </div>
+                                            <div>
+                                              <div className="text-sm text-gray-900">
+                                                Senior Project
+                                              </div>
+                                              <div className="text-xs text-gray-600">
+                                                Pass/Fail
+                                              </div>
+                                            </div>
                                           </div>
                                         </td>
                                       </tr>
@@ -1073,29 +1113,29 @@ export function BackgroundPaths({
                                   </table>
                                 </div>
 
-                                <div className='mt-8 space-y-4'>
-                                  <div className='bg-amber-50/80 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4'>
-                                    <h3 className='text-lg font-semibold text-amber-900 dark:text-amber-100 mb-2'>
+                                <div className="mt-8 space-y-4">
+                                  <div className="bg-amber-50/80 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
+                                    <h3 className="text-lg font-semibold text-amber-900 dark:text-amber-100 mb-2">
                                       Key Patterns
                                     </h3>
-                                    <ul className='space-y-2 text-amber-800'>
-                                      <li className='flex items-center gap-2'>
-                                        <span className='w-2 h-2 bg-amber-500 rounded-full'></span>
+                                    <ul className="space-y-2 text-amber-800">
+                                      <li className="flex items-center gap-2">
+                                        <span className="w-2 h-2 bg-amber-500 rounded-full"></span>
                                         Consistent progression in rigor across
                                         all core subjects
                                       </li>
-                                      <li className='flex items-center gap-2'>
-                                        <span className='w-2 h-2 bg-amber-500 rounded-full'></span>
+                                      <li className="flex items-center gap-2">
+                                        <span className="w-2 h-2 bg-amber-500 rounded-full"></span>
                                         Advanced mathematics track (2 years
                                         Post-AP)
                                       </li>
-                                      <li className='flex items-center gap-2'>
-                                        <span className='w-2 h-2 bg-amber-500 rounded-full'></span>
+                                      <li className="flex items-center gap-2">
+                                        <span className="w-2 h-2 bg-amber-500 rounded-full"></span>
                                         Strong STEM focus with additional AP
                                         courses
                                       </li>
-                                      <li className='flex items-center gap-2'>
-                                        <span className='w-2 h-2 bg-amber-500 rounded-full'></span>
+                                      <li className="flex items-center gap-2">
+                                        <span className="w-2 h-2 bg-amber-500 rounded-full"></span>
                                         Completed Spanish through AP level
                                       </li>
                                     </ul>
@@ -1105,79 +1145,79 @@ export function BackgroundPaths({
                             </div>
                           </TabsContent>
 
-                          <TabsContent value='patterns' className='mt-0'>
-                            <div className='space-y-6 h-[650px] overflow-y-auto pr-2 scrollbar-hide'>
-                              <div className='bg-white/50 dark:bg-neutral-800/50 p-6 rounded-xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm'>
-                                <h2 className='text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100'>
+                          <TabsContent value="patterns" className="mt-0">
+                            <div className="space-y-6 h-[650px] overflow-y-auto pr-2 scrollbar-hide">
+                              <div className="bg-white/50 dark:bg-neutral-800/50 p-6 rounded-xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
+                                <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
                                   Academic Patterns
                                 </h2>
 
-                                <div className='space-y-6'>
-                                  <div className='bg-gradient-to-r from-blue-50/80 to-indigo-50/80 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 rounded-xl border border-blue-200/50 dark:border-blue-800/50'>
-                                    <h3 className='text-xl font-semibold mb-4 text-indigo-900'>
+                                <div className="space-y-6">
+                                  <div className="bg-gradient-to-r from-blue-50/80 to-indigo-50/80 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 rounded-xl border border-blue-200/50 dark:border-blue-800/50">
+                                    <h3 className="text-xl font-semibold mb-4 text-indigo-900">
                                       Course Rigor Progression
                                     </h3>
-                                    <div className='space-y-4'>
+                                    <div className="space-y-4">
                                       <div>
-                                        <div className='flex items-center justify-between mb-2'>
-                                          <span className='text-sm font-medium text-gray-600'>
+                                        <div className="flex items-center justify-between mb-2">
+                                          <span className="text-sm font-medium text-gray-600">
                                             9th Grade
                                           </span>
-                                          <span className='text-sm text-gray-600'>
+                                          <span className="text-sm text-gray-600">
                                             2 Honors, 4 Standard
                                           </span>
                                         </div>
-                                        <div className='h-4 bg-gray-200 rounded-full overflow-hidden'>
+                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
                                           <div
-                                            className='h-full bg-teal-500'
+                                            className="h-full bg-teal-500"
                                             style={{ width: "33%" }}
                                           ></div>
                                         </div>
                                       </div>
                                       <div>
-                                        <div className='flex items-center justify-between mb-2'>
-                                          <span className='text-sm font-medium text-gray-600'>
+                                        <div className="flex items-center justify-between mb-2">
+                                          <span className="text-sm font-medium text-gray-600">
                                             10th Grade
                                           </span>
-                                          <span className='text-sm text-gray-600'>
+                                          <span className="text-sm text-gray-600">
                                             3 Honors, 1 AP, 2 Standard
                                           </span>
                                         </div>
-                                        <div className='h-4 bg-gray-200 rounded-full overflow-hidden'>
+                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
                                           <div
-                                            className='h-full bg-indigo-500'
+                                            className="h-full bg-indigo-500"
                                             style={{ width: "50%" }}
                                           ></div>
                                         </div>
                                       </div>
                                       <div>
-                                        <div className='flex items-center justify-between mb-2'>
-                                          <span className='text-sm font-medium text-gray-600'>
+                                        <div className="flex items-center justify-between mb-2">
+                                          <span className="text-sm font-medium text-gray-600">
                                             11th Grade
                                           </span>
-                                          <span className='text-sm text-gray-600'>
+                                          <span className="text-sm text-gray-600">
                                             4 AP, 1 Post-AP
                                           </span>
                                         </div>
-                                        <div className='h-4 bg-gray-200 rounded-full overflow-hidden'>
+                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
                                           <div
-                                            className='h-full bg-purple-500'
+                                            className="h-full bg-purple-500"
                                             style={{ width: "83%" }}
                                           ></div>
                                         </div>
                                       </div>
                                       <div>
-                                        <div className='flex items-center justify-between mb-2'>
-                                          <span className='text-sm font-medium text-gray-600'>
+                                        <div className="flex items-center justify-between mb-2">
+                                          <span className="text-sm font-medium text-gray-600">
                                             12th Grade
                                           </span>
-                                          <span className='text-sm text-gray-600'>
+                                          <span className="text-sm text-gray-600">
                                             6 AP, 1 Post-AP
                                           </span>
                                         </div>
-                                        <div className='h-4 bg-gray-200 rounded-full overflow-hidden'>
+                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
                                           <div
-                                            className='h-full bg-purple-500'
+                                            className="h-full bg-purple-500"
                                             style={{ width: "100%" }}
                                           ></div>
                                         </div>
@@ -1185,73 +1225,73 @@ export function BackgroundPaths({
                                     </div>
                                   </div>
 
-                                  <div className='grid grid-cols-2 gap-6'>
-                                    <div className='bg-green-50/80 dark:bg-green-900/20 p-6 rounded-xl border border-green-200/50 dark:border-green-800/50'>
-                                      <h3 className='text-lg font-semibold text-green-900 dark:text-green-100 mb-4'>
+                                  <div className="grid grid-cols-2 gap-6">
+                                    <div className="bg-green-50/80 dark:bg-green-900/20 p-6 rounded-xl border border-green-200/50 dark:border-green-800/50">
+                                      <h3 className="text-lg font-semibold text-green-900 dark:text-green-100 mb-4">
                                         Strengths
                                       </h3>
-                                      <ul className='space-y-2 text-green-800'>
-                                        <li className='flex items-center gap-2'>
-                                          <span className='w-2 h-2 bg-green-500 rounded-full'></span>
+                                      <ul className="space-y-2 text-green-800">
+                                        <li className="flex items-center gap-2">
+                                          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                                           Accelerated math track
                                         </li>
-                                        <li className='flex items-center gap-2'>
-                                          <span className='w-2 h-2 bg-green-500 rounded-full'></span>
+                                        <li className="flex items-center gap-2">
+                                          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                                           Strong science progression
                                         </li>
-                                        <li className='flex items-center gap-2'>
-                                          <span className='w-2 h-2 bg-green-500 rounded-full'></span>
+                                        <li className="flex items-center gap-2">
+                                          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                                           Balanced humanities
                                         </li>
                                       </ul>
                                     </div>
 
-                                    <div className='bg-blue-50/80 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-200/50 dark:border-blue-800/50'>
-                                      <h3 className='text-lg font-semibold text-blue-900 mb-4'>
+                                    <div className="bg-blue-50/80 dark:bg-blue-900/20 p-6 rounded-xl border border-blue-200/50 dark:border-blue-800/50">
+                                      <h3 className="text-lg font-semibold text-blue-900 mb-4">
                                         Notable Patterns
                                       </h3>
-                                      <ul className='space-y-2 text-blue-800'>
-                                        <li className='flex items-center gap-2'>
-                                          <span className='w-2 h-2 bg-blue-500 rounded-full'></span>
+                                      <ul className="space-y-2 text-blue-800">
+                                        <li className="flex items-center gap-2">
+                                          <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                                           Consistent honors/AP English
                                         </li>
-                                        <li className='flex items-center gap-2'>
-                                          <span className='w-2 h-2 bg-blue-500 rounded-full'></span>
+                                        <li className="flex items-center gap-2">
+                                          <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                                           Computer Science progression
                                         </li>
-                                        <li className='flex items-center gap-2'>
-                                          <span className='w-2 h-2 bg-blue-500 rounded-full'></span>
+                                        <li className="flex items-center gap-2">
+                                          <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                                           Spanish through AP level
                                         </li>
                                       </ul>
                                     </div>
                                   </div>
 
-                                  <div className='bg-gray-50/80 dark:bg-gray-800/50 p-6 rounded-xl border border-gray-200/50 dark:border-gray-700/50'>
-                                    <h3 className='text-lg font-semibold text-gray-900 mb-4'>
+                                  <div className="bg-gray-50/80 dark:bg-gray-800/50 p-6 rounded-xl border border-gray-200/50 dark:border-gray-700/50">
+                                    <h3 className="text-lg font-semibold text-gray-900 mb-4">
                                       Grade Anomalies
                                     </h3>
-                                    <div className='space-y-3'>
-                                      <div className='flex items-center gap-4'>
-                                        <span className='text-amber-600'>
+                                    <div className="space-y-3">
+                                      <div className="flex items-center gap-4">
+                                        <span className="text-amber-600">
                                           B+
                                         </span>
-                                        <span className='text-gray-600'>
+                                        <span className="text-gray-600">
                                           Spanish IV Honors (10th Grade, Sem 1)
                                         </span>
-                                        <span className='text-green-600'>
+                                        <span className="text-green-600">
                                           → Improved to A in Sem 2
                                         </span>
                                       </div>
-                                      <div className='flex items-center gap-4'>
-                                        <span className='text-amber-600'>
+                                      <div className="flex items-center gap-4">
+                                        <span className="text-amber-600">
                                           B+
                                         </span>
-                                        <span className='text-gray-600'>
+                                        <span className="text-gray-600">
                                           AP English Language (11th Grade, Sem
                                           1)
                                         </span>
-                                        <span className='text-green-600'>
+                                        <span className="text-green-600">
                                           → Improved to A- in Sem 2
                                         </span>
                                       </div>
@@ -1262,14 +1302,14 @@ export function BackgroundPaths({
                             </div>
                           </TabsContent>
 
-                          <TabsContent value='overview' className='mt-0'>
-                            <div className='space-y-6 h-[650px] overflow-y-auto pr-2 scrollbar-hide'>
-                              <div className='grid grid-cols-4 gap-4'>
-                                <div className='bg-gradient-to-br from-gray-50 to-slate-50 p-6 rounded-xl'>
-                                  <h3 className='text-lg font-semibold mb-2 text-slate-900 text-center'>
+                          <TabsContent value="overview" className="mt-0">
+                            <div className="space-y-6 h-[650px] overflow-y-auto pr-2 scrollbar-hide">
+                              <div className="grid grid-cols-4 gap-4">
+                                <div className="bg-gradient-to-br from-gray-50 to-slate-50 p-6 rounded-xl">
+                                  <h3 className="text-lg font-semibold mb-2 text-slate-900 text-center">
                                     Regular
                                   </h3>
-                                  <div className='text-4xl font-bold text-slate-600 text-center'>
+                                  <div className="text-4xl font-bold text-slate-600 text-center">
                                     {hardcodedData.transcript_summary.academic_years.reduce(
                                       (count, year) => {
                                         return (
@@ -1284,33 +1324,33 @@ export function BackgroundPaths({
                                     )}
                                   </div>
                                 </div>
-                                <div className='bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-xl'>
-                                  <h3 className='text-lg font-semibold mb-2 text-teal-900 text-center'>
+                                <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-xl">
+                                  <h3 className="text-lg font-semibold mb-2 text-teal-900 text-center">
                                     Honors
                                   </h3>
-                                  <div className='text-4xl font-bold text-teal-600 text-center'>
+                                  <div className="text-4xl font-bold text-teal-600 text-center">
                                     {
                                       hardcodedData.transcript_summary
                                         .course_counts.total_honors_courses
                                     }
                                   </div>
                                 </div>
-                                <div className='bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl'>
-                                  <h3 className='text-lg font-semibold mb-2 text-indigo-900 text-center'>
+                                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl">
+                                  <h3 className="text-lg font-semibold mb-2 text-indigo-900 text-center">
                                     AP
                                   </h3>
-                                  <div className='text-4xl font-bold text-indigo-600 text-center'>
+                                  <div className="text-4xl font-bold text-indigo-600 text-center">
                                     {
                                       hardcodedData.transcript_summary
                                         .course_counts.total_ap_courses
                                     }
                                   </div>
                                 </div>
-                                <div className='bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded-xl'>
-                                  <h3 className='text-lg font-semibold mb-2 text-purple-900 text-center'>
+                                <div className="bg-gradient-to-br from-violet-50 to-purple-50 p-6 rounded-xl">
+                                  <h3 className="text-lg font-semibold mb-2 text-purple-900 text-center">
                                     Post-AP
                                   </h3>
-                                  <div className='text-4xl font-bold text-purple-600 text-center'>
+                                  <div className="text-4xl font-bold text-purple-600 text-center">
                                     {
                                       hardcodedData.transcript_summary
                                         .course_counts
@@ -1320,43 +1360,43 @@ export function BackgroundPaths({
                                 </div>
                               </div>
 
-                              <div className='relative overflow-hidden bg-gradient-to-br from-blue-500/5 via-indigo-500/5 to-violet-500/5 rounded-2xl p-6 backdrop-blur-sm border border-indigo-100/20'>
-                                <div className='flex items-center justify-between'>
-                                  <div className='space-y-1'>
-                                    <h3 className='text-lg font-medium text-gray-800'>
+                              <div className="relative overflow-hidden bg-gradient-to-br from-blue-500/5 via-indigo-500/5 to-violet-500/5 rounded-2xl p-6 backdrop-blur-sm border border-indigo-100/20">
+                                <div className="flex items-center justify-between">
+                                  <div className="space-y-1">
+                                    <h3 className="text-lg font-medium text-gray-800">
                                       Normalized GPA
                                     </h3>
-                                    <p className='text-sm text-gray-500'>
+                                    <p className="text-sm text-gray-500">
                                       Standardized across grading scales
                                     </p>
                                   </div>
-                                  <div className='flex flex-col items-end'>
-                                    <div className='text-5xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent'>
+                                  <div className="flex flex-col items-end">
+                                    <div className="text-5xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
                                       {hardcodedData.transcript_summary.normalized_gpa.toFixed(
                                         2
                                       )}
                                     </div>
-                                    <div className='text-xs text-gray-400 mt-1'>
+                                    <div className="text-xs text-gray-400 mt-1">
                                       out of 4.00
                                     </div>
                                   </div>
                                 </div>
-                                <div className='absolute inset-0 bg-gradient-to-r from-blue-100/20 via-indigo-200/20 to-violet-100/20 opacity-50 pointer-events-none'></div>
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-100/20 via-indigo-200/20 to-violet-100/20 opacity-50 pointer-events-none"></div>
                               </div>
 
-                              <div className='bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl'>
-                                <h3 className='text-xl font-semibold mb-4'>
+                              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl">
+                                <h3 className="text-xl font-semibold mb-4">
                                   GPA Progression
                                 </h3>
-                                <div className='grid grid-cols-2 gap-4'>
+                                <div className="grid grid-cols-2 gap-4">
                                   {Object.entries(
                                     hardcodedData.transcript_summary.gpas
                                   ).map(([key, value]) => (
                                     <div
                                       key={key}
-                                      className='bg-white p-4 rounded-lg shadow-sm'
+                                      className="bg-white p-4 rounded-lg shadow-sm"
                                     >
-                                      <div className='text-sm text-gray-500 mb-1'>
+                                      <div className="text-sm text-gray-500 mb-1">
                                         {key
                                           .split("_")
                                           .map(
@@ -1366,7 +1406,7 @@ export function BackgroundPaths({
                                           )
                                           .join(" ")}
                                       </div>
-                                      <div className='text-2xl font-semibold text-indigo-600'>
+                                      <div className="text-2xl font-semibold text-indigo-600">
                                         {value}
                                       </div>
                                     </div>
@@ -1374,13 +1414,13 @@ export function BackgroundPaths({
                                 </div>
                               </div>
 
-                              <div className='space-y-6'>
-                                <div className='bg-white p-6 rounded-xl border border-gray-200'>
-                                  <h2 className='text-2xl font-bold mb-6'>
+                              <div className="space-y-6">
+                                <div className="bg-white p-6 rounded-xl border border-gray-200">
+                                  <h2 className="text-2xl font-bold mb-6">
                                     Academic Overview
                                   </h2>
-                                  <div className='prose dark:prose-invert max-w-none'>
-                                    <p className='text-gray-700 mb-6 leading-relaxed'>
+                                  <div className="prose dark:prose-invert max-w-none">
+                                    <p className="text-gray-700 mb-6 leading-relaxed">
                                       Thomas Qu has maintained consistently
                                       strong academic performance at Flint Hill
                                       School (VA), with a clear upward GPA trend
@@ -1393,12 +1433,12 @@ export function BackgroundPaths({
                                       and other disciplines.
                                     </p>
 
-                                    <div className='mb-6'>
-                                      <h3 className='text-xl font-semibold mb-3 text-indigo-900'>
+                                    <div className="mb-6">
+                                      <h3 className="text-xl font-semibold mb-3 text-indigo-900">
                                         Strengths
                                       </h3>
-                                      <ul className='list-disc pl-6 space-y-2 text-gray-700'>
-                                        <li className='leading-relaxed'>
+                                      <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                                        <li className="leading-relaxed">
                                           Demonstrated excellence in STEM
                                           courses, evidenced by strong
                                           performance in Precalculus Honors, AP
@@ -1406,12 +1446,12 @@ export function BackgroundPaths({
                                           (Post-AP), and Linear Algebra
                                           (Post-AP).
                                         </li>
-                                        <li className='leading-relaxed'>
+                                        <li className="leading-relaxed">
                                           Consistent success across English,
                                           history, and Spanish—highlighting
                                           balanced academic strengths.
                                         </li>
-                                        <li className='leading-relaxed'>
+                                        <li className="leading-relaxed">
                                           Upward trend from early high school
                                           years through senior year, indicating
                                           sustained growth.
@@ -1419,11 +1459,11 @@ export function BackgroundPaths({
                                       </ul>
                                     </div>
 
-                                    <div className='mb-6'>
-                                      <h3 className='text-xl font-semibold mb-3 text-indigo-900'>
+                                    <div className="mb-6">
+                                      <h3 className="text-xl font-semibold mb-3 text-indigo-900">
                                         Potential Concerns
                                       </h3>
-                                      <p className='text-gray-700 leading-relaxed'>
+                                      <p className="text-gray-700 leading-relaxed">
                                         No specific concerns: no failing,
                                         withdrawn, or repeated courses. Two
                                         pass/fail courses (Human Development,
@@ -1433,10 +1473,10 @@ export function BackgroundPaths({
                                     </div>
 
                                     <div>
-                                      <h3 className='text-xl font-semibold mb-3 text-indigo-900'>
+                                      <h3 className="text-xl font-semibold mb-3 text-indigo-900">
                                         Overall Impression
                                       </h3>
-                                      <p className='text-gray-700 leading-relaxed'>
+                                      <p className="text-gray-700 leading-relaxed">
                                         This transcript shows a student with
                                         clear intellectual curiosity (especially
                                         in advanced mathematics and sciences),
@@ -1452,14 +1492,14 @@ export function BackgroundPaths({
                                 </div>
                               </div>
 
-                              <div className='prose dark:prose-invert max-w-none'>
-                                <div className='bg-gray-50 p-6 rounded-xl'>
-                                  <h3 className='text-xl font-semibold mb-3'>
+                              <div className="prose dark:prose-invert max-w-none">
+                                <div className="bg-gray-50 p-6 rounded-xl">
+                                  <h3 className="text-xl font-semibold mb-3">
                                     Grading Scale
                                   </h3>
-                                  <div className='space-y-2 text-gray-700'>
+                                  <div className="space-y-2 text-gray-700">
                                     <p>
-                                      <span className='font-medium'>
+                                      <span className="font-medium">
                                         Base Scale:
                                       </span>{" "}
                                       {
@@ -1468,7 +1508,7 @@ export function BackgroundPaths({
                                       }
                                     </p>
                                     <p>
-                                      <span className='font-medium'>
+                                      <span className="font-medium">
                                         Honors Weight:
                                       </span>{" "}
                                       {
@@ -1477,7 +1517,7 @@ export function BackgroundPaths({
                                       }
                                     </p>
                                     <p>
-                                      <span className='font-medium'>
+                                      <span className="font-medium">
                                         AP Weight:
                                       </span>{" "}
                                       {
@@ -1486,7 +1526,7 @@ export function BackgroundPaths({
                                       }
                                     </p>
                                     <p>
-                                      <span className='font-medium'>Note:</span>{" "}
+                                      <span className="font-medium">Note:</span>{" "}
                                       {
                                         hardcodedData.transcript_summary
                                           .grading_scale.note_plus_minus
@@ -1498,53 +1538,53 @@ export function BackgroundPaths({
                             </div>
                           </TabsContent>
 
-                          <TabsContent value='courses' className='mt-0'>
-                            <div className='space-y-6 h-[650px] overflow-y-auto pr-2 scrollbar-hide'>
+                          <TabsContent value="courses" className="mt-0">
+                            <div className="space-y-6 h-[650px] overflow-y-auto pr-2 scrollbar-hide">
                               {hardcodedData.transcript_summary.academic_years.map(
                                 (year, index) => (
                                   <div
                                     key={index}
-                                    className='bg-white shadow-sm rounded-xl border border-gray-200'
+                                    className="bg-white shadow-sm rounded-xl border border-gray-200"
                                   >
-                                    <div className='p-4 border-b border-gray-200 bg-gray-50 rounded-t-xl'>
-                                      <div className='flex justify-between items-center'>
-                                        <h3 className='text-lg font-semibold'>
+                                    <div className="p-4 border-b border-gray-200 bg-gray-50 rounded-t-xl">
+                                      <div className="flex justify-between items-center">
+                                        <h3 className="text-lg font-semibold">
                                           {year.year_label}
                                         </h3>
-                                        <span className='text-indigo-600 font-semibold'>
+                                        <span className="text-indigo-600 font-semibold">
                                           GPA: {year.weighted_gpa}
                                         </span>
                                       </div>
                                     </div>
-                                    <div className='p-4'>
-                                      <table className='min-w-full divide-y divide-gray-200'>
+                                    <div className="p-4">
+                                      <table className="min-w-full divide-y divide-gray-200">
                                         <thead>
                                           <tr>
-                                            <th className='px-4 py-2 text-left text-sm font-medium text-gray-500'>
+                                            <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">
                                               Course
                                             </th>
-                                            <th className='px-4 py-2 text-left text-sm font-medium text-gray-500'>
+                                            <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">
                                               Rigor
                                             </th>
-                                            <th className='px-4 py-2 text-left text-sm font-medium text-gray-500'>
+                                            <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">
                                               Grades
                                             </th>
-                                            <th className='px-4 py-2 text-left text-sm font-medium text-gray-500'>
+                                            <th className="px-4 py-2 text-left text-sm font-medium text-gray-500">
                                               Credits
                                             </th>
                                           </tr>
                                         </thead>
-                                        <tbody className='divide-y divide-gray-200'>
+                                        <tbody className="divide-y divide-gray-200">
                                           {year.courses.map(
                                             (course, courseIndex) => (
                                               <tr
                                                 key={courseIndex}
-                                                className='hover:bg-gray-50'
+                                                className="hover:bg-gray-50"
                                               >
-                                                <td className='px-4 py-2 text-sm'>
+                                                <td className="px-4 py-2 text-sm">
                                                   {course.course_name}
                                                 </td>
-                                                <td className='px-4 py-2 text-sm'>
+                                                <td className="px-4 py-2 text-sm">
                                                   <span
                                                     className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
                                               ${
@@ -1560,19 +1600,19 @@ export function BackgroundPaths({
                                                     {course.rigor}
                                                   </span>
                                                 </td>
-                                                <td className='px-4 py-2 text-sm'>
+                                                <td className="px-4 py-2 text-sm">
                                                   {Object.entries(
                                                     course.term_grades
                                                   ).map(([term, grade], i) => (
                                                     <span
                                                       key={i}
-                                                      className='mr-2'
+                                                      className="mr-2"
                                                     >
                                                       {term}: {grade}
                                                     </span>
                                                   ))}
                                                 </td>
-                                                <td className='px-4 py-2 text-sm'>
+                                                <td className="px-4 py-2 text-sm">
                                                   {course.credits_earned || "-"}
                                                 </td>
                                               </tr>
@@ -1587,16 +1627,16 @@ export function BackgroundPaths({
                             </div>
                           </TabsContent>
 
-                          <TabsContent value='info'>
-                            <div className='h-[650px] overflow-y-auto pr-2 scrollbar-hide'>
-                              <div className='grid grid-cols-2 gap-6'>
+                          <TabsContent value="info">
+                            <div className="h-[650px] overflow-y-auto pr-2 scrollbar-hide">
+                              <div className="grid grid-cols-2 gap-6">
                                 {Object.entries(hardcodedData.student_info).map(
                                   ([key, value]) => (
                                     <div
                                       key={key}
-                                      className='bg-gray-50 p-4 rounded-lg'
+                                      className="bg-gray-50 p-4 rounded-lg"
                                     >
-                                      <div className='text-sm text-gray-500 mb-1'>
+                                      <div className="text-sm text-gray-500 mb-1">
                                         {key
                                           .split("_")
                                           .map(
@@ -1606,7 +1646,7 @@ export function BackgroundPaths({
                                           )
                                           .join(" ")}
                                       </div>
-                                      <div className='text-lg font-medium'>
+                                      <div className="text-lg font-medium">
                                         {value || "N/A"}
                                       </div>
                                     </div>
