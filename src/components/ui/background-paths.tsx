@@ -583,59 +583,36 @@ export function BackgroundPaths({
                                       Course Rigor Progression
                                     </h3>
                                     <div className="space-y-4">
-                                      {currentTranscript?.transcript_summary.academic_years.map((year, index) => {
-                                        // Count courses by rigor
-                                        const coursesByRigor = year.courses.reduce((acc, course) => {
-                                          // Handle "Advanced / Elective" format
-                                          const rigor = course.rigor.split(" / ")[0];
-                                          acc[rigor] = (acc[rigor] || 0) + 1;
-                                          return acc;
-                                        }, {} as Record<string, number>);
-
-                                        // Calculate total courses (excluding Pass/Fail)
-                                        const totalCourses = year.courses.filter(course => !course.rigor.includes("Pass/Fail")).length;
-
-                                        // Define rigor order for consistent display
-                                        const rigorOrder = ["Honors", "AP", "Post-AP", "Advanced", "Standard"];
+                                      {currentTranscript?.transcript_summary?.patterns?.rigor_progression?.by_year?.map((yearData, index) => {
+                                        const totalCourses = yearData.courses.reduce((sum, course) => sum + course.count, 0);
                                         
-                                        // Calculate counts and percentages in order
-                                        const rigorCounts = rigorOrder.map(rigor => ({
-                                          rigor,
-                                          count: coursesByRigor[rigor] || 0,
-                                          percentage: totalCourses > 0 ? ((coursesByRigor[rigor] || 0) / totalCourses) * 100 : 0
-                                        }));
-
-                                        // Create summary text in order of appearance
-                                        const summaryParts = rigorCounts
-                                          .filter(({count}) => count > 0)
-                                          .map(({rigor, count}) => `${count} ${rigor}`);
-
                                         return (
                                           <div key={index}>
                                             <div className="flex items-center justify-between mb-2">
                                               <span className="text-sm font-medium text-gray-600">
-                                                {year.year_label.split(" ")[2]} {/* Extracts "9th", "10th", etc. */}
+                                                {yearData.year}
                                               </span>
                                               <span className="text-sm text-gray-600">
-                                                {summaryParts.join(", ")}
+                                                {yearData.courses.map(course => `${course.count} ${course.rigor}`).join(", ")}
                                               </span>
                                             </div>
                                             <div className="h-4 bg-gray-200 rounded-full overflow-hidden flex">
-                                              {rigorCounts.map(({rigor, percentage}, i) => 
-                                                percentage > 0 && (
+                                              {yearData.courses.map((course, i) => {
+                                                const percentage = (course.count / totalCourses) * 100;
+                                                return percentage > 0 && (
                                                   <div
                                                     key={i}
                                                     className={`h-full ${
-                                                      rigor === "Honors" ? "bg-emerald-400" :
-                                                      rigor === "AP" ? "bg-blue-400" :
-                                                      rigor === "Post-AP" ? "bg-violet-400" :
-                                                      rigor === "Advanced" ? "bg-amber-400" :
+                                                      course.rigor === "Honors" ? "bg-emerald-400" :
+                                                      course.rigor === "AP" ? "bg-blue-400" :
+                                                      course.rigor === "Post-AP" ? "bg-violet-400" :
+                                                      course.rigor === "Advanced" ? "bg-amber-400" :
                                                       "bg-gray-300"
                                                     }`}
                                                     style={{ width: `${percentage}%` }}
                                                   ></div>
-                                                )
-                                              )}
+                                                );
+                                              })}
                                             </div>
                                           </div>
                                         );
@@ -649,18 +626,12 @@ export function BackgroundPaths({
                                         Strengths
                                       </h3>
                                       <ul className="space-y-2 text-green-800">
-                                        <li className="flex items-center gap-2">
-                                          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                                          Accelerated math track
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                                          Strong science progression
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                          <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                                          Balanced humanities
-                                        </li>
+                                        {currentTranscript?.transcript_summary?.patterns?.strengths?.points?.map((point, index) => (
+                                          <li key={index} className="flex items-center gap-2">
+                                            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                                            {point}
+                                          </li>
+                                        ))}
                                       </ul>
                                     </div>
 
@@ -669,18 +640,12 @@ export function BackgroundPaths({
                                         Notable Patterns
                                       </h3>
                                       <ul className="space-y-2 text-blue-800">
-                                        <li className="flex items-center gap-2">
-                                          <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                                          Consistent honors/AP English
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                          <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                                          Computer Science progression
-                                        </li>
-                                        <li className="flex items-center gap-2">
-                                          <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                                          Spanish through AP level
-                                        </li>
+                                        {currentTranscript?.transcript_summary?.patterns?.notable_patterns?.points?.map((point, index) => (
+                                          <li key={index} className="flex items-center gap-2">
+                                            <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                                            {point}
+                                          </li>
+                                        ))}
                                       </ul>
                                     </div>
                                   </div>
@@ -690,29 +655,21 @@ export function BackgroundPaths({
                                       Grade Anomalies
                                     </h3>
                                     <div className="space-y-3">
-                                      <div className="flex items-center gap-4">
-                                        <span className="text-amber-600">
-                                          B+
-                                        </span>
-                                        <span className="text-gray-600">
-                                          Spanish IV Honors (10th Grade, Sem 1)
-                                        </span>
-                                        <span className="text-green-600">
-                                          → Improved to A in Sem 2
-                                        </span>
-                                      </div>
-                                      <div className="flex items-center gap-4">
-                                        <span className="text-amber-600">
-                                          B+
-                                        </span>
-                                        <span className="text-gray-600">
-                                          AP English Language (11th Grade, Sem
-                                          1)
-                                        </span>
-                                        <span className="text-green-600">
-                                          → Improved to A- in Sem 2
-                                        </span>
-                                      </div>
+                                      {currentTranscript?.transcript_summary?.patterns?.grade_anomalies?.anomalies?.map((anomaly, index) => (
+                                        <div key={index} className="flex items-center gap-4">
+                                          <span className="text-amber-600">
+                                            {anomaly.grade}
+                                          </span>
+                                          <span className="text-gray-600">
+                                            {anomaly.course}
+                                          </span>
+                                          {anomaly.improvement && (
+                                            <span className="text-green-600">
+                                              → {anomaly.improvement}
+                                            </span>
+                                          )}
+                                        </div>
+                                      ))}
                                     </div>
                                   </div>
                                 </div>
@@ -729,16 +686,7 @@ export function BackgroundPaths({
                                   </h2>
                                   <div className="prose dark:prose-invert max-w-none">
                                     <p className="text-gray-700 mb-6 leading-relaxed">
-                                      Thomas Qu has maintained consistently
-                                      strong academic performance at Flint Hill
-                                      School (VA), with a clear upward GPA trend
-                                      each year (weighted GPAs of 4.08, 4.19,
-                                      4.59, and 4.86 in grades 9–12, culminating
-                                      in a 4.43 cumulative average). He has
-                                      taken a rigorous course load, including 10
-                                      total AP courses and additional
-                                      honors/post-AP coursework in mathematics
-                                      and other disciplines.
+                                      {currentTranscript?.transcript_summary.overview.summary}
                                     </p>
 
                                     <div className="mb-6">
@@ -746,24 +694,11 @@ export function BackgroundPaths({
                                         Strengths
                                       </h3>
                                       <ul className="list-disc pl-6 space-y-2 text-gray-700">
-                                        <li className="leading-relaxed">
-                                          Demonstrated excellence in STEM
-                                          courses, evidenced by strong
-                                          performance in Precalculus Honors, AP
-                                          Calculus BC, Multivariable Calculus
-                                          (Post-AP), and Linear Algebra
-                                          (Post-AP).
-                                        </li>
-                                        <li className="leading-relaxed">
-                                          Consistent success across English,
-                                          history, and Spanish—highlighting
-                                          balanced academic strengths.
-                                        </li>
-                                        <li className="leading-relaxed">
-                                          Upward trend from early high school
-                                          years through senior year, indicating
-                                          sustained growth.
-                                        </li>
+                                        {currentTranscript?.transcript_summary.overview.strengths.map((strength, index) => (
+                                          <li key={index} className="leading-relaxed">
+                                            {strength}
+                                          </li>
+                                        ))}
                                       </ul>
                                     </div>
 
@@ -772,11 +707,7 @@ export function BackgroundPaths({
                                         Potential Concerns
                                       </h3>
                                       <p className="text-gray-700 leading-relaxed">
-                                        No specific concerns: no failing,
-                                        withdrawn, or repeated courses. Two
-                                        pass/fail courses (Human Development,
-                                        Senior Project) do not impact GPA but
-                                        are completed with a Pass.
+                                        {currentTranscript?.transcript_summary.overview.concerns}
                                       </p>
                                     </div>
 
@@ -785,15 +716,7 @@ export function BackgroundPaths({
                                         Overall Impression
                                       </h3>
                                       <p className="text-gray-700 leading-relaxed">
-                                        This transcript shows a student with
-                                        clear intellectual curiosity (especially
-                                        in advanced mathematics and sciences),
-                                        strong work ethic, and balanced
-                                        achievement across multiple subject
-                                        areas. The continuously rising GPA and
-                                        successful completion of numerous
-                                        AP/post-AP classes suggest excellent
-                                        college preparedness.
+                                        {currentTranscript?.transcript_summary.overview.overall_impression}
                                       </p>
                                     </div>
                                   </div>
@@ -810,35 +733,23 @@ export function BackgroundPaths({
                                       <span className="font-medium">
                                         Base Scale:
                                       </span>{" "}
-                                      {
-                                        currentTranscript?.transcript_summary
-                                          .grading_scale.base_scale
-                                      }
+                                      {currentTranscript?.transcript_summary.grading_scale.base_scale}
                                     </p>
                                     <p>
                                       <span className="font-medium">
                                         Honors Weight:
                                       </span>{" "}
-                                      {
-                                        currentTranscript?.transcript_summary
-                                          .grading_scale.honors_weight
-                                      }
+                                      {currentTranscript?.transcript_summary.grading_scale.honors_weight}
                                     </p>
                                     <p>
                                       <span className="font-medium">
                                         AP Weight:
                                       </span>{" "}
-                                      {
-                                        currentTranscript?.transcript_summary
-                                          .grading_scale.ap_weight
-                                      }
+                                      {currentTranscript?.transcript_summary.grading_scale.ap_weight}
                                     </p>
                                     <p>
                                       <span className="font-medium">Note:</span>{" "}
-                                      {
-                                        currentTranscript?.transcript_summary
-                                          .grading_scale.note_plus_minus
-                                      }
+                                      {currentTranscript?.transcript_summary.grading_scale.note_plus_minus}
                                     </p>
                                   </div>
                                 </div>
@@ -931,29 +842,78 @@ export function BackgroundPaths({
 
                           <TabsContent value="info" className="mt-0">
                             <div className="h-[650px] overflow-y-auto pr-2 scrollbar-hide">
-                              <div className="grid grid-cols-2 gap-6">
-                                {currentTranscript?.student_info && Object.entries(currentTranscript.student_info).map(
-                                  ([key, value]: [string, string | null]) => (
-                                    <div
-                                      key={key}
-                                      className="bg-white dark:bg-neutral-900 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-800"
-                                    >
-                                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-                                        {key
-                                          .split("_")
-                                          .map(
-                                            (word) =>
-                                              word.charAt(0).toUpperCase() +
-                                              word.slice(1)
-                                          )
-                                          .join(" ")}
-                                      </div>
+                              <div className="space-y-6">
+                                <div className="bg-white/50 dark:bg-neutral-800/50 p-6 rounded-xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
+                                  <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">Student Information</h2>
+                                  <div className="grid grid-cols-2 gap-4">
+                                    <div className="bg-white dark:bg-neutral-900 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-800">
+                                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Full Name</div>
                                       <div className="text-base font-medium text-gray-900 dark:text-white">
-                                        {value || "N/A"}
+                                        {currentTranscript?.student_info.full_name}
                                       </div>
                                     </div>
-                                  )
-                                )}
+                                    <div className="bg-white dark:bg-neutral-900 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-800">
+                                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Date of Birth</div>
+                                      <div className="text-base font-medium text-gray-900 dark:text-white">
+                                        {currentTranscript?.student_info.date_of_birth}
+                                      </div>
+                                    </div>
+                                    <div className="bg-white dark:bg-neutral-900 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-800">
+                                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Enrollment Date</div>
+                                      <div className="text-base font-medium text-gray-900 dark:text-white">
+                                        {currentTranscript?.student_info.enrollment_date}
+                                      </div>
+                                    </div>
+                                    <div className="bg-white dark:bg-neutral-900 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-800">
+                                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Graduation Date</div>
+                                      <div className="text-base font-medium text-gray-900 dark:text-white">
+                                        {currentTranscript?.student_info.graduation_date}
+                                      </div>
+                                    </div>
+                                    <div className="bg-white dark:bg-neutral-900 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-800">
+                                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Student ID</div>
+                                      <div className="text-base font-medium text-gray-900 dark:text-white">
+                                        {currentTranscript?.student_info.student_id || "N/A"}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div className="bg-white/50 dark:bg-neutral-800/50 p-6 rounded-xl border border-gray-200 dark:border-gray-700 backdrop-blur-sm">
+                                  <h2 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">School Information</h2>
+                                  <div className="grid grid-cols-2 gap-4">
+                                    <div className="bg-white dark:bg-neutral-900 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-800">
+                                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">School Name</div>
+                                      <div className="text-base font-medium text-gray-900 dark:text-white">
+                                        {currentTranscript?.school_info.school_name}
+                                      </div>
+                                    </div>
+                                    <div className="bg-white dark:bg-neutral-900 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-800">
+                                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">School Type</div>
+                                      <div className="text-base font-medium text-gray-900 dark:text-white">
+                                        {currentTranscript?.school_info.school_type}
+                                      </div>
+                                    </div>
+                                    <div className="bg-white dark:bg-neutral-900 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-800">
+                                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">CEEB Code</div>
+                                      <div className="text-base font-medium text-gray-900 dark:text-white">
+                                        {currentTranscript?.school_info.ceeb_code}
+                                      </div>
+                                    </div>
+                                    <div className="bg-white dark:bg-neutral-900 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-800">
+                                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Phone</div>
+                                      <div className="text-base font-medium text-gray-900 dark:text-white">
+                                        {currentTranscript?.school_info.phone}
+                                      </div>
+                                    </div>
+                                    <div className="col-span-2 bg-white dark:bg-neutral-900 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-800">
+                                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">Address</div>
+                                      <div className="text-base font-medium text-gray-900 dark:text-white">
+                                        {currentTranscript?.school_info.school_address}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </TabsContent>

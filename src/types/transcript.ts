@@ -19,6 +19,40 @@ export interface Term {
   termGPA: number;
 }
 
+export interface AcademicPatterns {
+  strengths: {
+    title: string;
+    points: string[];
+  };
+  notable_patterns: {
+    title: string;
+    points: string[];
+  };
+  grade_anomalies: {
+    title: string;
+    anomalies: {
+      grade: string;
+      course: string;
+      improvement?: string;
+    }[];
+  };
+}
+
+export interface TranscriptAnalysis {
+  patterns: AcademicPatterns;
+  rigor_progression: {
+    title: string;
+    description?: string;
+    by_year: {
+      year: string;
+      courses: {
+        rigor: string;
+        count: number;
+      }[];
+    }[];
+  };
+}
+
 export interface Transcript {
   id: string;
   studentName: string;
@@ -30,6 +64,7 @@ export interface Transcript {
   uploadDate: string;
   originalFile: string;
   confidence: number;
+  analysis?: TranscriptAnalysis;
 }
 
 export interface School {

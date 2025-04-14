@@ -30,25 +30,51 @@ export interface TranscriptData {
       post_ap_or_advanced_courses: number;
       notable_pass_fail: string[];
     };
-    academic_years: {
-      year_label: string;
-      weighted_gpa: number;
-      courses: {
-        course_name: string;
-        term_grades: { [key: string]: string };
-        rigor: string;
-        credits_earned: number | null;
-      }[];
-    }[];
+    academic_years: AcademicYear[];
     curriculum_overview: {
       subjects: {
         subject_name: string;
         courses_by_grade: {
           course_name: string;
           rigor: string;
-        }[][];  // Array of 4 arrays (9th-12th)
+        }[][];
       }[];
       key_patterns: string[];
+    };
+    patterns: {
+      rigor_progression: {
+        title: string;
+        description?: string;
+        by_year: {
+          year: string;
+          courses: {
+            rigor: string;
+            count: number;
+          }[];
+        }[];
+      };
+      strengths: {
+        title: string;
+        points: string[];
+      };
+      notable_patterns: {
+        title: string;
+        points: string[];
+      };
+      grade_anomalies: {
+        title: string;
+        anomalies: {
+          grade: string;
+          course: string;
+          improvement?: string;
+        }[];
+      };
+    };
+    overview: {
+      summary: string;
+      strengths: string[];
+      concerns: string;
+      overall_impression: string;
     };
   };
 }
@@ -367,6 +393,83 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
           "Strong STEM focus with additional AP courses",
           "Completed Spanish through AP level"
         ]
+      },
+      patterns: {
+        rigor_progression: {
+          title: "Course Rigor Progression",
+          by_year: [
+            {
+              year: "9th Grade",
+              courses: [
+                { rigor: "Honors", count: 2 },
+                { rigor: "Standard", count: 4 }
+              ]
+            },
+            {
+              year: "10th Grade",
+              courses: [
+                { rigor: "Honors", count: 3 },
+                { rigor: "AP", count: 1 },
+                { rigor: "Standard", count: 2 }
+              ]
+            },
+            {
+              year: "11th Grade",
+              courses: [
+                { rigor: "AP", count: 4 },
+                { rigor: "Post-AP", count: 1 }
+              ]
+            },
+            {
+              year: "12th Grade",
+              courses: [
+                { rigor: "AP", count: 6 },
+                { rigor: "Post-AP", count: 1 }
+              ]
+            }
+          ]
+        },
+        strengths: {
+          title: "Strengths",
+          points: [
+            "Accelerated math track",
+            "Strong science progression",
+            "Balanced humanities"
+          ]
+        },
+        notable_patterns: {
+          title: "Notable Patterns",
+          points: [
+            "Consistent honors/AP English",
+            "Computer Science progression",
+            "Spanish through AP level"
+          ]
+        },
+        grade_anomalies: {
+          title: "Grade Anomalies",
+          anomalies: [
+            {
+              grade: "B+",
+              course: "Spanish IV Honors (10th Grade, Sem 1)",
+              improvement: "Improved to A in Sem 2"
+            },
+            {
+              grade: "B+",
+              course: "AP English Language (11th Grade, Sem 1)",
+              improvement: "Improved to A- in Sem 2"
+            }
+          ]
+        }
+      },
+      overview: {
+        summary: "Thomas Qu has maintained consistently strong academic performance at Flint Hill School (VA), with a clear upward GPA trend each year (weighted GPAs of 4.08, 4.19, 4.59, and 4.86 in grades 9–12, culminating in a 4.43 cumulative average). He has taken a rigorous course load, including 10 total AP courses and additional honors/post-AP coursework in mathematics and other disciplines.",
+        strengths: [
+          "Demonstrated excellence in STEM courses, evidenced by strong performance in Precalculus Honors, AP Calculus BC, Multivariable Calculus (Post-AP), and Linear Algebra (Post-AP).",
+          "Consistent success across English, history, and Spanish—highlighting balanced academic strengths.",
+          "Upward trend from early high school years through senior year, indicating sustained growth."
+        ],
+        concerns: "No specific concerns: no failing, withdrawn, or repeated courses. Two pass/fail courses (Human Development, Senior Project) do not impact GPA but are completed with a Pass.",
+        overall_impression: "This transcript shows a student with clear intellectual curiosity (especially in advanced mathematics and sciences), strong work ethic, and balanced achievement across multiple subject areas. The continuously rising GPA and successful completion of numerous AP/post-AP classes suggest excellent college preparedness."
       }
     },
   },
@@ -408,10 +511,34 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
         post_ap_or_advanced_courses: 1,
         notable_pass_fail: [],
       },
-      academic_years: [], // To be filled with actual course data
+      academic_years: [],
       curriculum_overview: {
         subjects: [],
         key_patterns: []
+      },
+      patterns: {
+        rigor_progression: {
+          title: "Course Rigor Progression",
+          by_year: []
+        },
+        strengths: {
+          title: "Strengths",
+          points: []
+        },
+        notable_patterns: {
+          title: "Notable Patterns",
+          points: []
+        },
+        grade_anomalies: {
+          title: "Grade Anomalies",
+          anomalies: []
+        }
+      },
+      overview: {
+        summary: "",
+        strengths: [],
+        concerns: "",
+        overall_impression: ""
       }
     },
   },
@@ -453,10 +580,34 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
         post_ap_or_advanced_courses: 2,
         notable_pass_fail: [],
       },
-      academic_years: [], // To be filled with actual course data
+      academic_years: [],
       curriculum_overview: {
         subjects: [],
         key_patterns: []
+      },
+      patterns: {
+        rigor_progression: {
+          title: "Course Rigor Progression",
+          by_year: []
+        },
+        strengths: {
+          title: "Strengths",
+          points: []
+        },
+        notable_patterns: {
+          title: "Notable Patterns",
+          points: []
+        },
+        grade_anomalies: {
+          title: "Grade Anomalies",
+          anomalies: []
+        }
+      },
+      overview: {
+        summary: "",
+        strengths: [],
+        concerns: "",
+        overall_impression: ""
       }
     },
   },
@@ -498,10 +649,34 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
         post_ap_or_advanced_courses: 1,
         notable_pass_fail: [],
       },
-      academic_years: [], // To be filled with actual course data
+      academic_years: [],
       curriculum_overview: {
         subjects: [],
         key_patterns: []
+      },
+      patterns: {
+        rigor_progression: {
+          title: "Course Rigor Progression",
+          by_year: []
+        },
+        strengths: {
+          title: "Strengths",
+          points: []
+        },
+        notable_patterns: {
+          title: "Notable Patterns",
+          points: []
+        },
+        grade_anomalies: {
+          title: "Grade Anomalies",
+          anomalies: []
+        }
+      },
+      overview: {
+        summary: "",
+        strengths: [],
+        concerns: "",
+        overall_impression: ""
       }
     },
   },
