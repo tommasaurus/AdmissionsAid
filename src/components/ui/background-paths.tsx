@@ -17,6 +17,7 @@ import {
   useMotionValue,
   useTransform,
 } from "framer-motion";
+import { transcriptDataMap, type TranscriptData, AcademicYear, type Course } from "@/data/transcriptData";
 
 // Add scrollbar-hide styles
 const scrollbarHideStyles = `
@@ -140,6 +141,7 @@ export function BackgroundPaths({
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [selectedSchool, setSelectedSchool] = useState<Option>();
+  const [currentTranscript, setCurrentTranscript] = useState<TranscriptData | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const documentSectionRef = useRef<HTMLDivElement>(null);
 
@@ -288,237 +290,13 @@ export function BackgroundPaths({
 
   const fileType = getFileType();
 
-  const hardcodedData = {
-    student_info: {
-      full_name: "Qu, Thomas Shen",
-      date_of_birth: "2003-01-07",
-      enrollment_date: "2017-04-10",
-      graduation_date: "2021-06-11",
-      student_id: null,
-    },
-    school_info: {
-      school_name: "Flint Hill School",
-      school_address:
-        "3320 Jermantown Road, Oakton, VA 22124-1755, United States",
-      ceeb_code: "471648",
-      phone: "703-584-2300",
-      school_type: "Private, In-State (U.S.)",
-    },
-    transcript_summary: {
-      grading_scale: {
-        base_scale: "4.0 = A (90-100), 3.0 = B (80-89), etc.",
-        honors_weight: "+0.33",
-        ap_weight: "+0.67",
-        note_plus_minus:
-          "A+ treated as 4.3 unweighted; other plus/minus values likewise adjusted.",
-      },
-      normalized_gpa: 3.94,
-      gpas: {
-        "9th_grade_weighted": 4.08,
-        "10th_grade_weighted": 4.19,
-        "11th_grade_weighted": 4.59,
-        "12th_grade_weighted": 4.86,
-        cumulative_weighted_gpa: 4.43,
-        cumulative_unweighted_gpa: 4.01,
-      },
-      course_counts: {
-        total_ap_courses: 10,
-        total_honors_courses: 6,
-        post_ap_or_advanced_courses: 2,
-        notable_pass_fail: [
-          "Human Development (Pass)",
-          "Senior Project (Pass)",
-        ],
-      },
-      academic_years: [
-        {
-          year_label: "2017-2018 (9th Grade)",
-          weighted_gpa: 4.08,
-          courses: [
-            {
-              course_name: "English I Honors",
-              term_grades: { Sem1: "A-", Sem2: "A-" },
-              rigor: "Honors",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Orchestra",
-              term_grades: { Sem1: "A", Sem2: "A+" },
-              rigor: "Standard",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Modern European History",
-              term_grades: { Sem1: "A-", Sem2: "A-" },
-              rigor: "Standard",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Spanish III",
-              term_grades: { Sem1: "A", Sem2: "A" },
-              rigor: "Standard",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Precalculus Honors",
-              term_grades: { Sem1: "A+", Sem2: "A+" },
-              rigor: "Honors",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Physics",
-              term_grades: { Sem1: "A", Sem2: "A" },
-              rigor: "Standard",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Human Development",
-              term_grades: { Final: "Pass" },
-              rigor: "Pass/Fail",
-              credits_earned: 0.25,
-            },
-          ],
-        },
-        {
-          year_label: "2018-2019 (10th Grade)",
-          weighted_gpa: 4.19,
-          courses: [
-            {
-              course_name: "English II Honors",
-              term_grades: { Sem1: "A-", Sem2: "A-" },
-              rigor: "Honors",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Contemporary World History II Honors",
-              term_grades: { Sem1: "A-", Sem2: "A" },
-              rigor: "Honors",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Spanish IV Honors",
-              term_grades: { Sem1: "B+", Sem2: "A" },
-              rigor: "Honors",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "AP Calculus BC",
-              term_grades: { Sem1: "A", Sem2: "A" },
-              rigor: "AP",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Computer Science I",
-              term_grades: { Sem1: "A", Sem2: "A+" },
-              rigor: "Standard",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Chemistry Honors",
-              term_grades: { Sem1: "A-", Sem2: "A" },
-              rigor: "Honors",
-              credits_earned: 1.0,
-            },
-          ],
-        },
-        {
-          year_label: "2019-2020 (11th Grade)",
-          weighted_gpa: 4.59,
-          courses: [
-            {
-              course_name: "AP Computer Science A",
-              term_grades: { Sem1: "A-", Sem2: "A+" },
-              rigor: "AP",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "AP English Language and Composition",
-              term_grades: { Sem1: "B+", Sem2: "A-" },
-              rigor: "AP",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "AP U.S. History",
-              term_grades: { Sem1: "A", Sem2: "A" },
-              rigor: "AP",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "AP Spanish Language & Culture",
-              term_grades: { Sem1: "A", Sem2: "A+" },
-              rigor: "AP",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Multivariable Calculus: Post-AP",
-              term_grades: { Sem1: "A+", Sem2: "A+" },
-              rigor: "Post-AP",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Adv Biol - Anatomy & Physiology of Animals",
-              term_grades: { Final: "A" },
-              rigor: "Advanced / Elective",
-              credits_earned: 0.5,
-            },
-            {
-              course_name: "Adv Biol - Life's Origins and Transitions",
-              term_grades: { Final: "A+" },
-              rigor: "Advanced / Elective",
-              credits_earned: 0.5,
-            },
-          ],
-        },
-        {
-          year_label: "2020-2021 (12th Grade)",
-          weighted_gpa: 4.86,
-          courses: [
-            {
-              course_name: "AP English Literature and Composition",
-              term_grades: { Sem1: "A", Sem2: "A+" },
-              rigor: "AP",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "AP Macroeconomics",
-              term_grades: { Sem1: "A+", Sem2: "A" },
-              rigor: "AP",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "AP Psychology",
-              term_grades: { Sem1: "A+", Sem2: "A" },
-              rigor: "AP",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "AP Statistics",
-              term_grades: { Sem1: "A+", Sem2: "A+" },
-              rigor: "AP",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Linear Algebra: Post-AP",
-              term_grades: { Sem1: "A+", Sem2: "A+" },
-              rigor: "Post-AP",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "AP Biology",
-              term_grades: { Sem1: "A", Sem2: "A" },
-              rigor: "AP",
-              credits_earned: 1.0,
-            },
-            {
-              course_name: "Senior Project",
-              term_grades: { Final: "Pass" },
-              rigor: "Pass/Fail",
-              credits_earned: null,
-            },
-          ],
-        },
-      ],
-    },
+  // Function to handle transcript selection
+  const handleTranscriptSelect = (state: string) => {
+    const transcriptData = transcriptDataMap[state];
+    setCurrentTranscript(transcriptData);
+    setUploadedFile(new File([], `${state}.pdf`));
+    setFileUrl(`/transcripts/${state}.pdf`);
+    scrollDown();
   };
 
   return (
@@ -558,44 +336,28 @@ export function BackgroundPaths({
           <div className="w-[600px] mx-auto">
             <div className="grid grid-cols-2 gap-4">
               <Button
-                onClick={() => {
-                  setUploadedFile(new File([], "virginia.pdf"));
-                  setFileUrl("/transcripts/virginia.pdf");
-                  scrollDown();
-                }}
+                onClick={() => handleTranscriptSelect("virginia")}
                 className="relative py-4 px-6 text-lg font-medium bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-900 dark:text-gray-300 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 h-auto"
               >
                 Virginia
               </Button>
               
               <Button
-                onClick={() => {
-                  setUploadedFile(new File([], "texas.pdf"));
-                  setFileUrl("/transcripts/texas.pdf");
-                  scrollDown();
-                }}
+                onClick={() => handleTranscriptSelect("texas")}
                 className="relative py-4 px-6 text-lg font-medium bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-900 dark:text-gray-300 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 h-auto"
               >
                 Texas
               </Button>
 
               <Button
-                onClick={() => {
-                  setUploadedFile(new File([], "new-york.pdf"));
-                  setFileUrl("/transcripts/new-york.pdf");
-                  scrollDown();
-                }}
+                onClick={() => handleTranscriptSelect("new-york")}
                 className="relative py-4 px-6 text-lg font-medium bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-900 dark:text-gray-300 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 h-auto"
               >
                 New York
               </Button>
 
               <Button
-                onClick={() => {
-                  setUploadedFile(new File([], "connecticut.pdf"));
-                  setFileUrl("/transcripts/connecticut.pdf");
-                  scrollDown();
-                }}
+                onClick={() => handleTranscriptSelect("connecticut")}
                 className="relative py-4 px-6 text-lg font-medium bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-900 dark:text-gray-300 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 h-auto"
               >
                 Connecticut
@@ -697,7 +459,7 @@ export function BackgroundPaths({
                   <div className="p-5 border-b border-gray-200 dark:border-gray-700 bg-white/95 dark:bg-neutral-900/95">
                     <h2 className="text-xl font-medium text-gray-900 dark:text-white">
                       Transcript Analysis - {""}{" "}
-                      {hardcodedData.student_info.full_name}
+                      {currentTranscript?.student_info.full_name || ""}
                     </h2>
                   </div>
                   <div className="p-5 h-[750px] bg-white/90 dark:bg-neutral-900/90">
@@ -717,12 +479,10 @@ export function BackgroundPaths({
                         <div className="h-5 bg-gray-200 dark:bg-gray-700 rounded w-4/5"></div>
                       </div>
                     ) : (
-                      showAnalysis && (
+                      showAnalysis && currentTranscript && (
                         <Tabs defaultValue="curriculum" className="w-full">
                           <TabsList className="grid w-full grid-cols-5 mb-4">
-                            <TabsTrigger value="curriculum">
-                              Curriculum
-                            </TabsTrigger>
+                            <TabsTrigger value="curriculum">Curriculum</TabsTrigger>
                             <TabsTrigger value="courses">Details</TabsTrigger>
                             <TabsTrigger value="patterns">Patterns</TabsTrigger>
                             <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -1333,7 +1093,7 @@ export function BackgroundPaths({
                                         Base Scale:
                                       </span>{" "}
                                       {
-                                        hardcodedData.transcript_summary
+                                        currentTranscript?.transcript_summary
                                           .grading_scale.base_scale
                                       }
                                     </p>
@@ -1342,7 +1102,7 @@ export function BackgroundPaths({
                                         Honors Weight:
                                       </span>{" "}
                                       {
-                                        hardcodedData.transcript_summary
+                                        currentTranscript?.transcript_summary
                                           .grading_scale.honors_weight
                                       }
                                     </p>
@@ -1351,14 +1111,14 @@ export function BackgroundPaths({
                                         AP Weight:
                                       </span>{" "}
                                       {
-                                        hardcodedData.transcript_summary
+                                        currentTranscript?.transcript_summary
                                           .grading_scale.ap_weight
                                       }
                                     </p>
                                     <p>
                                       <span className="font-medium">Note:</span>{" "}
                                       {
-                                        hardcodedData.transcript_summary
+                                        currentTranscript?.transcript_summary
                                           .grading_scale.note_plus_minus
                                       }
                                     </p>
@@ -1370,7 +1130,7 @@ export function BackgroundPaths({
 
                           <TabsContent value="courses" className="mt-0">
                             <div className="space-y-6 h-[650px] overflow-y-auto pr-2 scrollbar-hide">
-                              {hardcodedData.transcript_summary.academic_years.map(
+                              {currentTranscript?.transcript_summary.academic_years.map(
                                 (year, index) => (
                                   <div
                                     key={index}
@@ -1405,51 +1165,43 @@ export function BackgroundPaths({
                                           </tr>
                                         </thead>
                                         <tbody className="divide-y divide-gray-200">
-                                          {year.courses.map(
-                                            (course, courseIndex) => (
-                                              <tr
-                                                key={courseIndex}
-                                                className="hover:bg-gray-50"
-                                              >
-                                                <td className="px-4 py-2 text-sm">
-                                                  {course.course_name}
-                                                </td>
-                                                <td className="px-4 py-2 text-sm">
-                                                  <span
-                                                    className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium
-                                              ${
-                                                course.rigor === "AP"
-                                                  ? "bg-blue-50 text-blue-700"
-                                                  : course.rigor === "Honors"
-                                                  ? "bg-emerald-50 text-emerald-700"
-                                                  : course.rigor === "Post-AP"
-                                                  ? "bg-violet-50 text-violet-700"
-                                                  : course.rigor === "Advanced"
-                                                  ? "bg-amber-50 text-amber-700"
-                                                  : "bg-gray-50 text-gray-700"
-                                              }`}
-                                                  >
-                                                    {course.rigor}
+                                          {year.courses.map((course, courseIndex) => (
+                                            <tr
+                                              key={courseIndex}
+                                              className="hover:bg-gray-50"
+                                            >
+                                              <td className="px-4 py-2 text-sm">
+                                                {course.course_name}
+                                              </td>
+                                              <td className="px-4 py-2 text-sm">
+                                                <span
+                                                  className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                                    course.rigor === "AP"
+                                                      ? "bg-blue-50 text-blue-700"
+                                                      : course.rigor === "Honors"
+                                                      ? "bg-emerald-50 text-emerald-700"
+                                                      : course.rigor === "Post-AP"
+                                                      ? "bg-violet-50 text-violet-700"
+                                                      : course.rigor === "Advanced"
+                                                      ? "bg-amber-50 text-amber-700"
+                                                      : "bg-gray-50 text-gray-700"
+                                                  }`}
+                                                >
+                                                  {course.rigor}
+                                                </span>
+                                              </td>
+                                              <td className="px-4 py-2 text-sm">
+                                                {Object.entries(course.term_grades).map(([term, grade], i) => (
+                                                  <span key={i} className="mr-2">
+                                                    {term}: {grade}
                                                   </span>
-                                                </td>
-                                                <td className="px-4 py-2 text-sm">
-                                                  {Object.entries(
-                                                    course.term_grades
-                                                  ).map(([term, grade], i) => (
-                                                    <span
-                                                      key={i}
-                                                      className="mr-2"
-                                                    >
-                                                      {term}: {grade}
-                                                    </span>
-                                                  ))}
-                                                </td>
-                                                <td className="px-4 py-2 text-sm">
-                                                  {course.credits_earned || "-"}
-                                                </td>
-                                              </tr>
-                                            )
-                                          )}
+                                                ))}
+                                              </td>
+                                              <td className="px-4 py-2 text-sm">
+                                                {course.credits_earned || "N/A"}
+                                              </td>
+                                            </tr>
+                                          ))}
                                         </tbody>
                                       </table>
                                     </div>
@@ -1459,16 +1211,16 @@ export function BackgroundPaths({
                             </div>
                           </TabsContent>
 
-                          <TabsContent value="info">
+                          <TabsContent value="info" className="mt-0">
                             <div className="h-[650px] overflow-y-auto pr-2 scrollbar-hide">
                               <div className="grid grid-cols-2 gap-6">
-                                {Object.entries(hardcodedData.student_info).map(
-                                  ([key, value]) => (
+                                {currentTranscript?.student_info && Object.entries(currentTranscript.student_info).map(
+                                  ([key, value]: [string, string | null]) => (
                                     <div
                                       key={key}
-                                      className="bg-gray-50 p-4 rounded-lg"
+                                      className="bg-white dark:bg-neutral-900 rounded-lg p-4 shadow-sm border border-gray-200 dark:border-gray-800"
                                     >
-                                      <div className="text-sm text-gray-500 mb-1">
+                                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
                                         {key
                                           .split("_")
                                           .map(
@@ -1478,7 +1230,7 @@ export function BackgroundPaths({
                                           )
                                           .join(" ")}
                                       </div>
-                                      <div className="text-lg font-medium">
+                                      <div className="text-base font-medium text-gray-900 dark:text-white">
                                         {value || "N/A"}
                                       </div>
                                     </div>
