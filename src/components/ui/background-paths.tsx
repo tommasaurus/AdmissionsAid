@@ -518,277 +518,35 @@ export function BackgroundPaths({
                                       </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-200">
-                                      <tr>
-                                        <td className="px-4 py-3 text-sm font-bold text-gray-900">
-                                          English
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            English I Honors
-                                          </div>
-                                          <div className="text-xs text-emerald-600">
-                                            Honors
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            English II Honors
-                                          </div>
-                                          <div className="text-xs text-emerald-600">
-                                            Honors
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            AP English Language
-                                          </div>
-                                          <div className="text-xs text-blue-600">
-                                            AP
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            AP English Literature
-                                          </div>
-                                          <div className="text-xs text-blue-600">
-                                            AP
-                                          </div>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td className="px-4 py-3 text-sm font-bold text-gray-900">
-                                          Mathematics
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            Precalculus Honors
-                                          </div>
-                                          <div className="text-xs text-emerald-600">
-                                            Honors
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            AP Calculus BC
-                                          </div>
-                                          <div className="text-xs text-blue-600">
-                                            AP
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            Multivariable Calculus
-                                          </div>
-                                          <div className="text-xs text-violet-600">
-                                            Post-AP
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="space-y-3">
-                                            <div>
-                                              <div className="text-sm text-gray-900">
-                                                Linear Algebra
+                                      {currentTranscript?.transcript_summary.curriculum_overview.subjects.map((subject, index) => (
+                                        <tr key={index}>
+                                          <td className="px-4 py-3 text-sm font-bold text-gray-900">
+                                            {subject.subject_name}
+                                          </td>
+                                          {[0, 1, 2, 3].map((gradeIndex) => (
+                                            <td key={gradeIndex} className="px-4 py-3">
+                                              <div className="space-y-3">
+                                                {subject.courses_by_grade[gradeIndex]?.map((course, courseIndex) => (
+                                                  <div key={courseIndex}>
+                                                    <div className="text-sm text-gray-900">
+                                                      {course.course_name}
+                                                    </div>
+                                                    <div className={`text-xs ${
+                                                      course.rigor === "AP" ? "text-blue-600" :
+                                                      course.rigor === "Honors" ? "text-emerald-600" :
+                                                      course.rigor === "Post-AP" ? "text-violet-600" :
+                                                      course.rigor === "Advanced" ? "text-amber-600" :
+                                                      "text-gray-500"
+                                                    }`}>
+                                                      {course.rigor}
+                                                    </div>
+                                                  </div>
+                                                ))}
                                               </div>
-                                              <div className="text-xs text-violet-600">
-                                                Post-AP
-                                              </div>
-                                            </div>
-                                            <div>
-                                              <div className="text-sm text-gray-900">
-                                                AP Statistics
-                                              </div>
-                                              <div className="text-xs text-blue-600">
-                                                AP
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td className="px-4 py-3 text-sm font-bold text-gray-900">
-                                          Science
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            Physics
-                                          </div>
-                                          <div className="text-xs text-gray-500">
-                                            Standard
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            Chemistry Honors
-                                          </div>
-                                          <div className="text-xs text-emerald-600">
-                                            Honors
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="space-y-3">
-                                            <div>
-                                              <div className="text-sm text-gray-900">
-                                                Adv Biol - Anatomy & Physiology
-                                              </div>
-                                              <div className="text-xs text-amber-600">
-                                                Advanced
-                                              </div>
-                                            </div>
-                                            <div>
-                                              <div className="text-sm text-gray-900">
-                                                Adv Biol - Life's Origins
-                                              </div>
-                                              <div className="text-xs text-amber-600">
-                                                Advanced
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            AP Biology
-                                          </div>
-                                          <div className="text-xs text-blue-600">
-                                            AP
-                                          </div>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td className="px-4 py-3 text-sm font-bold text-gray-900">
-                                          Language
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            Spanish III
-                                          </div>
-                                          <div className="text-xs text-gray-500">
-                                            Standard
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            Spanish IV Honors
-                                          </div>
-                                          <div className="text-xs text-emerald-600">
-                                            Honors
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            AP Spanish Language
-                                          </div>
-                                          <div className="text-xs text-blue-600">
-                                            AP
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            —
-                                          </div>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td className="px-4 py-3 text-sm font-bold text-gray-900">
-                                          Social Studies
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            Modern European History
-                                          </div>
-                                          <div className="text-xs text-gray-500">
-                                            Standard
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            Contemporary World History II Honors
-                                          </div>
-                                          <div className="text-xs text-emerald-600">
-                                            Honors
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            AP U.S. History
-                                          </div>
-                                          <div className="text-xs text-blue-600">
-                                            AP
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            AP Macroeconomics
-                                          </div>
-                                          <div className="text-xs text-blue-600">
-                                            AP
-                                          </div>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td className="px-4 py-3 text-sm font-bold text-gray-900">
-                                          Other
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="space-y-3">
-                                            <div>
-                                              <div className="text-sm text-gray-900">
-                                                Orchestra
-                                              </div>
-                                              <div className="text-xs text-gray-500">
-                                                Standard
-                                              </div>
-                                            </div>
-                                            <div>
-                                              <div className="text-sm text-gray-900">
-                                                Human Development
-                                              </div>
-                                              <div className="text-xs text-gray-500">
-                                                Pass/Fail
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="text-sm text-gray-900">
-                                            Computer Science I
-                                          </div>
-                                          <div className="text-xs text-gray-500">
-                                            Standard
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="space-y-3">
-                                            <div>
-                                              <div className="text-sm text-gray-900">
-                                                AP Computer Science A
-                                              </div>
-                                              <div className="text-xs text-blue-600">
-                                                AP
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td className="px-4 py-3">
-                                          <div className="space-y-3">
-                                            <div>
-                                              <div className="text-sm text-gray-900">
-                                                AP Psychology
-                                              </div>
-                                              <div className="text-xs text-blue-600">
-                                                AP
-                                              </div>
-                                            </div>
-                                            <div>
-                                              <div className="text-sm text-gray-900">
-                                                Senior Project
-                                              </div>
-                                              <div className="text-xs text-gray-500">
-                                                Pass/Fail
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </td>
-                                      </tr>
+                                            </td>
+                                          ))}
+                                        </tr>
+                                      ))}
                                     </tbody>
                                   </table>
                                 </div>
@@ -799,25 +557,12 @@ export function BackgroundPaths({
                                       Key Patterns
                                     </h3>
                                     <ul className="space-y-2 text-amber-800">
-                                      <li className="flex items-center gap-2">
-                                        <span className="w-2 h-2 bg-amber-500 rounded-full"></span>
-                                        Consistent progression in rigor across
-                                        all core subjects
-                                      </li>
-                                      <li className="flex items-center gap-2">
-                                        <span className="w-2 h-2 bg-amber-500 rounded-full"></span>
-                                        Advanced mathematics track (2 years
-                                        Post-AP)
-                                      </li>
-                                      <li className="flex items-center gap-2">
-                                        <span className="w-2 h-2 bg-amber-500 rounded-full"></span>
-                                        Strong STEM focus with additional AP
-                                        courses
-                                      </li>
-                                      <li className="flex items-center gap-2">
-                                        <span className="w-2 h-2 bg-amber-500 rounded-full"></span>
-                                        Completed Spanish through AP level
-                                      </li>
+                                      {currentTranscript?.transcript_summary.curriculum_overview.key_patterns.map((pattern, index) => (
+                                        <li key={index} className="flex items-center gap-2">
+                                          <span className="w-2 h-2 bg-amber-500 rounded-full"></span>
+                                          {pattern}
+                                        </li>
+                                      ))}
                                     </ul>
                                   </div>
                                 </div>

@@ -40,6 +40,16 @@ export interface TranscriptData {
         credits_earned: number | null;
       }[];
     }[];
+    curriculum_overview: {
+      subjects: {
+        subject_name: string;
+        courses_by_grade: {
+          course_name: string;
+          rigor: string;
+        }[][];  // Array of 4 arrays (9th-12th)
+      }[];
+      key_patterns: string[];
+    };
   };
 }
 
@@ -282,6 +292,82 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
           ],
         },
       ],
+      curriculum_overview: {
+        subjects: [
+          {
+            subject_name: "English",
+            courses_by_grade: [
+              [{ course_name: "English I Honors", rigor: "Honors" }],
+              [{ course_name: "English II Honors", rigor: "Honors" }],
+              [{ course_name: "AP English Language", rigor: "AP" }],
+              [{ course_name: "AP English Literature", rigor: "AP" }]
+            ]
+          },
+          {
+            subject_name: "Mathematics",
+            courses_by_grade: [
+              [{ course_name: "Precalculus Honors", rigor: "Honors" }],
+              [{ course_name: "AP Calculus BC", rigor: "AP" }],
+              [{ course_name: "Multivariable Calculus", rigor: "Post-AP" }],
+              [
+                { course_name: "Linear Algebra", rigor: "Post-AP" },
+                { course_name: "AP Statistics", rigor: "AP" }
+              ]
+            ]
+          },
+          {
+            subject_name: "Science",
+            courses_by_grade: [
+              [{ course_name: "Physics", rigor: "Standard" }],
+              [{ course_name: "Chemistry Honors", rigor: "Honors" }],
+              [
+                { course_name: "Adv Biol - Anatomy & Physiology", rigor: "Advanced" },
+                { course_name: "Adv Biol - Life's Origins", rigor: "Advanced" }
+              ],
+              [{ course_name: "AP Biology", rigor: "AP" }]
+            ]
+          },
+          {
+            subject_name: "Language",
+            courses_by_grade: [
+              [{ course_name: "Spanish III", rigor: "Standard" }],
+              [{ course_name: "Spanish IV Honors", rigor: "Honors" }],
+              [{ course_name: "AP Spanish Language", rigor: "AP" }],
+              [{ course_name: "—", rigor: "Standard" }]
+            ]
+          },
+          {
+            subject_name: "Social Studies",
+            courses_by_grade: [
+              [{ course_name: "Modern European History", rigor: "Standard" }],
+              [{ course_name: "Contemporary World History II Honors", rigor: "Honors" }],
+              [{ course_name: "AP U.S. History", rigor: "AP" }],
+              [{ course_name: "AP Macroeconomics", rigor: "AP" }]
+            ]
+          },
+          {
+            subject_name: "Other",
+            courses_by_grade: [
+              [
+                { course_name: "Orchestra", rigor: "Standard" },
+                { course_name: "Human Development", rigor: "Pass/Fail" }
+              ],
+              [{ course_name: "Computer Science I", rigor: "Standard" }],
+              [{ course_name: "AP Computer Science A", rigor: "AP" }],
+              [
+                { course_name: "AP Psychology", rigor: "AP" },
+                { course_name: "Senior Project", rigor: "Pass/Fail" }
+              ]
+            ]
+          }
+        ],
+        key_patterns: [
+          "Consistent progression in rigor across all core subjects",
+          "Advanced mathematics track (2 years Post-AP)",
+          "Strong STEM focus with additional AP courses",
+          "Completed Spanish through AP level"
+        ]
+      }
     },
   },
   texas: {
@@ -322,7 +408,11 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
         post_ap_or_advanced_courses: 1,
         notable_pass_fail: [],
       },
-      academic_years: [] // To be filled with actual course data
+      academic_years: [], // To be filled with actual course data
+      curriculum_overview: {
+        subjects: [],
+        key_patterns: []
+      }
     },
   },
   "new-york": {
@@ -363,7 +453,11 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
         post_ap_or_advanced_courses: 2,
         notable_pass_fail: [],
       },
-      academic_years: [] // To be filled with actual course data
+      academic_years: [], // To be filled with actual course data
+      curriculum_overview: {
+        subjects: [],
+        key_patterns: []
+      }
     },
   },
   connecticut: {
@@ -404,7 +498,11 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
         post_ap_or_advanced_courses: 1,
         notable_pass_fail: [],
       },
-      academic_years: [] // To be filled with actual course data
+      academic_years: [], // To be filled with actual course data
+      curriculum_overview: {
+        subjects: [],
+        key_patterns: []
+      }
     },
   },
 }; 
