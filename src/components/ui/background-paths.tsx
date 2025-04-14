@@ -536,6 +536,7 @@ export function BackgroundPaths({
                                                       course.rigor === "Honors" ? "text-emerald-600" :
                                                       course.rigor === "Post-AP" ? "text-violet-600" :
                                                       course.rigor === "Advanced" ? "text-amber-600" :
+                                                      course.rigor === "Dual Enrollment" ? "text-violet-600" :
                                                       "text-gray-500"
                                                     }`}>
                                                       {course.rigor}
@@ -607,6 +608,7 @@ export function BackgroundPaths({
                                                       course.rigor === "AP" ? "bg-blue-400" :
                                                       course.rigor === "Post-AP" ? "bg-violet-400" :
                                                       course.rigor === "Advanced" ? "bg-amber-400" :
+                                                      course.rigor === "Dual Enrollment" ? "bg-violet-400" :
                                                       "bg-gray-300"
                                                     }`}
                                                     style={{ width: `${percentage}%` }}
@@ -813,7 +815,8 @@ export function BackgroundPaths({
                                                       ? "bg-violet-50 text-violet-700"
                                                       : course.rigor === "Advanced"
                                                       ? "bg-amber-50 text-amber-700"
-                                                      : "bg-gray-50 text-gray-700"
+                                                      : course.rigor === "Dual Enrollment" ? "bg-violet-50 text-violet-700" :
+                                                      "bg-gray-50 text-gray-700"
                                               }`}
                                                   >
                                                     {course.rigor}

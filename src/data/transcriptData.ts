@@ -474,20 +474,19 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
     },
   },
   texas: {
-    // Placeholder for Texas transcript data
     student_info: {
-      full_name: "Rodriguez, Maria Elena",
-      date_of_birth: "2003-03-15",
-      enrollment_date: "2017-08-20",
-      graduation_date: "2021-05-28",
-      student_id: "TX2021456",
+      full_name: "Johnny Appleseed",
+      date_of_birth: "2003-06-08",
+      enrollment_date: "2018-08-20",
+      graduation_date: "2022-06-06",
+      student_id: "992772495",
     },
     school_info: {
-      school_name: "Westlake High School",
-      school_address: "4100 Westbank Dr, Austin, TX 78746, United States",
+      school_name: "The University of Texas at Austin High School",
+      school_address: "1801 Rio Grande St, Austin, TX 78701, United States",
       ceeb_code: "440007",
       phone: "512-732-9280",
-      school_type: "Public, In-State (U.S.)",
+      school_type: "International (Mexico) - Texas Accredited",
     },
     transcript_summary: {
       grading_scale: {
@@ -496,49 +495,348 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
         ap_weight: "+10 points",
         note_plus_minus: "No plus/minus grades used",
       },
-      normalized_gpa: 3.92,
+      normalized_gpa: 3.69,
       gpas: {
-        "9th_grade_weighted": 4.1,
-        "10th_grade_weighted": 4.3,
-        "11th_grade_weighted": 4.5,
-        "12th_grade_weighted": 4.7,
-        cumulative_weighted_gpa: 4.4,
-        cumulative_unweighted_gpa: 3.9,
+        "9th_grade_weighted": 3.65,
+        "10th_grade_weighted": 3.67,
+        "11th_grade_weighted": 3.70,
+        "12th_grade_weighted": 3.74,
+        cumulative_weighted_gpa: 3.69,
+        cumulative_unweighted_gpa: 3.43,
       },
       course_counts: {
-        total_ap_courses: 8,
+        total_ap_courses: 7,
         total_honors_courses: 7,
-        post_ap_or_advanced_courses: 1,
+        post_ap_or_advanced_courses: 0,
         notable_pass_fail: [],
       },
-      academic_years: [],
+      academic_years: [
+        {
+          year_label: "2018-2019 (9th Grade)",
+          weighted_gpa: 3.65,
+          courses: [
+            {
+              course_name: "English I",
+              term_grades: { Sem1: "87", Sem2: "90" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Geometry",
+              term_grades: { Sem1: "89", Sem2: "90" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Biology",
+              term_grades: { Sem1: "90", Sem2: "91" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "World Geography",
+              term_grades: { Sem1: "88", Sem2: "93" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "French I",
+              term_grades: { Sem1: "99", Sem2: "99" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Business",
+              term_grades: { Sem1: "90", Sem2: "93" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+          ],
+        },
+        {
+          year_label: "2019-2020 (10th Grade)",
+          weighted_gpa: 3.67,
+          courses: [
+            {
+              course_name: "English II",
+              term_grades: { Sem1: "91", Sem2: "93" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Algebra II",
+              term_grades: { Sem1: "93", Sem2: "93" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Chemistry",
+              term_grades: { Sem1: "90", Sem2: "95" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "World History",
+              term_grades: { Sem1: "95", Sem2: "98" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "French II",
+              term_grades: { Sem1: "97", Sem2: "96" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Art History",
+              term_grades: { Sem1: "96", Sem2: "97" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+          ],
+        },
+        {
+          year_label: "2020-2021 (11th Grade)",
+          weighted_gpa: 3.70,
+          courses: [
+            {
+              course_name: "AP English Language and Composition",
+              term_grades: { Sem1: "89", Sem2: "95" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Pre-Calculus",
+              term_grades: { Sem1: "94", Sem2: "93" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Physics 1",
+              term_grades: { Sem1: "94", Sem2: "92" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "US History",
+              term_grades: { Sem1: "92", Sem2: "97" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP US Government",
+              term_grades: { Final: "96" },
+              rigor: "AP",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Professional Communications",
+              term_grades: { Final: "93" },
+              rigor: "Standard",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Health Education",
+              term_grades: { Final: "96" },
+              rigor: "Standard",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Finance",
+              term_grades: { Sem1: "97", Sem2: "98" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Economics",
+              term_grades: { Final: "97" },
+              rigor: "Standard",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Personal Financial Literacy",
+              term_grades: { Final: "95" },
+              rigor: "Standard",
+              credits_earned: 0.5,
+            },
+          ],
+        },
+        {
+          year_label: "2021-2022 (12th Grade)",
+          weighted_gpa: 3.74,
+          courses: [
+            {
+              course_name: "AP English Literature and Composition",
+              term_grades: { Sem1: "94", Sem2: "92" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Calculus AB",
+              term_grades: { Sem1: "96", Sem2: "90" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Environmental Science",
+              term_grades: { Sem1: "92", Sem2: "93" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Psychology",
+              term_grades: { Final: "85" },
+              rigor: "Dual Enrollment",
+              credits_earned: 0.5,
+            },
+          ],
+        },
+      ],
       curriculum_overview: {
-        subjects: [],
-        key_patterns: []
+        subjects: [
+          {
+            subject_name: "Mathematics",
+            courses_by_grade: [
+              [{ course_name: "Geometry", rigor: "Honors" }],
+              [{ course_name: "Algebra II", rigor: "Honors" }],
+              [{ course_name: "Pre-Calculus", rigor: "Standard" }],
+              [{ course_name: "AP Calculus AB", rigor: "AP" }]
+            ]
+          },
+          {
+            subject_name: "Science",
+            courses_by_grade: [
+              [{ course_name: "Biology", rigor: "Honors" }],
+              [{ course_name: "Chemistry", rigor: "Honors" }],
+              [{ course_name: "AP Physics 1", rigor: "AP" }],
+              [{ course_name: "AP Environmental Science", rigor: "AP" }]
+            ]
+          },
+          {
+            subject_name: "English",
+            courses_by_grade: [
+              [{ course_name: "English I", rigor: "Honors" }],
+              [{ course_name: "English II", rigor: "Honors" }],
+              [{ course_name: "AP English Language", rigor: "AP" }],
+              [{ course_name: "AP English Literature", rigor: "AP" }]
+            ]
+          },
+          {
+            subject_name: "Social Studies",
+            courses_by_grade: [
+              [{ course_name: "World Geography", rigor: "Standard" }],
+              [{ course_name: "World History", rigor: "Standard" }],
+              [
+                { course_name: "US History", rigor: "Standard" },
+                { course_name: "AP US Government", rigor: "AP" }
+              ],
+              [{ course_name: "Psychology", rigor: "Dual Enrollment" }]
+            ]
+          },
+          {
+            subject_name: "Language",
+            courses_by_grade: [
+              [{ course_name: "French I", rigor: "Standard" }],
+              [{ course_name: "French II", rigor: "Standard" }],
+              [{ course_name: "—", rigor: "Standard" }],
+              [{ course_name: "—", rigor: "Standard" }]
+            ]
+          },
+          {
+            subject_name: "Other",
+            courses_by_grade: [
+              [
+                { course_name: "Business", rigor: "Standard" }
+              ],
+              [{ course_name: "AP Art History", rigor: "AP" }],
+              [
+                { course_name: "Professional Communication", rigor: "Standard" },
+                { course_name: "Finance", rigor: "Standard" },
+                { course_name: "Economics", rigor: "Standard" },
+                { course_name: "Personal Financial Literacy", rigor: "Standard" }
+              ],
+              [{ course_name: "Psychology", rigor: "Dual Enrollment" }]
+            ]
+          }
+        ],
+        key_patterns: [
+          "Strong progression in STEM subjects",
+          "Consistent honors and AP coursework",
+          "Dual language focus (Spanish and French)",
+          "Interest in business and finance"
+        ]
       },
       patterns: {
         rigor_progression: {
           title: "Course Rigor Progression",
-          by_year: []
+          by_year: [
+            {
+              year: "9th Grade (2018-2019)",
+              courses: [
+                { rigor: "Honors", count: 3 },
+                { rigor: "Standard", count: 3 }
+              ]
+            },
+            {
+              year: "10th Grade (2019-2020)",
+              courses: [
+                { rigor: "AP", count: 1 },
+                { rigor: "Honors", count: 3 },
+                { rigor: "Standard", count: 2 }
+              ]
+            },
+            {
+              year: "11th Grade (2020-2021)",
+              courses: [
+                { rigor: "AP", count: 3 },
+                { rigor: "Standard", count: 7 }
+              ]
+            },
+            {
+              year: "12th Grade (2021-2022)",
+              courses: [
+                { rigor: "AP", count: 3 },
+                { rigor: "Dual Enrollment", count: 1 }
+              ]
+            }
+          ]
         },
         strengths: {
           title: "Strengths",
-          points: []
+          points: [
+            "Strong STEM foundation with Honors math and science sequence",
+            "Consistent progression to AP courses in core subjects",
+            "Balanced curriculum with business/finance focus"
+          ]
         },
         notable_patterns: {
           title: "Notable Patterns",
-          points: []
+          points: [
+            "Early completion of foreign language (French I & II)",
+            "Comprehensive business/finance coursework in 11th grade",
+            "Steady increase in course rigor, culminating in AP and Dual Enrollment courses"
+          ]
         },
         grade_anomalies: {
           title: "Grade Anomalies",
-          anomalies: []
+          anomalies: [
+            {
+              grade: "85",
+              course: "Psychology (Dual Enrollment, 12th Grade)",
+              improvement: "Only grade below 87 in academic record"
+            }
+          ]
         }
       },
       overview: {
-        summary: "",
-        strengths: [],
-        concerns: "",
-        overall_impression: ""
+        summary: "The student demonstrates a strong academic trajectory with particular excellence in STEM subjects. Starting with Honors courses in 9th grade (English I, Geometry, Biology), progressing through AP courses, and culminating with Dual Enrollment coursework. The transcript shows thoughtful course selection with a clear focus on business and finance, while maintaining high achievement across core academic subjects.",
+        strengths: [
+          "Consistent performance in mathematics, progressing from Honors Geometry to AP Calculus AB",
+          "Strong science sequence with Honors Biology, Honors Chemistry, AP Physics 1, and AP Environmental Science",
+          "Comprehensive exploration of business and finance through multiple specialized courses"
+        ],
+        concerns: "While maintaining strong overall performance, the 85 in Dual Enrollment Psychology represents the lowest grade in the academic record. Additionally, there is a two-year gap in language studies after completing French II in 10th grade.",
+        overall_impression: "The transcript reveals a student with strong academic capabilities and a clear interest in business and finance. The progression from Honors to AP courses demonstrates increasing academic rigor, while the addition of Dual Enrollment coursework shows college readiness. The student's balanced achievement across STEM, humanities, and specialized business courses suggests both academic versatility and focused career interests."
       }
     },
   },
