@@ -556,113 +556,51 @@ export function BackgroundPaths({
           </motion.p>
 
           <div className="w-[600px] mx-auto">
-            <div className="relative isolate">
-              {uploadedFile ? (
-                <motion.div
-                  layoutId="file-upload"
-                  className="relative z-10 flex flex-col items-start justify-start p-4 mt-4 w-full bg-white dark:bg-neutral-900 rounded-xl shadow-sm border border-gray-200 dark:border-gray-800"
-                >
-                  <div className="flex justify-between w-full items-center gap-4">
-                    <div className="flex items-center gap-3 flex-1 min-w-0">
-                      <DocumentIcon className="w-8 h-8 text-gray-400 flex-shrink-0" />
-                      <p className="text-base text-gray-900 dark:text-gray-300 truncate">
-                        {uploadedFile.name}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="rounded-lg px-2 py-1 w-fit flex-shrink-0 text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-neutral-800">
-                        {(uploadedFile.size / (1024 * 1024)).toFixed(2)} MB
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex text-sm items-center w-full mt-2 justify-between text-gray-600 dark:text-gray-400">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="flex-shrink-0 text-red-500 hover:text-red-700 dark:text-red-400 dark:hover:text-red-200 px-2 py-1"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleRemoveFile();
-                      }}
-                    >
-                      Remove
-                    </Button>
-
-                    <p>
-                      modified{" "}
-                      {new Date(uploadedFile.lastModified).toLocaleDateString()}
-                    </p>
-                  </div>
-                </motion.div>
-              ) : (
-                <div
-                  className="relative z-10 h-[220px] p-[1px] overflow-hidden rounded-3xl bg-transparent"
-                  onDragOver={handleDragOver}
-                  onDragLeave={handleDragLeave}
-                  onDrop={handleDrop}
-                  onClick={handleClick}
-                >
-                  <div className="absolute inset-0">
-                    <MovingBorder duration={4000} rx="24px" ry="24px">
-                      <div className="h-40 w-40 opacity-[0.8] blur-[60px] bg-[radial-gradient(circle_at_center,var(--orange-500)_30%,var(--amber-500)_50%,transparent_70%)]" />
-                    </MovingBorder>
-                  </div>
-
-                  <div className="relative bg-white/[0.3] dark:bg-black/[0.5] border-1 border-gray-400/30 dark:border-gray-600/30 flex flex-col items-center justify-center w-full h-full rounded-[1.4rem] cursor-pointer">
-                    <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]">
-                      <GridPattern />
-                    </div>
-
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      className="hidden"
-                      onChange={handleFileInput}
-                      accept=".pdf,.doc,.docx,.txt"
-                      multiple={false}
-                    />
-
-                    <div className="relative z-20 flex flex-col items-center gap-2">
-                      <ArrowUpTrayIcon className="w-10 h-10 text-gray-600 dark:text-gray-400 group-hover/upload:text-gray-800 dark:group-hover/upload:text-gray-200 transition-colors" />
-                      <p className="text-xl font-medium text-gray-700 dark:text-gray-300">
-                        {isDragging
-                          ? "Drop your file here"
-                          : "Upload your transcript"}
-                      </p>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">
-                        Drag and drop or click to upload
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Generate button that appears after file upload */}
-            {uploadedFile && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="mt-6 relative flex justify-center"
+            <div className="grid grid-cols-2 gap-4">
+              <Button
+                onClick={() => {
+                  setUploadedFile(new File([], "virginia.pdf"));
+                  setFileUrl("/transcripts/virginia.pdf");
+                  scrollDown();
+                }}
+                className="relative py-4 px-6 text-lg font-medium bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-900 dark:text-gray-300 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 h-auto"
               >
-                <Button
-                  onClick={scrollDown}
-                  className="relative py-2.5 px-8 text-base font-medium bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-900 dark:text-gray-300 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200"
-                  disabled={isAnalyzing}
-                >
-                  {isAnalyzing ? (
-                    <div className="flex items-center gap-3">
-                      <div className="animate-spin w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full" />
-                      <span>Analyzing Transcript...</span>
-                    </div>
-                  ) : (
-                    "Generate Analysis"
-                  )}
-                </Button>
-              </motion.div>
-            )}
+                Virginia
+              </Button>
+              
+              <Button
+                onClick={() => {
+                  setUploadedFile(new File([], "texas.pdf"));
+                  setFileUrl("/transcripts/texas.pdf");
+                  scrollDown();
+                }}
+                className="relative py-4 px-6 text-lg font-medium bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-900 dark:text-gray-300 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 h-auto"
+              >
+                Texas
+              </Button>
+
+              <Button
+                onClick={() => {
+                  setUploadedFile(new File([], "new-york.pdf"));
+                  setFileUrl("/transcripts/new-york.pdf");
+                  scrollDown();
+                }}
+                className="relative py-4 px-6 text-lg font-medium bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-900 dark:text-gray-300 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 h-auto"
+              >
+                New York
+              </Button>
+
+              <Button
+                onClick={() => {
+                  setUploadedFile(new File([], "connecticut.pdf"));
+                  setFileUrl("/transcripts/connecticut.pdf");
+                  scrollDown();
+                }}
+                className="relative py-4 px-6 text-lg font-medium bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-900 dark:text-gray-300 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 h-auto"
+              >
+                Connecticut
+              </Button>
+            </div>
           </div>
         </motion.div>
       </div>
