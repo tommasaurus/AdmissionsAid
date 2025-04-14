@@ -342,12 +342,12 @@ export function BackgroundPaths({
                 Virginia
               </Button>
               
-              <Button
+                    <Button
                 onClick={() => handleTranscriptSelect("texas")}
                 className="relative py-4 px-6 text-lg font-medium bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-900 dark:text-gray-300 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 h-auto"
               >
                 Texas
-              </Button>
+                    </Button>
 
               <Button
                 onClick={() => handleTranscriptSelect("new-york")}
@@ -356,12 +356,12 @@ export function BackgroundPaths({
                 New York
               </Button>
 
-              <Button
+                <Button
                 onClick={() => handleTranscriptSelect("connecticut")}
                 className="relative py-4 px-6 text-lg font-medium bg-white dark:bg-neutral-900 hover:bg-gray-50 dark:hover:bg-neutral-800 text-gray-900 dark:text-gray-300 rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm transition-all duration-200 h-auto"
               >
                 Connecticut
-              </Button>
+                </Button>
             </div>
           </div>
         </motion.div>
@@ -522,7 +522,7 @@ export function BackgroundPaths({
                                         <tr key={index}>
                                           <td className="px-4 py-3 text-sm font-bold text-gray-900">
                                             {subject.subject_name}
-                                          </td>
+                                        </td>
                                           {[0, 1, 2, 3].map((gradeIndex) => (
                                             <td key={gradeIndex} className="px-4 py-3">
                                               <div className="space-y-3">
@@ -530,7 +530,7 @@ export function BackgroundPaths({
                                                   <div key={courseIndex}>
                                                     <div className="text-sm text-gray-900">
                                                       {course.course_name}
-                                                    </div>
+                                          </div>
                                                     <div className={`text-xs ${
                                                       course.rigor === "AP" ? "text-blue-600" :
                                                       course.rigor === "Honors" ? "text-emerald-600" :
@@ -539,13 +539,13 @@ export function BackgroundPaths({
                                                       "text-gray-500"
                                                     }`}>
                                                       {course.rigor}
-                                                    </div>
-                                                  </div>
+                                          </div>
+                                          </div>
                                                 ))}
-                                              </div>
-                                            </td>
+                                          </div>
+                                        </td>
                                           ))}
-                                        </tr>
+                                      </tr>
                                       ))}
                                     </tbody>
                                   </table>
@@ -561,7 +561,7 @@ export function BackgroundPaths({
                                         <li key={index} className="flex items-center gap-2">
                                           <span className="w-2 h-2 bg-amber-500 rounded-full"></span>
                                           {pattern}
-                                        </li>
+                                      </li>
                                       ))}
                                     </ul>
                                   </div>
@@ -583,90 +583,63 @@ export function BackgroundPaths({
                                       Course Rigor Progression
                                     </h3>
                                     <div className="space-y-4">
-                                      <div>
-                                        <div className="flex items-center justify-between mb-2">
-                                          <span className="text-sm font-medium text-gray-600">
-                                            9th Grade
-                                          </span>
-                                          <span className="text-sm text-gray-600">
-                                            2 Honors, 4 Standard
-                                          </span>
-                                        </div>
-                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden flex">
-                                          <div
-                                            className="h-full bg-emerald-400"
-                                            style={{ width: "33%" }}
-                                          ></div>
-                                          <div
-                                            className="h-full bg-gray-300"
-                                            style={{ width: "67%" }}
-                                          ></div>
-                                        </div>
-                                      </div>
-                                      <div>
-                                        <div className="flex items-center justify-between mb-2">
-                                          <span className="text-sm font-medium text-gray-600">
-                                            10th Grade
-                                          </span>
-                                          <span className="text-sm text-gray-600">
-                                            3 Honors, 1 AP, 2 Standard
-                                          </span>
-                                        </div>
-                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden flex">
-                                          <div
-                                            className="h-full bg-emerald-400"
-                                            style={{ width: "50%" }}
-                                          ></div>
-                                          <div
-                                            className="h-full bg-blue-400"
-                                            style={{ width: "17%" }}
-                                          ></div>
-                                          <div
-                                            className="h-full bg-gray-300"
-                                            style={{ width: "33%" }}
-                                          ></div>
-                                        </div>
-                                      </div>
-                                      <div>
-                                        <div className="flex items-center justify-between mb-2">
-                                          <span className="text-sm font-medium text-gray-600">
-                                            11th Grade
-                                          </span>
-                                          <span className="text-sm text-gray-600">
-                                            4 AP, 1 Post-AP
-                                          </span>
-                                        </div>
-                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden flex">
-                                          <div
-                                            className="h-full bg-blue-400"
-                                            style={{ width: "80%" }}
-                                          ></div>
-                                          <div
-                                            className="h-full bg-violet-400"
-                                            style={{ width: "20%" }}
-                                          ></div>
-                                        </div>
-                                      </div>
-                                      <div>
-                                        <div className="flex items-center justify-between mb-2">
-                                          <span className="text-sm font-medium text-gray-600">
-                                            12th Grade
-                                          </span>
-                                          <span className="text-sm text-gray-600">
-                                            6 AP, 1 Post-AP
-                                          </span>
-                                        </div>
-                                        <div className="h-4 bg-gray-200 rounded-full overflow-hidden flex">
-                                          <div
-                                            className="h-full bg-blue-400"
-                                            style={{ width: "86%" }}
-                                          ></div>
-                                          <div
-                                            className="h-full bg-violet-400"
-                                            style={{ width: "14%" }}
-                                          ></div>
-                                        </div>
-                                      </div>
+                                      {currentTranscript?.transcript_summary.academic_years.map((year, index) => {
+                                        // Count courses by rigor
+                                        const coursesByRigor = year.courses.reduce((acc, course) => {
+                                          // Handle "Advanced / Elective" format
+                                          const rigor = course.rigor.split(" / ")[0];
+                                          acc[rigor] = (acc[rigor] || 0) + 1;
+                                          return acc;
+                                        }, {} as Record<string, number>);
+
+                                        // Calculate total courses (excluding Pass/Fail)
+                                        const totalCourses = year.courses.filter(course => !course.rigor.includes("Pass/Fail")).length;
+
+                                        // Define rigor order for consistent display
+                                        const rigorOrder = ["Honors", "AP", "Post-AP", "Advanced", "Standard"];
+                                        
+                                        // Calculate counts and percentages in order
+                                        const rigorCounts = rigorOrder.map(rigor => ({
+                                          rigor,
+                                          count: coursesByRigor[rigor] || 0,
+                                          percentage: totalCourses > 0 ? ((coursesByRigor[rigor] || 0) / totalCourses) * 100 : 0
+                                        }));
+
+                                        // Create summary text in order of appearance
+                                        const summaryParts = rigorCounts
+                                          .filter(({count}) => count > 0)
+                                          .map(({rigor, count}) => `${count} ${rigor}`);
+
+                                        return (
+                                          <div key={index}>
+                                            <div className="flex items-center justify-between mb-2">
+                                              <span className="text-sm font-medium text-gray-600">
+                                                {year.year_label.split(" ")[2]} {/* Extracts "9th", "10th", etc. */}
+                                              </span>
+                                              <span className="text-sm text-gray-600">
+                                                {summaryParts.join(", ")}
+                                              </span>
+                                            </div>
+                                            <div className="h-4 bg-gray-200 rounded-full overflow-hidden flex">
+                                              {rigorCounts.map(({rigor, percentage}, i) => 
+                                                percentage > 0 && (
+                                                  <div
+                                                    key={i}
+                                                    className={`h-full ${
+                                                      rigor === "Honors" ? "bg-emerald-400" :
+                                                      rigor === "AP" ? "bg-blue-400" :
+                                                      rigor === "Post-AP" ? "bg-violet-400" :
+                                                      rigor === "Advanced" ? "bg-amber-400" :
+                                                      "bg-gray-300"
+                                                    }`}
+                                                    style={{ width: `${percentage}%` }}
+                                                  ></div>
+                                                )
+                                              )}
+                                            </div>
+                                          </div>
+                                        );
+                                      })}
                                     </div>
                                   </div>
 
@@ -911,41 +884,41 @@ export function BackgroundPaths({
                                         </thead>
                                         <tbody className="divide-y divide-gray-200">
                                           {year.courses.map((course, courseIndex) => (
-                                            <tr
-                                              key={courseIndex}
+                                              <tr
+                                                key={courseIndex}
                                               className="hover:bg-gray-50"
-                                            >
+                                              >
                                               <td className="px-4 py-2 text-sm">
-                                                {course.course_name}
-                                              </td>
+                                                  {course.course_name}
+                                                </td>
                                               <td className="px-4 py-2 text-sm">
-                                                <span
+                                                  <span
                                                   className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                                                    course.rigor === "AP"
+                                                course.rigor === "AP"
                                                       ? "bg-blue-50 text-blue-700"
-                                                      : course.rigor === "Honors"
+                                                  : course.rigor === "Honors"
                                                       ? "bg-emerald-50 text-emerald-700"
-                                                      : course.rigor === "Post-AP"
+                                                  : course.rigor === "Post-AP"
                                                       ? "bg-violet-50 text-violet-700"
                                                       : course.rigor === "Advanced"
                                                       ? "bg-amber-50 text-amber-700"
                                                       : "bg-gray-50 text-gray-700"
-                                                  }`}
-                                                >
-                                                  {course.rigor}
-                                                </span>
-                                              </td>
+                                              }`}
+                                                  >
+                                                    {course.rigor}
+                                                  </span>
+                                                </td>
                                               <td className="px-4 py-2 text-sm">
                                                 {Object.entries(course.term_grades).map(([term, grade], i) => (
                                                   <span key={i} className="mr-2">
-                                                    {term}: {grade}
-                                                  </span>
-                                                ))}
-                                              </td>
+                                                      {term}: {grade}
+                                                    </span>
+                                                  ))}
+                                                </td>
                                               <td className="px-4 py-2 text-sm">
                                                 {course.credits_earned || "N/A"}
-                                              </td>
-                                            </tr>
+                                                </td>
+                                              </tr>
                                           ))}
                                         </tbody>
                                       </table>
