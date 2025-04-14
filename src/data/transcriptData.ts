@@ -380,10 +380,7 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
               ],
               [{ course_name: "Computer Science I", rigor: "Standard" }],
               [{ course_name: "AP Computer Science A", rigor: "AP" }],
-              [
-                { course_name: "AP Psychology", rigor: "AP" },
-                { course_name: "Senior Project", rigor: "Pass/Fail" }
-              ]
+              []
             ]
           }
         ],
@@ -755,7 +752,7 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
                 { course_name: "Economics", rigor: "Standard" },
                 { course_name: "Personal Financial Literacy", rigor: "Standard" }
               ],
-              [{ course_name: "Psychology", rigor: "Dual Enrollment" }]
+              []
             ]
           }
         ],
