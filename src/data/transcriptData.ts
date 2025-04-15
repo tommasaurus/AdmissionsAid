@@ -1205,71 +1205,406 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
     },
   },
   connecticut: {
-    // Placeholder for Connecticut transcript data
     student_info: {
-      full_name: "Smith, Emily Grace",
-      date_of_birth: "2003-09-12",
-      enrollment_date: "2017-08-28",
-      graduation_date: "2021-06-15",
-      student_id: "CT345678",
+      full_name: "Johnny Appleseed",
+      date_of_birth: "2004-03-15",
+      enrollment_date: "2019-09",
+      graduation_date: "2022-05-29",
+      student_id: null,
     },
     school_info: {
-      school_name: "Greenwich High School",
-      school_address: "10 Hillside Rd, Greenwich, CT 06830, United States",
-      ceeb_code: "070240",
-      phone: "203-625-8000",
-      school_type: "Public, In-State (U.S.)",
+      school_name: "The Taft School",
+      school_address: "110 Woodbury Road, Watertown, Connecticut 06795",
+      ceeb_code: "070880",
+      phone: "860-945-7703",
+      school_type: "Private, In-State (U.S.)",
     },
     transcript_summary: {
       grading_scale: {
-        base_scale: "4.0 scale with plus/minus",
-        honors_weight: "+0.5",
-        ap_weight: "+1.0",
-        note_plus_minus: "Plus adds 0.3, minus subtracts 0.3",
+        base_scale: "Letter & Numeric Grades (A-F & 0-100)",
+        honors_weight: "Not specified",
+        ap_weight: "Not specified",
+        note_plus_minus: "Pass/Fail used for select courses",
       },
-      normalized_gpa: 3.91,
+      normalized_gpa: 3.89,
       gpas: {
-        "9th_grade_weighted": 4.0,
-        "10th_grade_weighted": 4.2,
-        "11th_grade_weighted": 4.4,
-        "12th_grade_weighted": 4.6,
-        cumulative_weighted_gpa: 4.3,
-        cumulative_unweighted_gpa: 3.85,
+        "10th_grade_weighted": 91.8,
+        "11th_grade_weighted": 95.6,
+        "12th_grade_weighted": 96.4,
+        cumulative_weighted_gpa: 95.1,
+        cumulative_unweighted_gpa: 91.8,
       },
       course_counts: {
-        total_ap_courses: 7,
-        total_honors_courses: 8,
+        total_ap_courses: 4,
+        total_honors_courses: 6,
         post_ap_or_advanced_courses: 1,
-        notable_pass_fail: [],
+        notable_pass_fail: ["Health and Life Skills 9", "Physical Education 9", "Accelerated Physics"],
       },
-      academic_years: [],
+      academic_years: [
+        {
+          year_label: "2018-19 (9th Grade)",
+          weighted_gpa: 0,
+          courses: [
+            {
+              course_name: "Arts: Ceramics",
+              term_grades: { Final: "A" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Arts: Digital Photography",
+              term_grades: { Final: "A" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Arts: Short Film",
+              term_grades: { Final: "A-" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "English 9",
+              term_grades: { Final: "A-" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Health and Life Skills 9",
+              term_grades: { Final: "Pass" },
+              rigor: "Pass/Fail",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Honors Biology",
+              term_grades: { Final: "A-" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Honors Geometry",
+              term_grades: { Final: "B+" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Modern World History",
+              term_grades: { Final: "A" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Physical Education 9",
+              term_grades: { Final: "Pass" },
+              rigor: "Pass/Fail",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Spanish 9",
+              term_grades: { Final: "A-" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+          ],
+        },
+        {
+          year_label: "2019-20 (10th Grade)",
+          weighted_gpa: 91.8,
+          courses: [
+            {
+              course_name: "Mid English",
+              term_grades: { Sem1: "88", Sem2: "P" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Honors Algebra II & Trigonometry",
+              term_grades: { Sem1: "95", Sem2: "P" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "World History II: Revolutions",
+              term_grades: { Sem1: "91", Sem2: "P" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Honors Spanish II",
+              term_grades: { Sem1: "95", Sem2: "P" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Accelerated Physics",
+              term_grades: { Sem2: "P" },
+              rigor: "Advanced",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Honors Physics",
+              term_grades: { Sem1: "87" },
+              rigor: "Honors",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Beginning Ceramics",
+              term_grades: { Sem1: "95" },
+              rigor: "Standard",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Intermediate Ceramics",
+              term_grades: { Sem2: "P" },
+              rigor: "Standard",
+              credits_earned: 0.5,
+            },
+          ],
+        },
+        {
+          year_label: "2020-21 (11th Grade)",
+          weighted_gpa: 95.6,
+          courses: [
+            {
+              course_name: "UM English",
+              term_grades: { Sem1: "92", Sem2: "93" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Honors Precalculus",
+              term_grades: { Sem1: "98", Sem2: "98" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP U.S. History",
+              term_grades: { Sem1: "96", Sem2: "97" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Honors Spanish III",
+              term_grades: { Sem1: "96", Sem2: "98" },
+              rigor: "Honors",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Accelerated Chemistry",
+              term_grades: { Sem1: "93", Sem2: "96" },
+              rigor: "Advanced",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Advanced Ceramics",
+              term_grades: { Final: "95" },
+              rigor: "Advanced",
+              credits_earned: 1.0,
+            },
+          ],
+        },
+        {
+          year_label: "2021-22 (12th Grade)",
+          weighted_gpa: 96.4,
+          courses: [
+            {
+              course_name: "Media and Identity",
+              term_grades: { Final: "95" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Race and Gender in Hollywood Film",
+              term_grades: { Final: "93" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Calculus AB",
+              term_grades: { Sem1: "96", Sem2: "91" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Chemistry",
+              term_grades: { Sem1: "100", Sem2: "98" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Psychology",
+              term_grades: { Sem1: "100", Sem2: "103" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Spanish Language",
+              term_grades: { Sem1: "94", Sem2: "94" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+          ],
+        },
+      ],
       curriculum_overview: {
-        subjects: [],
-        key_patterns: []
+        subjects: [
+          {
+            subject_name: "English",
+            courses_by_grade: [
+              [{ course_name: "English 9", rigor: "Standard" }],
+              [{ course_name: "Mid English", rigor: "Standard" }],
+              [{ course_name: "UM English", rigor: "Standard" }],
+              [
+                { course_name: "Media and Identity", rigor: "Standard" },
+                { course_name: "Race and Gender in Hollywood Film", rigor: "Standard" }
+              ]
+            ]
+          },
+          {
+            subject_name: "Mathematics",
+            courses_by_grade: [
+              [{ course_name: "Honors Geometry", rigor: "Honors" }],
+              [{ course_name: "Honors Algebra II & Trigonometry", rigor: "Honors" }],
+              [{ course_name: "Honors Precalculus", rigor: "Honors" }],
+              [{ course_name: "AP Calculus AB", rigor: "AP" }]
+            ]
+          },
+          {
+            subject_name: "Science",
+            courses_by_grade: [
+              [{ course_name: "Honors Biology", rigor: "Honors" }],
+              [
+                { course_name: "Accelerated Physics", rigor: "Advanced" },
+                { course_name: "Honors Physics", rigor: "Honors" }
+              ],
+              [{ course_name: "Accelerated Chemistry", rigor: "Advanced" }],
+              [{ course_name: "AP Chemistry", rigor: "AP" }]
+            ]
+          },
+          {
+            subject_name: "Social Studies",
+            courses_by_grade: [
+              [{ course_name: "Modern World History", rigor: "Standard" }],
+              [{ course_name: "World History II: Revolutions", rigor: "Standard" }],
+              [{ course_name: "AP U.S. History", rigor: "AP" }],
+              [{ course_name: "AP Psychology", rigor: "AP" }]
+            ]
+          },
+          {
+            subject_name: "Language",
+            courses_by_grade: [
+              [{ course_name: "Spanish 9", rigor: "Standard" }],
+              [{ course_name: "Honors Spanish II", rigor: "Honors" }],
+              [{ course_name: "Honors Spanish III", rigor: "Honors" }],
+              [{ course_name: "AP Spanish Language", rigor: "AP" }]
+            ]
+          },
+          {
+            subject_name: "Arts",
+            courses_by_grade: [
+              [
+                { course_name: "Ceramics", rigor: "Standard" },
+                { course_name: "Digital Photography", rigor: "Standard" },
+                { course_name: "Short Film", rigor: "Standard" }
+              ],
+              [
+                { course_name: "Beginning Ceramics", rigor: "Standard" },
+                { course_name: "Intermediate Ceramics", rigor: "Standard" }
+              ],
+              [{ course_name: "Advanced Ceramics", rigor: "Advanced" }],
+              [{ course_name: "—", rigor: "Standard" }]
+            ]
+          }
+        ],
+        key_patterns: [
+          "Strong progression in mathematics through AP Calculus AB",
+          "Comprehensive science sequence with advanced and AP courses",
+          "Consistent honors and AP Spanish language progression",
+          "Significant arts focus, particularly in ceramics"
+        ]
       },
       patterns: {
         rigor_progression: {
           title: "Course Rigor Progression",
-          by_year: []
+          by_year: [
+            {
+              year: "9th Grade",
+              courses: [
+                { rigor: "Honors", count: 2 },
+                { rigor: "Standard", count: 6 },
+                { rigor: "Pass/Fail", count: 2 }
+              ]
+            },
+            {
+              year: "10th Grade",
+              courses: [
+                { rigor: "Honors", count: 3 },
+                { rigor: "Advanced", count: 1 },
+                { rigor: "Standard", count: 4 }
+              ]
+            },
+            {
+              year: "11th Grade",
+              courses: [
+                { rigor: "AP", count: 1 },
+                { rigor: "Honors", count: 2 },
+                { rigor: "Advanced", count: 2 },
+                { rigor: "Standard", count: 1 }
+              ]
+            },
+            {
+              year: "12th Grade",
+              courses: [
+                { rigor: "AP", count: 4 },
+                { rigor: "Standard", count: 2 }
+              ]
+            }
+          ]
         },
         strengths: {
           title: "Strengths",
-          points: []
+          points: [
+            "Strong upward grade trajectory with significant improvement each year",
+            "Excellence in advanced science courses, particularly AP Chemistry",
+            "Consistent high achievement in Spanish language sequence",
+            "Balanced humanities and STEM course load"
+          ]
         },
         notable_patterns: {
           title: "Notable Patterns",
-          points: []
+          points: [
+            "Steady increase in course rigor, culminating in 4 AP courses senior year",
+            "Maintained strong performance in mathematics through AP Calculus AB",
+            "Significant commitment to arts, especially ceramics progression",
+            "Diverse English curriculum with specialized senior courses"
+          ]
         },
         grade_anomalies: {
           title: "Grade Anomalies",
-          anomalies: []
+          anomalies: [
+            {
+              grade: "B+",
+              course: "Honors Geometry (9th Grade)",
+              improvement: "Improved to consistent A/A- range in later math courses"
+            },
+            {
+              grade: "87",
+              course: "Honors Physics (10th Grade)",
+              improvement: "Showed significant improvement in later science courses"
+            }
+          ]
         }
       },
       overview: {
-        summary: "",
-        strengths: [],
-        concerns: "",
-        overall_impression: ""
+        summary: "The student demonstrates a strong academic trajectory with consistent improvement over four years, culminating in a 96.4 GPA in senior year. The transcript shows particular strength in sciences and mathematics, with notable achievement in AP Chemistry and a successful progression through AP Calculus AB. The student maintained a balanced course load while taking increasingly challenging classes, including multiple AP courses in the final two years.",
+        strengths: [
+          "Exceptional performance in science courses, particularly in chemistry",
+          "Strong language skills demonstrated through Spanish progression",
+          "Significant improvement in mathematics after initial B+ in Geometry",
+          "Balanced course selection across STEM and humanities"
+        ],
+        concerns: "No significant academic concerns. Early B+ in Honors Geometry and 87 in Honors Physics were followed by consistent improvement and excellent performance in subsequent courses.",
+        overall_impression: "The transcript reveals a student who has shown remarkable growth and academic maturity. Starting with solid but mixed performance in 9th grade, the student demonstrated consistent improvement, culminating in exceptional performance in advanced and AP courses. The balance of STEM and humanities, combined with significant arts involvement, suggests a well-rounded student prepared for rigorous college academics."
       }
     },
   },
