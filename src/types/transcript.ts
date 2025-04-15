@@ -10,6 +10,12 @@ export interface Course {
   normalizedValue: number;
   weight: number;
   confidence: number;
+  course_name: string;
+  rigor?: string;
+  term_grades?: {
+    [key: string]: string;
+  };
+  credits_earned?: number;
 }
 
 export interface Term {

@@ -36,7 +36,7 @@ export interface TranscriptData {
         subject_name: string;
         courses_by_grade: {
           course_name: string;
-          rigor: string;
+          rigor?: string;
         }[][];
       }[];
       key_patterns: string[];
@@ -838,60 +838,354 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
     },
   },
   "new-york": {
-    // Placeholder for New York transcript data
     student_info: {
-      full_name: "Cohen, Sarah Rachel",
-      date_of_birth: "2003-06-22",
-      enrollment_date: "2017-09-05",
-      graduation_date: "2021-06-25",
-      student_id: "NY789012",
+      full_name: "Johnny Appleseed",
+      date_of_birth: "2004-09-16",
+      enrollment_date: "2018-09-05",
+      graduation_date: "2022-06-24",
+      student_id: "104623",
     },
     school_info: {
-      school_name: "Stuyvesant High School",
-      school_address: "345 Chambers St, New York, NY 10282, United States",
-      ceeb_code: "334410",
-      phone: "212-312-4800",
-      school_type: "Public, Specialized High School",
+      school_name: "Harrison High School",
+      school_address: "255 Union Avenue, Harrison, NY 10528, United States",
+      ceeb_code: "332275",
+      phone: "914-630-3095",
+      school_type: "Public, In-State (U.S.)",
     },
     transcript_summary: {
       grading_scale: {
-        base_scale: "100-point scale converted to 4.0",
-        honors_weight: "+0.5",
-        ap_weight: "+1.0",
-        note_plus_minus: "Numerical grades converted to letter grades",
+        base_scale: "100-point scale (90-100=A, 80-89=B)",
+        honors_weight: "+3 points",
+        ap_weight: "+6 points",
+        note_plus_minus: "IB courses weighted same as AP",
       },
-      normalized_gpa: 3.95,
+      normalized_gpa: 3.98,
       gpas: {
-        "9th_grade_weighted": 4.2,
-        "10th_grade_weighted": 4.3,
-        "11th_grade_weighted": 4.6,
-        "12th_grade_weighted": 4.7,
-        cumulative_weighted_gpa: 4.45,
-        cumulative_unweighted_gpa: 3.95,
+        "9th_grade_weighted": 98.5,
+        "10th_grade_weighted": 99.2,
+        "11th_grade_weighted": 100.7,
+        cumulative_weighted_gpa: 100.656,
+        cumulative_unweighted_gpa: 97.544,
       },
       course_counts: {
-        total_ap_courses: 9,
-        total_honors_courses: 5,
-        post_ap_or_advanced_courses: 2,
+        total_ap_courses: 2,
+        total_honors_courses: 0,
+        post_ap_or_advanced_courses: 6,
         notable_pass_fail: [],
       },
-      academic_years: [],
+      academic_years: [
+        {
+          year_label: "2018-2019 (9th Grade)",
+          weighted_gpa: 98.5,
+          courses: [
+            {
+              course_name: "English 9",
+              term_grades: { Final: "96" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Geometry",
+              term_grades: { Final: "99" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Biology",
+              term_grades: { Final: "96" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Global History 9",
+              term_grades: { Final: "97" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Spanish II",
+              term_grades: { Final: "96" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Studio in Art",
+              term_grades: { Final: "96" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Topics in Pre Calc I",
+              term_grades: { Final: "99" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Physical Education Fall",
+              term_grades: { Final: "100" },
+              rigor: "Standard",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Physical Education Spring",
+              term_grades: { Final: "99" },
+              rigor: "Standard",
+              credits_earned: 0.5,
+            },
+          ],
+        },
+        {
+          year_label: "2019-2020 (10th Grade)",
+          weighted_gpa: 99.2,
+          courses: [
+            {
+              course_name: "English 10",
+              term_grades: { Final: "97" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Common Core Algebra II",
+              term_grades: { Final: "100" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Foundations in College Chemistry",
+              term_grades: { Final: "98" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP World History",
+              term_grades: { Final: "95" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Spanish III",
+              term_grades: { Final: "98" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Computer Science II",
+              term_grades: { Final: "100" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Topics in Pre Calc II",
+              term_grades: { Final: "99" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Health",
+              term_grades: { Final: "99" },
+              rigor: "Standard",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Physical Education Fall",
+              term_grades: { Final: "100" },
+              rigor: "Standard",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Physical Education Spring",
+              term_grades: { Final: "100" },
+              rigor: "Standard",
+              credits_earned: 0.5,
+            },
+          ],
+        },
+        {
+          year_label: "2020-2021 (11th Grade)",
+          weighted_gpa: 100.7,
+          courses: [
+            {
+              course_name: "IB English HL",
+              term_grades: { Final: "95" },
+              rigor: "IB",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "AP Calc BC",
+              term_grades: { Final: "98" },
+              rigor: "AP",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "IB Physics HL",
+              term_grades: { Final: "95" },
+              rigor: "IB",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "IB History of the Americas HL",
+              term_grades: { Final: "100" },
+              rigor: "IB",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "IB Spanish SL",
+              term_grades: { Final: "99" },
+              rigor: "IB",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "IB Theory of Knowledge",
+              term_grades: { Final: "100" },
+              rigor: "IB",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Web Design & Management",
+              term_grades: { Final: "100" },
+              rigor: "Standard",
+              credits_earned: 1.0,
+            },
+            {
+              course_name: "Physical Education Fall",
+              term_grades: { Final: "100" },
+              rigor: "Standard",
+              credits_earned: 0.5,
+            },
+            {
+              course_name: "Physical Education Spring",
+              term_grades: { Final: "100" },
+              rigor: "Standard",
+              credits_earned: 0.5,
+            },
+          ],
+        },
+      ],
       curriculum_overview: {
-        subjects: [],
-        key_patterns: []
+        subjects: [
+          {
+            subject_name: "English",
+            courses_by_grade: [
+              [{ course_name: "English 9", rigor: "Standard" }],
+              [{ course_name: "English 10", rigor: "Standard" }],
+              [{ course_name: "IB English HL", rigor: "IB" }],
+              [{ course_name: "—" }]
+            ]
+          },
+          {
+            subject_name: "Mathematics",
+            courses_by_grade: [
+              [
+                { course_name: "Geometry", rigor: "Standard" },
+                { course_name: "Topics in Pre Calc I", rigor: "Standard" }
+              ],
+              [
+                { course_name: "Common Core Algebra II", rigor: "Standard" },
+                { course_name: "Topics in Pre Calc II", rigor: "Standard" }
+              ],
+              [{ course_name: "AP Calc BC", rigor: "AP" }],
+              [{ course_name: "—" }]
+            ]
+          },
+          {
+            subject_name: "Science",
+            courses_by_grade: [
+              [{ course_name: "Biology", rigor: "Standard" }],
+              [{ course_name: "Foundations in College Chemistry", rigor: "Standard" }],
+              [{ course_name: "IB Physics HL", rigor: "IB" }],
+              [{ course_name: "—" }]
+            ]
+          },
+          {
+            subject_name: "Social Studies",
+            courses_by_grade: [
+              [{ course_name: "Global History 9", rigor: "Standard" }],
+              [{ course_name: "AP World History", rigor: "AP" }],
+              [{ course_name: "IB History of the Americas HL", rigor: "IB" }],
+              [{ course_name: "—" }]
+            ]
+          },
+          {
+            subject_name: "Language",
+            courses_by_grade: [
+              [{ course_name: "Spanish II", rigor: "Standard" }],
+              [{ course_name: "Spanish III", rigor: "Standard" }],
+              [{ course_name: "IB Spanish SL", rigor: "IB" }],
+              [{ course_name: "—" }]
+            ]
+          },
+          {
+            subject_name: "Other",
+            courses_by_grade: [
+              [
+                { course_name: "Studio in Art", rigor: "Standard" },
+                { course_name: "Physical Education", rigor: "Standard" }
+              ],
+              [
+                { course_name: "Computer Science II", rigor: "Standard" },
+                { course_name: "Health", rigor: "Standard" },
+                { course_name: "Physical Education", rigor: "Standard" }
+              ],
+              [
+                { course_name: "Web Design & Management", rigor: "Standard" },
+                { course_name: "IB Theory of Knowledge", rigor: "IB" },
+                { course_name: "Physical Education", rigor: "Standard" }
+              ],
+              [{ course_name: "—" }]
+            ]
+          }
+        ],
+        key_patterns: [
+          "Accelerated mathematics track with early Pre-Calculus",
+          "Strong progression to IB curriculum in 11th grade",
+          "Consistent excellence across all subjects",
+          "Complete Spanish language sequence through IB"
+        ]
       },
       patterns: {
         rigor_progression: {
           title: "Course Rigor Progression",
-          by_year: []
+          by_year: [
+            {
+              year: "9th Grade (2018-2019)",
+              courses: [
+                { rigor: "Advanced", count: 1 },
+                { rigor: "Standard", count: 8 }
+              ]
+            },
+            {
+              year: "10th Grade (2019-2020)",
+              courses: [
+                { rigor: "AP", count: 1 },
+                { rigor: "Advanced", count: 1 },
+                { rigor: "Standard", count: 8 }
+              ]
+            },
+            {
+              year: "11th Grade (2020-2021)",
+              courses: [
+                { rigor: "IB", count: 6 },
+                { rigor: "AP", count: 1 },
+                { rigor: "Standard", count: 2 }
+              ]
+            }
+          ]
         },
         strengths: {
           title: "Strengths",
-          points: []
+          points: [
+            "Exceptional performance across all subjects with no grade below 95",
+            "Advanced mathematics progression starting in 9th grade",
+            "Strong commitment to IB curriculum with six IB courses"
+          ]
         },
         notable_patterns: {
           title: "Notable Patterns",
-          points: []
+          points: [
+            "Early start in advanced mathematics with Topics in Pre Calc I & II",
+            "Comprehensive IB program participation in junior year",
+            "Perfect scores in all Physical Education courses"
+          ]
         },
         grade_anomalies: {
           title: "Grade Anomalies",
@@ -899,10 +1193,14 @@ export const transcriptDataMap: { [key: string]: TranscriptData } = {
         }
       },
       overview: {
-        summary: "",
-        strengths: [],
-        concerns: "",
-        overall_impression: ""
+        summary: "The student demonstrates exceptional academic achievement with a remarkable consistency in performance. Starting with advanced mathematics in 9th grade and progressing through AP and IB coursework, the transcript shows both academic excellence and increasing rigor. The student maintains outstanding grades across all subjects while taking on challenging IB curriculum.",
+        strengths: [
+          "Exceptional mathematics sequence, starting with advanced topics and culminating in AP Calculus BC",
+          "Strong commitment to academic rigor through IB program participation",
+          "Perfect or near-perfect scores in most courses, demonstrating consistent excellence"
+        ],
+        concerns: "No significant academic concerns. The student has maintained excellent grades throughout all years and across all subject areas.",
+        overall_impression: "The transcript reveals a student of exceptional academic caliber with outstanding performance across a challenging curriculum. The progression from advanced courses to AP and IB demonstrates both intellectual capability and academic ambition. The student's consistent excellence across all subjects, particularly in mathematics and IB coursework, suggests superior college preparedness."
       }
     },
   },

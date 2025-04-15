@@ -531,16 +531,18 @@ export function BackgroundPaths({
                                                     <div className="text-sm text-gray-900">
                                                       {course.course_name}
                                           </div>
-                                                    <div className={`text-xs ${
-                                                      course.rigor === "AP" ? "text-blue-600" :
-                                                      course.rigor === "Honors" ? "text-emerald-600" :
-                                                      course.rigor === "Post-AP" ? "text-violet-600" :
+                                                    {course.rigor && course.course_name !== "—" && (
+                                                      <div className={`text-xs ${
+                                                        course.rigor === "AP" || course.rigor === "IB" ? "text-blue-600" :
+                                                        course.rigor === "Honors" ? "text-emerald-600" :
+                                                        course.rigor === "Post-AP" ? "text-violet-600" :
                                                       course.rigor === "Advanced" ? "text-amber-600" :
-                                                      course.rigor === "Dual Enrollment" ? "text-violet-600" :
-                                                      "text-gray-500"
-                                                    }`}>
-                                                      {course.rigor}
-                                          </div>
+                                                        course.rigor === "Dual Enrollment" ? "text-violet-600" :
+                                                        "text-gray-500"
+                                                      }`}>
+                                                        {course.rigor}
+                                                      </div>
+                                                    )}
                                           </div>
                                                 ))}
                                           </div>
@@ -605,7 +607,7 @@ export function BackgroundPaths({
                                                     key={i}
                                                     className={`h-full ${
                                                       course.rigor === "Honors" ? "bg-emerald-400" :
-                                                      course.rigor === "AP" ? "bg-blue-400" :
+                                                      course.rigor === "AP" || course.rigor === "IB" ? "bg-blue-400" :
                                                       course.rigor === "Post-AP" ? "bg-violet-400" :
                                                       course.rigor === "Advanced" ? "bg-amber-400" :
                                                       course.rigor === "Dual Enrollment" ? "bg-violet-400" :
@@ -807,16 +809,12 @@ export function BackgroundPaths({
                                               <td className="px-4 py-2 text-sm">
                                                   <span
                                                   className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                                                course.rigor === "AP"
-                                                      ? "bg-blue-50 text-blue-700"
-                                                  : course.rigor === "Honors"
-                                                      ? "bg-emerald-50 text-emerald-700"
-                                                  : course.rigor === "Post-AP"
-                                                      ? "bg-violet-50 text-violet-700"
-                                                      : course.rigor === "Advanced"
-                                                      ? "bg-amber-50 text-amber-700"
-                                                      : course.rigor === "Dual Enrollment" ? "bg-violet-50 text-violet-700" :
-                                                      "bg-gray-50 text-gray-700"
+                                                course.rigor === "AP" || course.rigor === "IB" ? "bg-blue-50 text-blue-700" :
+                                                course.rigor === "Honors" ? "bg-emerald-50 text-emerald-700" :
+                                                course.rigor === "Post-AP" ? "bg-violet-50 text-violet-700" :
+                                                course.rigor === "Advanced" ? "bg-amber-50 text-amber-700" :
+                                                course.rigor === "Dual Enrollment" ? "bg-violet-50 text-violet-700" :
+                                                "bg-gray-50 text-gray-700"
                                               }`}
                                                   >
                                                     {course.rigor}
